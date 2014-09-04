@@ -1,17 +1,17 @@
 auto-complete/          - https://github.com/auto-complete/auto-complete/
-						  https://github.com/auto-complete/fuzzy-el/
-						  https://github.com/auto-complete/popup-el/
+                          https://github.com/auto-complete/fuzzy-el/
+                          https://github.com/auto-complete/popup-el/
 dash/                   - https://github.com/magnars/dash.el/
 expand-region/          - https://github.com/magnars/expand-region.el
 ido/                    - https://github.com/lewang/flx/
-						  https://github.com/gempesaw/ido-vertical-mode.el
-						  https://github.com/DarwinAwardWinner/ido-ubiquitous/
-						  https://github.com/nonsequitur/smex/
+                          https://github.com/gempesaw/ido-vertical-mode.el
+                          https://github.com/DarwinAwardWinner/ido-ubiquitous/
+                          https://github.com/nonsequitur/smex/
 powerline/              - https://github.com/milkypostman/powerline/
 rw/                     - ? Ralf Wachinger
 slime/                  - https://github.com/slime/slime/
 *swbuff/                - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
-						  ? http://ourcomments.org/Emacs/DL/EmacsW32-only/src/EmacsW32/lisp/
+                          ? http://ourcomments.org/Emacs/DL/EmacsW32-only/src/EmacsW32/lisp/
 tabbar/                 - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
 
 ace-jump-mode.el        - https://github.com/winterTTr/ace-jump-mode/
