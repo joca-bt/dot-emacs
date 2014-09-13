@@ -1,4 +1,4 @@
-backups/*
-fasl/*
-server/*
-session/*
+backups/
+fasl/
+server/
+session/

@@ -10,8 +10,8 @@
 ;;     display, navigation
 ;;     editing, spelling
 ;;     programming
-;;   major modes and languages:
-;;     lisp
+;;   languages:
+;;     c, lisp, python
 ;;   commands, key bindings
 ;;
 ;; the sidebar is called the 'fringe'
@@ -40,6 +40,8 @@
 ;; load path -------------------------------------------------------------------
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/configuration/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/configuration/languages/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/configuration/specific/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/auto-complete/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/expand-region/"))
@@ -50,7 +52,6 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/contrib/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/swbuff/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/tabbar/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/themes/"))
 
 
@@ -104,8 +105,10 @@
 (require 'config-spelling) ; spelling
 (require 'config-programming) ; programming
 
-;; major modes and languages
+;; languages
+(require 'config-c) ; c
 (require 'config-lisp) ; lisp
+(require 'config-python) ; python
 
 ;; more configurations
 (require 'config-commands) ; commands

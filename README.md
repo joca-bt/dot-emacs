@@ -11,4 +11,7 @@ All dependencies are included.
 
 ## Notes
 
-This configuration is optimized for Lisp development.
+Tailored for Lisp development.
+
+Explore before usage.
+Rebinds common Emacs key kindings.
