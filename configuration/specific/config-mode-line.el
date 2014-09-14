@@ -8,23 +8,6 @@
 
 
 ;; -----------------------------------------------------------------------------
-;; style -----------------------------------------------------------------------
-
-(defface ml-highlight '((t
-                         :inherit nil
-                         :box (:line-width 1 :color "grey25" :style nil)))
-  ""
-  :group 'ml)
-
-
-(defface ml-strong '((t
-                      :inherit nil
-                      :weight bold))
-  ""
-  :group 'ml)
-
-
-;; -----------------------------------------------------------------------------
 ;; format ----------------------------------------------------------------------
 
 (defconst +ml-space+ "  ")
@@ -48,11 +31,29 @@
 
 
 ;; -----------------------------------------------------------------------------
+;; style -----------------------------------------------------------------------
+
+(defface ml-highlight '((t
+                         :inherit nil
+                         :box (:line-width 1 :color "grey25" :style nil)))
+  ""
+  :group 'ml)
+
+
+(defface ml-strong '((t
+                      :inherit nil
+                      :weight bold))
+  ""
+  :group 'ml)
+
+
+;; -----------------------------------------------------------------------------
 ;; encoding and terminator -----------------------------------------------------
 
 (defun ml-encoding-and-terminator ()
   (propertize "%Z"
               'mouse-face 'ml-highlight
+              'pointer 'arrow
               'help-echo 'ml-encoding-and-terminator-help
               'local-map ml-encoding-and-terminator-map))
 
@@ -61,7 +62,7 @@
   (with-selected-window window
     (let ((encoding (if buffer-file-coding-system
                         (format "%s (%s)"
-                                (symbol-name buffer-file-coding-system)
+                                buffer-file-coding-system
                                 (if enable-multibyte-characters
                                     "multibyte"
                                   "unibyte"))
@@ -85,8 +86,7 @@
 (defun ml-describe-encoding-and-terminator (event)
   (interactive "e")
   (with-selected-window (posn-window (event-start event))
-    (when buffer-file-coding-system
-      (describe-coding-system buffer-file-coding-system))))
+    (describe-coding-system buffer-file-coding-system)))
 
 
 ;; -----------------------------------------------------------------------------
@@ -107,10 +107,12 @@
   (cond (buffer-read-only
          (propertize " RO "
                      'mouse-face 'ml-highlight
+                     'pointer 'arrow
                      'help-echo 'ml-buffer-status-help))
         ((buffer-modified-p)
          (propertize " ** "
                      'mouse-face 'ml-highlight
+                     'pointer 'arrow
                      'help-echo 'ml-buffer-status-help))
         (t
          "    ")))
@@ -130,6 +132,7 @@
   (propertize "%20b"
               'face 'ml-strong
               'mouse-face 'ml-highlight
+              'pointer 'arrow
               'help-echo 'ml-buffer-name-help))
 
 
@@ -154,12 +157,14 @@
 (defun ml-modes ()
   `((:propertize ("" mode-name)
                  mouse-face ml-highlight
+                 pointer arrow
                  help-echo ml-major-mode-help
                  local-map ,ml-major-mode-map)
-     (:propertize ("" minor-mode-alist)
-                  mouse-face ml-highlight
-                  help-echo ml-minor-mode-help
-                  local-map ,ml-minor-mode-map)))
+    (:propertize ("" minor-mode-alist)
+                 mouse-face ml-highlight
+                 pointer arrow
+                 help-echo ml-minor-mode-help
+                 local-map ,ml-minor-mode-map)))
 
 
 (defun ml-major-mode-help (window object point)

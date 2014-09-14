@@ -2,9 +2,9 @@ auto-complete/          - https://github.com/auto-complete/auto-complete/
                           https://github.com/auto-complete/fuzzy-el/
                           https://github.com/auto-complete/popup-el/
 dash/                   - https://github.com/magnars/dash.el/
-expand-region/          - https://github.com/magnars/expand-region.el
+expand-region/          - https://github.com/magnars/expand-region.el/
 ido/                    - https://github.com/lewang/flx/
-                          https://github.com/gempesaw/ido-vertical-mode.el
+                          https://github.com/gempesaw/ido-vertical-mode.el/
                           https://github.com/DarwinAwardWinner/ido-ubiquitous/
                           https://github.com/nonsequitur/smex/
 powerline/              - https://github.com/milkypostman/powerline/
@@ -23,7 +23,6 @@ key-chord               - http://www.emacswiki.org/emacs/KeyChord/
 *mic-paren.el           - http://www.emacswiki.org/emacs/MicParen/
 neotree.el              - https://github.com/jaypei/emacs-neotree/
 region-bindings-mode.el - https://github.com/fgallina/region-bindings-mode/
-revive.el               - http://www.gentei.org/~yuuji/software/
 s.el                    - https://github.com/magnars/s.el/
 tabbar.el               - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
 undo-tree.el            - http://www.dr-qubit.org/emacs.php

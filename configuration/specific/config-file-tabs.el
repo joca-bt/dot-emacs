@@ -66,7 +66,6 @@
 
 (set-face-attribute 'tabbar-button nil
                     :inherit 'tabbar-default
-                    :foreground "black"
                     :background "grey80"
                     :box nil)
 
@@ -77,8 +76,7 @@
 
 (set-face-attribute 'tabbar-separator nil
                     :inherit 'tabbar-default
-                    :foreground "#8f8f8f"
-                    :background "#8f8f8f"
+                    :background "grey55"
                     :height 1.0)
 
 
@@ -159,10 +157,14 @@
 
 (defun tabbar-help-on-tab (window object position)
   "Returns the help string shown when mouse-hovering a tab.
-   Return the absolute file name of the file the buffer is visiting."
+   Return either the file name of the file the buffer is visiting or the buffer's name."
   (with-selected-window window
-    (let ((tab (get-text-property position 'tabbar-tab object)))
-      (abbreviate-file-name (buffer-file-name (get-buffer (buffer-name (tabbar-tab-value tab))))))))
+    (let* ((tab (get-text-property position 'tabbar-tab object))
+           (buffer (get-buffer (buffer-name (tabbar-tab-value tab))))
+           (file-name (buffer-file-name buffer)))
+      (if file-name
+          (abbreviate-file-name file-name)
+        (buffer-name buffer)))))
 
 
 (defun tabbar-help-on-button (window object position)

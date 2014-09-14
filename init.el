@@ -44,15 +44,14 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/configuration/specific/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/auto-complete/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/expand-region/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/dash/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/expand-region/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/ido/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/powerline/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/rw/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/contrib/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/swbuff/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/themes/"))
 
 
 ;; -----------------------------------------------------------------------------
@@ -75,7 +74,7 @@
 
 ;; skip startup screen
 (setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message "joca") ; replace with login name
+(setq inhibit-startup-echo-area-message "joca") ; replace with username
 (setq initial-scratch-message nil)
 
 ;; maximize on startup

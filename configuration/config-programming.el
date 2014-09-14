@@ -24,7 +24,7 @@
 (setq eldoc-echo-area-use-multiline-p t
       eldoc-idle-delay +documentation-delay+)
 
-;; automatic indentation
+;; indentation
 (require 'electric)
 (electric-indent-mode t)
 

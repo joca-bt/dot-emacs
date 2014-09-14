@@ -23,13 +23,6 @@
       save-place-file (concat +session-dir+ ".point"))
 (setq-default save-place t)
 
-;; window configuration management
-(require 'revive)
-(autoload 'save-current-configuration "revive" "Save status" t)
-(autoload 'resume "revive" "Resume status" t)
-(autoload 'wipe "revive" "Wipe status" t)
-(setq revive:configuration-file (concat +session-dir+ ".revive"))
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

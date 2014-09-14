@@ -23,9 +23,9 @@
 ;; push visible buffers to the top of the recent files list
 (defun recentf-push-buffers-in-frame ()
   (walk-windows '(lambda (window)
-                   (let ((filename (buffer-file-name (window-buffer window))))
-                     (when filename
-                       (recentf-add-file filename))))))
+                   (let ((file-name (buffer-file-name (window-buffer window))))
+                     (when file-name
+                       (recentf-add-file file-name))))))
 (add-to-list 'window-configuration-change-hook 'recentf-push-buffers-in-frame)
 
 ;; ido

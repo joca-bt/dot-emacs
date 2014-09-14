@@ -1,11 +1,9 @@
 ;; -----------------------------------------------------------------------------
 ;; meta and utils --------------------------------------------------------------
 
-(require 'dash)
-(require 's)
-(require 'mode-local)
+(require 'mode-local) ; mode-local variables
 
-(setq debug-on-error t)
+(setq debug-on-error t) ; debug on error
 
 
 ;; -----------------------------------------------------------------------------
