@@ -9,7 +9,7 @@
 (setq ispell-program-name "hunspell"
       ispell-extra-args '("-a" "-i" "utf-8")
       ispell-check-comments 'exclusive
-      ispell-following-word nil
+      ispell-following-word t
       rw-hunspell-make-dictionary-menu t
       rw-hunspell-use-rw-ispell t
       rw-ispell-create-pdict-files t

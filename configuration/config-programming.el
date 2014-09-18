@@ -1,8 +1,8 @@
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
-;; auto-completion
-(require 'auto-complete)
+;; completion
+(require 'auto-complete-config)
 (setq ac-auto-start nil
       ac-use-fuzzy t
       ac-ignore-case 'smart
@@ -28,22 +28,17 @@
 (require 'electric)
 (electric-indent-mode t)
 
-;; delimiter pairing
-(require 'autopair)
-(setq autopair-autowrap t
-      autopair-blink nil)
-(autopair-global-mode t)
-
-;; delimiter matching and highlighting
-(require 'mic-paren)
-(setq paren-highlight-offscreen t
-      paren-display-message 'only
-      paren-delay nil
-      paren-priority 'close)
-(paren-activate)
+;; delimiter pairing, matching, and highlighting
+(require 'smartparens-config)
+(setq sp-autoinsert-pair t
+      sp-autowrap-region t
+      sp-highlight-pair-overlay nil
+      sp-show-pair-delay 0)
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
 
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
-(provide 'config-programming)
+(provide 'config-programming) 

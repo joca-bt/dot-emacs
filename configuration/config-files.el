@@ -4,7 +4,7 @@
 ;; name buffers uniquely
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward
-      uniquify-separator nil
+      uniquify-separator "|"
       uniquify-after-kill-buffer-p t)
 
 (setq mouse-buffer-menu-maxlen 20) ; buffer list size
@@ -20,13 +20,12 @@
       recentf-save-file (concat +session-dir+ ".recent-files"))
 (recentf-mode t)
 
-;; push visible buffers to the top of the recent files list
-(defun recentf-push-buffers-in-frame ()
-  (walk-windows '(lambda (window)
-                   (let ((file-name (buffer-file-name (window-buffer window))))
-                     (when file-name
-                       (recentf-add-file file-name))))))
-(add-to-list 'window-configuration-change-hook 'recentf-push-buffers-in-frame)
+;; push current buffer to the top of the recent files list
+(defun recentf-push-current-buffer ()
+  (let ((file-name (buffer-file-name (current-buffer))))
+    (when file-name
+      (recentf-add-file file-name))))
+(add-to-list 'window-configuration-change-hook 'recentf-push-current-buffer)
 
 ;; ido
 (require 'ido)

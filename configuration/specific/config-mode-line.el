@@ -148,8 +148,8 @@
 ;; modes -----------------------------------------------------------------------
 
 (eval-after-load "auto-complete" '(diminish 'auto-complete-mode))
-(eval-after-load "autopair" '(diminish 'autopair-mode))
 (eval-after-load "region-bindings-mode" '(diminish 'region-bindings-mode))
+(eval-after-load "smartparens" '(diminish 'smartparens-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
 

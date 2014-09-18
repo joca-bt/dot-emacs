@@ -16,7 +16,7 @@
      ,@body))
 
 (defmacro fnie (fn)
-  "Wraps an interactive function call with the `ignore-errors' macro."
+  "Wraps an interactive function call under the `ignore-errors' macro."
   `(fnify
     (ignore-errors
       (funcall ,fn))))

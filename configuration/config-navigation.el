@@ -9,7 +9,7 @@
       ace-jump-mode-detect-punc t
       ace-jump-mode-gray-background t
       ace-jump-mode-mark-ring-max 20
-      ace-jump-mode-move-keys (number-sequence ?a ?z))
+      ace-jump-mode-move-keys (nconc (number-sequence ?a ?z) (number-sequence ?A ?Z)))
 
 ;; buffer switching
 (require 'swbuff-y)

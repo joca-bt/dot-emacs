@@ -51,6 +51,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/rw/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/contrib/"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/smartparens/"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/swbuff/"))
 
 
