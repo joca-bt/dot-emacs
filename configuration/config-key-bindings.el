@@ -58,11 +58,11 @@
 (global-set-key (kbd "C-x C-s") 'save-buffer) ; save buffer
 (global-set-key (kbd "C-w") 'kill-this-buffer) ; close buffer
 
-(global-set-key (kbd "C-<tab>") 'swbuff-switch-to-next-buffer) ; next buffer
-(global-set-key (kbd "C-S-<tab>") 'swbuff-switch-to-previous-buffer) ; previous buffer
-
 (global-set-key (kbd "M-<down>") 'tabbar-forward) ; next file tab
 (global-set-key (kbd "M-<up>") 'tabbar-backward) ; previous file tab
+
+(global-set-key (kbd "C-<tab>") 'swbuff-switch-to-next-buffer) ; next buffer
+(global-set-key (kbd "C-S-<tab>") 'swbuff-switch-to-previous-buffer) ; previous buffer
 
 
 ;; -----------------------------------------------------------------------------
@@ -141,7 +141,7 @@
 (global-set-key (kbd "C-h C-f") 'find-function) ; find function definition
 (global-set-key (kbd "C-h C-v") 'find-variable) ; find variable definition
 
-(global-set-key (kbd "C-<SPC>") 'auto-complete) ; auto-completion
+(global-set-key (kbd "C-<SPC>") 'company-complete) ; completion
 
 
 ;; -----------------------------------------------------------------------------

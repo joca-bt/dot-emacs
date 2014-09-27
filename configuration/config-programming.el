@@ -2,22 +2,12 @@
 ;; programming -----------------------------------------------------------------
 
 ;; completion
-(require 'auto-complete-config)
-(setq ac-auto-start nil
-      ac-use-fuzzy t
-      ac-ignore-case 'smart
-      ac-dwim nil
-      ac-show-menu-immediately-on-auto-complete t
-      ac-expand-on-auto-complete t
-      ac-use-menu-map t
-      ac-use-quick-help t
-      ac-quick-help-delay 1
-      ac-menu-height 10
-      ac-quick-help-height 20
-      ac-use-comphist t
-      ac-comphist-file (concat +session-dir+ ".auto-completion"))
-(define-key ac-menu-map (kbd "S-<tab>") 'ac-previous)
-(global-auto-complete-mode t)
+(require 'company)
+(setq company-idle-delay nil
+      company-tooltip-limit 10
+      company-tooltip-minimum-width 25
+      company-selection-wrap-around t)
+(global-company-mode t)
 
 ;; documentation
 (require 'eldoc)

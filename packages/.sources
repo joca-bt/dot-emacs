@@ -1,6 +1,4 @@
-auto-complete/          - https://github.com/auto-complete/auto-complete/
-                          https://github.com/auto-complete/fuzzy-el/
-                          https://github.com/auto-complete/popup-el/
+company-mode/           - https://github.com/company-mode/company-mode/
 dash/                   - https://github.com/magnars/dash.el/
 expand-region/          - https://github.com/magnars/expand-region.el/
 ido/                    - https://github.com/lewang/flx/
