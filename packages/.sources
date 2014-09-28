@@ -1,32 +1,32 @@
-company-mode/           - https://github.com/company-mode/company-mode/
-dash/                   - https://github.com/magnars/dash.el/
-expand-region/          - https://github.com/magnars/expand-region.el/
-ido/                    - https://github.com/lewang/flx/
-                          https://github.com/gempesaw/ido-vertical-mode.el/
-                          https://github.com/DarwinAwardWinner/ido-ubiquitous/
-                          https://github.com/nonsequitur/smex/
-powerline/              - https://github.com/milkypostman/powerline/
-rw/                     - ? Ralf Wachinger
-slime/                  - https://github.com/slime/slime/
-smartparens/            - https://github.com/Fuco1/smartparens/
-*swbuff/                - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
-                          ? http://ourcomments.org/Emacs/DL/EmacsW32-only/src/EmacsW32/lisp/
+ace-jump        - https://github.com/winterTTr/ace-jump-mode/
+buffer-move     - https://github.com/lukhas/buffer-move/
+company         - https://github.com/company-mode/company-mode/
+dash            - https://github.com/magnars/dash.el/
+elisp-slime-nav - https://github.com/purcell/elisp-slime-nav/
+expand-region   - https://github.com/magnars/expand-region.el/
+flx             - https://github.com/lewang/flx/
+ido-ubiquitous  - https://github.com/DarwinAwardWinner/ido-ubiquitous/
+ido-vertical    - https://github.com/gempesaw/ido-vertical-mode.el/
+neotree         - https://github.com/jaypei/emacs-neotree/
+powerline       - https://github.com/milkypostman/powerline/
+region-bindings - https://github.com/fgallina/region-bindings-mode/
+s               - https://github.com/magnars/s.el/
+slime           - https://github.com/slime/slime/
+smartparens     - https://github.com/Fuco1/smartparens/
+smex            - https://github.com/nonsequitur/smex/
 
-ace-jump-mode.el        - https://github.com/winterTTr/ace-jump-mode/
-buffer-move.el          - https://github.com/lukhas/buffer-move/
-diminish.el             - http://www.eskimo.com/~seldon/
-elisp-slime-nav.el      - https://github.com/purcell/elisp-slime-nav/
-key-chord               - http://www.emacswiki.org/emacs/KeyChord/
-*linum.el               - emacs-24.3/lisp/
-neotree.el              - https://github.com/jaypei/emacs-neotree/
-region-bindings-mode.el - https://github.com/fgallina/region-bindings-mode/
-s.el                    - https://github.com/magnars/s.el/
-tabbar.el               - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
-undo-tree.el            - http://www.dr-qubit.org/emacs.php
-ws-trim.el              - ftp://ftp.lysator.liu.se/pub/emacs/
+diminish        - http://www.eskimo.com/~seldon/
+key-chord       - http://www.emacswiki.org/emacs/KeyChord/
+*linum          - emacs-24.3/lisp/
+rw              - ? Ralf Wachinger
+*swbuff         - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
+                  ? http://ourcomments.org/Emacs/DL/EmacsW32-only/src/EmacsW32/lisp/
+tabbar          - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
+undo-tree       - http://www.dr-qubit.org/emacs.php
+ws-trim         - ftp://ftp.lysator.liu.se/pub/emacs/
 
 
 * -> patched packages
 
-linum.el     - numbers the last line of the buffer
-swbuff-y.el  - takes swbuff-clear-delay-ends-switching into consideration
+linum.el    - numbers the last line of the buffer
+swbuff-y.el - takes swbuff-clear-delay-ends-switching into consideration

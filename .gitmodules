@@ -1,0 +1,63 @@
+[submodule "packages/ace-jump"]
+path = packages/ace-jump
+url = https://github.com/winterTTr/ace-jump-mode.git
+
+[submodule "packages/buffer-move"]
+path = packages/buffer-move
+url = https://github.com/lukhas/buffer-move.git
+
+[submodule "packages/company"]
+path = packages/company
+url = https://github.com/company-mode/company-mode.git
+
+[submodule "packages/dash"]
+path = packages/dash
+url = https://github.com/magnars/dash.el.git
+
+[submodule "packages/elisp-slime-nav"]
+path = packages/elisp-slime-nav
+url = https://github.com/purcell/elisp-slime-nav.git
+
+[submodule "packages/expand-region"]
+path = packages/expand-region
+url = https://github.com/magnars/expand-region.el.git
+
+[submodule "packages/flx"]
+path = packages/flx
+url = https://github.com/lewang/flx.git
+
+[submodule "packages/ido-ubiquitous"]
+path = packages/ido-ubiquitous
+url = https://github.com/DarwinAwardWinner/ido-ubiquitous.git
+
+[submodule "packages/ido-vertical"]
+path = packages/ido-vertical
+url = https://github.com/gempesaw/ido-vertical-mode.el.git
+
+[submodule "packages/neotree"]
+path = packages/neotree
+url = https://github.com/jaypei/emacs-neotree.git
+
+[submodule "packages/powerline"]
+path = packages/powerline
+url = https://github.com/milkypostman/powerline.git
+
+[submodule "packages/region-bindings"]
+path = packages/region-bindings
+url = https://github.com/fgallina/region-bindings-mode.git
+
+[submodule "packages/s"]
+path = packages/s
+url = https://github.com/magnars/s.el.git
+
+[submodule "packages/slime"]
+path = packages/slime
+url = https://github.com/slime/slime.git
+
+[submodule "packages/smartparens"]
+path = packages/smartparens
+url = https://github.com/Fuco1/smartparens.git
+
+[submodule "packages/smex"]
+path = packages/smex
+url = https://github.com/nonsequitur/smex.git
