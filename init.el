@@ -24,13 +24,16 @@
 
 ;;(require 'cl-lib)
 
-(defconst +backups-dir+      (expand-file-name "~/.emacs.d/backups/"))
-(defconst +dictionaries-dir+ (expand-file-name "~/.emacs.d/dictionaries/"))
-(defconst +fasl-dir+         (expand-file-name "~/.emacs.d/fasl/"))
-(defconst +server-dir+       (expand-file-name "~/.emacs.d/server/"))
-(defconst +session-dir+      (expand-file-name "~/.emacs.d/session/"))
-(defconst +themes-dir+       (expand-file-name "~/.emacs.d/packages/themes/"))
+(defconst +backups-dir+       (expand-file-name "~/.emacs.d/backups/"))
+(defconst +dictionaries-dir+  (expand-file-name "~/.emacs.d/dictionaries/"))
+(defconst +fasl-dir+          (expand-file-name "~/.emacs.d/fasl/"))
+(defconst +server-dir+        (expand-file-name "~/.emacs.d/server/"))
+(defconst +session-dir+       (expand-file-name "~/.emacs.d/session/"))
 
+(defconst +configuration-dir+ (expand-file-name "~/.emacs.d/configuration/"))
+(defconst +packages-dir+      (expand-file-name "~/.emacs.d/packages/"))
+(defconst +themes-dir+        (expand-file-name "~/.emacs.d/packages/themes/"))
+ 
 (defconst +documentation-delay+ 0.5)
 
 (fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
@@ -39,20 +42,16 @@
 ;; -----------------------------------------------------------------------------
 ;; load path -------------------------------------------------------------------
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/configuration/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/configuration/languages/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/configuration/specific/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/company-mode/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/dash/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/expand-region/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/ido/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/powerline/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/rw/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/slime/contrib/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/smartparens/"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/swbuff/"))
+(add-to-list 'load-path +configuration-dir+)
+(add-to-list 'load-path +packages-dir+)
+
+(let ((dirs (nconc (directory-files +configuration-dir+ t "\\w+")
+                   (directory-files +packages-dir+ t "\\w+"))))
+  (dolist (dir dirs)
+    (when (file-directory-p dir)
+      (add-to-list 'load-path dir))))
+
+(add-to-list 'load-path (concat +packages-dir+ "slime/contrib/"))
 
 
 ;; -----------------------------------------------------------------------------

@@ -14,7 +14,7 @@
 ;; buffer switching
 (require 'swbuff-y)
 (setq swbuff-display-intermediate-buffers t
-      swbuff-clear-delay 0.75
+      swbuff-clear-delay 0.5
       swbuff-clear-delay-ends-switching t
       swbuff-status-window-layout 'scroll
       swbuff-separator ", "
