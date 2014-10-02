@@ -22,9 +22,7 @@
                slime-presentations
                slime-references
                slime-xref-browser))
-(setq slime-use-autodoc-mode nil
-      slime-autodoc-use-multiline-p t
-      slime-autodoc-delay +documentation-delay+)
+(slime-autodoc-unload)
 
 ;; indentation
 (setq-mode-local lisp-mode lisp-indent-function 'common-lisp-indent-function)
