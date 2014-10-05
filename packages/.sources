@@ -12,6 +12,7 @@ powerline       - https://github.com/milkypostman/powerline/
 region-bindings - https://github.com/fgallina/region-bindings-mode/
 s               - https://github.com/magnars/s.el/
 slime           - https://github.com/slime/slime/
+slime-company   - https://github.com/anwyn/slime-company/
 smartparens     - https://github.com/Fuco1/smartparens/
 smex            - https://github.com/nonsequitur/smex/
 

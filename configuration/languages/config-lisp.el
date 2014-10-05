@@ -9,18 +9,23 @@
 (slime-setup '(;; repl
                slime-repl
                slime-banner
+               slime-presentations
+               ;; editing
                slime-editing-commands
+               slime-fontifying-fu
                ;; completion
                slime-c-p-c
+               slime-company
                slime-fuzzy
                ;; documentation
                slime-autodoc
                slime-hyperdoc
                ;; debugging
+               slime-compiler-notes-tree
                slime-fancy-inspector
                slime-fancy-trace
-               slime-presentations
                slime-references
+               slime-trace-dialog
                slime-xref-browser))
 (slime-autodoc-unload)
 
@@ -35,7 +40,7 @@
 ;; -----------------------------------------------------------------------------
 ;; emacs lisp ------------------------------------------------------------------
 
-;; navigation
+;; tags
 (require 'elisp-slime-nav)
 (elisp-slime-nav-mode t)
 

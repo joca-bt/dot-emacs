@@ -54,6 +54,10 @@ url = https://github.com/magnars/s.el.git
 path = packages/slime
 url = https://github.com/slime/slime.git
 
+[submodule "packages/slime-company"]
+path = packages/slime-company
+url = https://github.com/anwyn/slime-company.git
+
 [submodule "packages/smartparens"]
 path = packages/smartparens
 url = https://github.com/Fuco1/smartparens.git

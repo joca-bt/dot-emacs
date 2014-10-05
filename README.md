@@ -9,7 +9,7 @@ Ever-changing, micro optimized.
 All dependencies are included.
 Clone with:
 
-    git clone --recursive git@github.com:joca-bt/dot-emacs.git .emacs.d
+    git clone --recursive https://github.com/joca-bt/dot-emacs.git .emacs.d
 
 
 ## Notes
