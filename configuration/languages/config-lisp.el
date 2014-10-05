@@ -13,6 +13,7 @@
                ;; editing
                slime-editing-commands
                slime-fontifying-fu
+;;               slime-mdot-fu
                ;; completion
                slime-c-p-c
                slime-company
