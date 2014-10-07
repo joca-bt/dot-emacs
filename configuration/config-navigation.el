@@ -8,7 +8,7 @@
       ace-jump-mode-case-fold t
       ace-jump-mode-detect-punc t
       ace-jump-mode-gray-background t
-      ace-jump-mode-mark-ring-max 20
+      ace-jump-mode-mark-ring-max 50
       ace-jump-mode-move-keys (nconc (number-sequence ?a ?z) (number-sequence ?A ?Z)))
 
 ;; buffer switching
@@ -31,10 +31,11 @@
 
 ;; file browser
 (require 'neotree)
-(setq neo-dont-be-alone t
+(setq neo-smart-open t
+      neo-dont-be-alone t
       neo-persist-show t
-      neo-show-header t
-      neo-window-width 25
+      neo-cwd-line-style 'button
+      neo-window-width 30
       neo-create-file-auto-open t
       neo-hidden-files-regexp "^$")
 
