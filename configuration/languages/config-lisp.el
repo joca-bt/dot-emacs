@@ -2,32 +2,18 @@
 ;; common lisp -----------------------------------------------------------------
 
 ;; slime
-(require 'slime)
+(require 'slime-autoloads)
 (setq inferior-lisp-program "sbcl"
+      slime-compile-file-options `(:fasl-directory ,+fasl-dir+)
       slime-load-failed-fasl 'always
-      slime-compile-file-options `(:fasl-directory ,+fasl-dir+))
-(slime-setup '(;; repl
-               slime-repl
+      slime-complete-symbol-function 'slime-fuzzy-complete-symbol
+      slime-startup-animation nil
+      slime-repl-history-size 100
+      slime-repl-history-file (concat +session-dir+ ".slime"))
+(slime-setup '(slime-fancy
                slime-banner
-               slime-presentations
-               ;; editing
-               slime-editing-commands
-               slime-fontifying-fu
-;;               slime-mdot-fu
-               ;; completion
-               slime-c-p-c
-               slime-company
-               slime-fuzzy
-               ;; documentation
-               slime-autodoc
-               slime-hyperdoc
-               ;; debugging
-               slime-compiler-notes-tree
-               slime-fancy-inspector
-               slime-fancy-trace
-               slime-references
-               slime-trace-dialog
-               slime-xref-browser))
+               slime-company))
+;;               slime-mdot-fu))
 (slime-autodoc-unload)
 
 ;; indentation
