@@ -19,7 +19,7 @@
       expand-region-reset-fast-key "r")
 
 ;; tabs
-(setq-default indent-tabs-mode t
+(setq-default indent-tabs-mode nil
               tab-width 4)
 
 ;; cua
