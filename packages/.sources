@@ -16,6 +16,7 @@ slime-company   - https://github.com/anwyn/slime-company/
 smartparens     - https://github.com/Fuco1/smartparens/
 smex            - https://github.com/nonsequitur/smex/
 
+cmd             - http://www.emacswiki.org/emacs/CmdMode/
 diminish        - http://www.eskimo.com/~seldon/
 key-chord       - http://www.emacswiki.org/emacs/KeyChord/
 *linum          - emacs-24.3/lisp/

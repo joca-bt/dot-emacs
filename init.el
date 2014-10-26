@@ -12,6 +12,7 @@
 ;;     programming
 ;;   languages:
 ;;     c, lisp, python
+;;     shell script
 ;;   commands, key bindings
 ;;
 ;; the sidebar is called the 'fringe'
@@ -63,7 +64,8 @@
       server-kill-new-buffers t
       server-auth-dir +server-dir+
       server-name (format "server-%s" (emacs-pid)))
-(unless (server-running-p)
+(unless (and window-system
+             (server-running-p))
   (server-start))
 
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function) ; skip confirmation dialog
@@ -108,6 +110,7 @@
 (require 'config-c) ; c
 (require 'config-lisp) ; lisp
 (require 'config-python) ; python
+(require 'config-shell-script) ; shell script
 
 ;; more configurations
 (require 'config-commands) ; commands

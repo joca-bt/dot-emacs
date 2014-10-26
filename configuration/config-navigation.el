@@ -22,12 +22,12 @@
       swbuff-include-buffer-regexps '("^*scratch*" "^*slime-")
       swbuff-exclude-buffer-regexps '("^[ *]"))
 
+;; buffer swapping
+(require 'buffer-move)
+
 ;; window navigation
 (require 'windmove)
 (setq windmove-wrap-around nil)
-
-;; window swapping
-(require 'buffer-move)
 
 ;; file browser
 (require 'neotree)
