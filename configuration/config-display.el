@@ -1,8 +1,6 @@
 ;; -----------------------------------------------------------------------------
 ;; display ---------------------------------------------------------------------
 
-;;(setq redisplay-dont-pause t) ; better responsiveness
-
 (set-face-attribute 'default nil :font "Consolas" :height 108) ; font
 
 ;; colour theme
@@ -15,24 +13,32 @@
 
 (require 'config-file-tabs) ; file tabs
 
+(require 'config-mode-line) ; mode line
+
+;; highlight current line
+(require 'hl-line)
+(global-hl-line-mode t)
+
+(transient-mark-mode t) ; highlight active region
+
 ;; line numbers
 (require 'linum)
 (global-linum-mode t)
 
-(setq-default cursor-type 'bar) ; cursor
+;; cursor
+(setq-default cursor-type 'bar)
+(setq blink-cursor-blinks 0)
 
 ;; text wrapping
 (setq-default truncate-lines t
               word-wrap t)
 
-;; smooth vertical scrolling
+;; vertical scrolling
 (setq scroll-margin 0
       scroll-step 1
       scroll-conservatively -1
       scroll-preserve-screen-position t
       mouse-wheel-progressive-speed nil)
-
-(require 'config-mode-line) ; mode line
 
 
 ;; -----------------------------------------------------------------------------

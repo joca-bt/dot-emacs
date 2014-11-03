@@ -8,7 +8,7 @@ flx             - https://github.com/lewang/flx/
 ido-ubiquitous  - https://github.com/DarwinAwardWinner/ido-ubiquitous/
 ido-vertical    - https://github.com/gempesaw/ido-vertical-mode.el/
 neotree         - https://github.com/jaypei/emacs-neotree/
-powerline       - https://github.com/milkypostman/powerline/
+powerline       - https://github.com/dbordak/powerline/
 region-bindings - https://github.com/fgallina/region-bindings-mode/
 s               - https://github.com/magnars/s.el/
 slime           - https://github.com/slime/slime/

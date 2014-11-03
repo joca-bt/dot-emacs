@@ -7,13 +7,15 @@
       version-control 'never
       backup-directory-alist `(("." . ,+backups-dir+)))
 
-;; auto-save
+;; automatic saving
 (setq auto-save-default t
-      auto-save-timeout 300 ; 5 minutes
+      auto-save-timeout +auto-save-timeout+
       auto-save-interval 0
       delete-auto-save-files t
       auto-save-list-file-name (concat +backups-dir+ (format ".auto-save-%s" (emacs-pid)))
       auto-save-file-name-transforms `(("." ,+backups-dir+ t)))
+
+(setq create-lockfiles nil) ; file locks
 
 
 ;; -----------------------------------------------------------------------------

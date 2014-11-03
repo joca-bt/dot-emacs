@@ -4,10 +4,11 @@
 ;; name buffers uniquely
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward
-      uniquify-separator "|"
       uniquify-after-kill-buffer-p t)
 
-(setq mouse-buffer-menu-maxlen 20) ; buffer list size
+;; mouse buffer list
+(setq mouse-buffer-menu-maxlen 20
+      mouse-buffer-menu-mode-mult 5)
 
 ;; recent files list
 (require 'recentf)
@@ -20,7 +21,7 @@
       recentf-save-file (concat +session-dir+ ".recent-files"))
 (recentf-mode t)
 
-;; push current buffer to the top of the recent files list
+;; push the current buffer to the top of the recent files list
 (defun recentf-push-current-buffer ()
   (let ((file-name (buffer-file-name (current-buffer))))
     (when file-name

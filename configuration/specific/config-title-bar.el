@@ -6,7 +6,6 @@
 ;; format ----------------------------------------------------------------------
 
 (setq frame-title-format '("%b"
-;;                           (:eval (tb-slime-info))
                            (:eval (tb-file-path))))
 
 
@@ -17,12 +16,6 @@
   (let ((file-name (buffer-file-name)))
     (when file-name
       (format " - %s" (file-name-directory (abbreviate-file-name file-name))))))
-
-
-(defun tb-slime-info ()
-  (when (and (boundp 'slime-mode)
-             slime-mode)
-    (format "@%s" (slime-connection-name))))
 
 
 ;; -----------------------------------------------------------------------------

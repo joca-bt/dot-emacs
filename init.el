@@ -34,10 +34,13 @@
 (defconst +configuration-dir+ (expand-file-name "~/.emacs.d/configuration/"))
 (defconst +packages-dir+      (expand-file-name "~/.emacs.d/packages/"))
 (defconst +themes-dir+        (expand-file-name "~/.emacs.d/packages/themes/"))
- 
+
+(defconst +auto-save-timeout+ 300)
 (defconst +documentation-delay+ 0.5)
 
 (fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
+
+(setq debug-on-error t) ; debug on error
 
 
 ;; -----------------------------------------------------------------------------
@@ -53,6 +56,8 @@
       (add-to-list 'load-path dir))))
 
 (add-to-list 'load-path (concat +packages-dir+ "slime/contrib/"))
+
+(setq load-prefer-newer t) ; always load newer files
 
 
 ;; -----------------------------------------------------------------------------
@@ -75,16 +80,11 @@
 ;; startup ---------------------------------------------------------------------
 
 ;; skip startup screen
-(setq inhibit-startup-screen t)
-(setq inhibit-startup-echo-area-message "joca") ; replace with username
-(setq initial-scratch-message nil)
+(setq inhibit-startup-screen t
+      inhibit-startup-echo-area-message (user-login-name)
+      initial-scratch-message nil)
 
-;; maximize on startup
-;;(set-frame-parameter nil 'fullscreen 'maximized)
-(defun maximize-frame ()
-  (interactive)
-  (w32-send-sys-command #xf030)) ; f030 = 61488
-(add-hook 'window-setup-hook 'maximize-frame t)
+(set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
 
 
 ;; -----------------------------------------------------------------------------

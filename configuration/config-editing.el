@@ -1,15 +1,7 @@
 ;; -----------------------------------------------------------------------------
 ;; editing ---------------------------------------------------------------------
 
-;; highlight current line
-(require 'hl-line)
-(global-hl-line-mode t)
-
-(transient-mark-mode t) ; highlight active region
-
 (setq select-active-regions nil) ; no primary selection
-(setq mouse-drag-copy-region nil) ; disable copy on selection
-;;(delete-selection-mode t) ; replace selection -> using cua-delete-selection instead
 
 ;; expand region
 (require 'expand-region)
@@ -19,7 +11,7 @@
       expand-region-reset-fast-key "r")
 
 ;; tabs
-(setq-default indent-tabs-mode nil
+(setq-default indent-tabs-mode t
               tab-width 4)
 
 ;; cua

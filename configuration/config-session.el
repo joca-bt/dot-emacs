@@ -4,11 +4,13 @@
 ;; save desktop between sessions
 (require 'desktop)
 (setq desktop-save t
+      desktop-auto-save-timeout +auto-save-timeout+
       desktop-load-locked-desktop t
-      desktop-path `(,+session-dir+)
-      desktop-dirname +session-dir+
+      desktop-restore-frames t
       desktop-base-file-name ".desktop"
-      desktop-base-lock-name ".desktop.lock")
+      desktop-base-lock-name ".desktop.lock"
+      desktop-dirname +session-dir+
+      desktop-path `(,+session-dir+))
 (desktop-save-mode t)
 
 ;; save history between sessions

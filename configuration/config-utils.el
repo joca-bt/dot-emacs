@@ -3,8 +3,6 @@
 
 (require 'mode-local) ; mode-local variables
 
-(setq debug-on-error t) ; debug on error
-
 
 ;; -----------------------------------------------------------------------------
 ;; helper macros and functions -------------------------------------------------

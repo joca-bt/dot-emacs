@@ -35,9 +35,9 @@
       neo-dont-be-alone t
       neo-persist-show t
       neo-cwd-line-style 'button
-      neo-window-width 30
       neo-create-file-auto-open t
-      neo-hidden-files-regexp "^$")
+      neo-hidden-files-regexp "^$"
+      neo-window-width 30)
 
 
 ;; -----------------------------------------------------------------------------

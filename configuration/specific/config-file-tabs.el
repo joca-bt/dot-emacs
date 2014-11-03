@@ -90,8 +90,10 @@
   "Returns the display representation of a tab.
    That is, a propertized string used as an `header-line-format' template element.
    Call `tabbar-tab-label-function' to obtain a label for the tab."
-  (let* ((selected-p (tabbar-selected-p tab (tabbar-current-tabset)))
-         (modified-p (buffer-modified-p (tabbar-tab-value tab)))
+  (let* ((buffer (tabbar-tab-value tab))
+         (selected-p (tabbar-selected-p tab (tabbar-current-tabset)))
+         (modified-p (and (not (buffer-local-value 'buffer-read-only buffer))
+                          (buffer-modified-p buffer)))
          (label (if tabbar-tab-label-function
                     (funcall tabbar-tab-label-function tab)
                   tab))
@@ -160,7 +162,7 @@
    Return either the file name of the file the buffer is visiting or the buffer's name."
   (with-selected-window window
     (let* ((tab (get-text-property position 'tabbar-tab object))
-           (buffer (get-buffer (buffer-name (tabbar-tab-value tab))))
+           (buffer (tabbar-tab-value tab))
            (file-name (buffer-file-name buffer)))
       (if file-name
           (abbreviate-file-name file-name)

@@ -1,7 +1,7 @@
 ;; -----------------------------------------------------------------------------
 ;; mode line -------------------------------------------------------------------
 ;;
-;; based on emacs-24.3/lisp/bindings.el
+;; based on emacs-24.4/lisp/bindings.el
 
 (require 'powerline)
 (require 'diminish)

@@ -17,4 +17,6 @@ Clone with:
 Tailored for Lisp development.
 
 Explore before usage.
-Rebinds common Emacs key kindings.
+Rebinds common Emacs key bindings.
+
+For Emacs 24.4+.

@@ -40,7 +40,7 @@ url = https://github.com/jaypei/emacs-neotree.git
 
 [submodule "packages/powerline"]
 path = packages/powerline
-url = https://github.com/milkypostman/powerline.git
+url = https://github.com/dbordak/powerline.git
 
 [submodule "packages/region-bindings"]
 path = packages/region-bindings
