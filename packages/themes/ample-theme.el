@@ -1,18 +1,21 @@
 ;;; ample-theme.el --- Calm Dark Theme for Emacs
 ;;
 ;; Filename: ample-theme.el
-;; Description: Calm Dark Theme for Emacs
+;; Description: Dark version of the ample themes.
 ;; Author: Jordon Biondo <jordonbiondo@gmail.com>
 ;; Created: Wed Jul 24 01:04:58 2013 (-0400)
-;; Version: 0.2.7
-;; Last-Updated: Mon Feb 24 14:33:15 2014 (-0500)
-;;           By: jordon.biondo
-;;     Update #: 27
+;; Version: 0.3.0
+;; Last-Updated: Mon Nov  3 11:16:26 2014 (-0500)
+;;           By: Jordon Biondo
+;;     Update #: 29
 ;; URL: https://github.com/jordonbiondo/ample-theme
 ;; Keywords: theme, dark
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
+;;
+;;  ample-theme is part of the ample themes, a collection of 3 themes
+;;  sharing a similar pallet with a light, dark, and flat version.
 ;;
 ;;  Ample-theme is a calm dark theme with a focus on being easy on the eyes
 ;;  during night and day.
@@ -48,17 +51,17 @@
       (ample/blue-bg "#102843")
       (ample/light-blue "#528fd1")
       (ample/lighter-blue "#68a5e9")
-      (ample/orange "#FF8512")
+      (ample/orange "#dF9522")
       (ample/tan "#bdbc61")
       (ample/dark-tan "#7d7c61")
       (ample/yellow "#baba36")
       (ample/bright-yellow "#fffe0a")
-      (ample/purple "#9b55c3")
+      (ample/purple "#ab75c3")
       (ample/gray "#757575")
       (ample/dark-gray "#656565")
       (ample/darker-gray "#454545")
       (ample/darkest-gray "#252525")
-      (ample/red "#cd5542")
+      (ample/red "#cd7542")
       (ample/dark-red "#9d2512")
 
       (ample/cursor "#f57e00")
@@ -337,6 +340,8 @@
    `(company-preview-common		((t (:inherit font-lock-comment-face))))
    ;;`(company-preview-search		((t (:foreground "wheat" :background "blue1"))))
    ;;`(company-template-field		((t (:foreground "black" :background "orange"))))
+   `(company-scrollbar-bg               ((t (:foreground nil :background ,ample/darkest-gray))))
+   `(company-scrollbar-fg               ((t (:foreground nil :background ,ample/dark-gray))))
    `(company-tooltip			((t (:foreground ,ample/bg :background ,ample/fg))))
    `(company-tooltip-common		((t (:foreground ,ample/blue :background ,ample/fg))))
    `(company-tooltip-common-selection	((t (:foreground ,ample/bg :background ,ample/blue))))
@@ -384,6 +389,23 @@
    `(ediff-even-diff-B			((t (:foreground nil :background "#191925"))))
    `(ediff-even-diff-C			((t (:foreground nil :background "#191925"))))
    ;;`(ediff-even-diff-Ancestor		((t ())))
+
+   `(diff-added             ((t (:foreground nil :background "#284828"))))
+   `(diff-changed           ((t (:foreground nil :background "#484828"))))
+   `(diff-removed           ((t (:foreground nil :background "#482828"))))
+   `(diff-context           ((t (:foreground ,ample/gray :background nil))))
+   `(diff-file-header       ((t (:foreground ,ample/bg :background "grey60" :bold t))))
+   `(diff-function          ((t (:foreground ,ample/bg :background "grey50"))))
+   `(diff-header            ((t (:foreground ,ample/bg :background "grey50"))))
+   `(diff-hunk-header       ((t (:foreground ,ample/bg :background "grey50"))))
+   `(diff-index             ((t (:foreground ,ample/bg :background "grey50"))))
+   `(diff-indicator-added   ((t (:inherit diff-added))))
+   `(diff-indicator-changed ((t (:inherit diff-changed))))
+   `(diff-indicator-removed ((t (:inherit diff-removed))))
+   `(diff-nonexistent       ((t (:foreground nil :background "grey70"))))
+   `(diff-refine-added      ((t (:foreground nil :background "#649694"))))
+   `(diff-refine-changed    ((t (:foreground nil :background "#8f8f40"))))
+   `(diff-refine-removed    ((t (:foreground nil :background "#694949"))))
 
    `(ediff-fine-diff-A			((t (:foreground ,ample/fg :background "#694949"))))
    `(ediff-fine-diff-B			((t (:foreground ,ample/fg :background "#496949"))))

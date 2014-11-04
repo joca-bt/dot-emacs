@@ -1,18 +1,21 @@
 ;;; ample-light-theme.el --- Calm Light Theme for Emacs
 ;;
 ;; Filename: ample-light-theme.el
-;; Description: Calm light Theme for Emacs
+;; Description: Light version of the ample themes.
 ;; Author: Jordon Biondo <jordonbiondo@gmail.com>
 ;; Created: Wed Jul 24 01:04:58 2013 (-0400)
-;; Version: 0.2.7
-;; Last-Updated: Mon Feb 24 14:33:33 2014 (-0500)
-;;           By: jordon.biondo
-;;     Update #: 31
+;; Version: 0.3.0
+;; Last-Updated: Mon Nov  3 11:16:30 2014 (-0500)
+;;           By: Jordon Biondo
+;;     Update #: 33
 ;; URL: https://github.com/jordonbiondo/ample-theme
 ;; Keywords: theme, light, ample
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;;; Commentary:
+;;
+;;  ample-light-theme is part of the ample themes, a collection of 3 themes
+;;  sharing a similar pallet with a light, dark, and flat version.
 ;;
 ;;  Ample-light-theme is a calm light theme with a focus on being easy on the eyes
 ;;  during night and day.
@@ -42,17 +45,17 @@
 (deftheme ample-light "A smooth light theme to pair with ample-dark.")
 
 ;; Not a bad idea to define a palette...
-(let* ((ample/green "#5A9F40")
+(let* ((ample/green "#4A8F30")
        (ample/dark-green "#057F40")
        (ample/light-green-bg "#BBC8A1")
-       (ample/blue "#5180B3")
+       (ample/blue "#4170B3")
        (ample/light-blue "#528FD1")
        (ample/light-blue-bg "#BBB9B1")
        (ample/lighter-blue "#68A5E9")
        (ample/orange "#FF8512")
-       (ample/tan "#8D8C31")
+       (ample/tan "#5D5C01")
        (ample/dark-tan "#7D7C21")
-       (ample/yellow "#989806")
+       (ample/yellow "#787800")
        (ample/bright-yellow "#BFBE6A")
        (ample/purple "#9B55C3")
        (ample/gray "#959595")
@@ -65,22 +68,22 @@
 
        (ample/cursor "#F57E00")
        (ample/fringe "#CBC9B1")
-       
+
        (ample/region "#BBB9A1")
        (ample/region-dark "#ABA991")
-       (ample/region-light "#E2E0C1")
+       (ample/region-light "#d2d0b1")
        
-       (ample/rb0 "#81B0E3")
-       (ample/rb1 "#A5A5A5")
-       (ample/rb2 "#6190C3")
-       (ample/rb3 "#959595")
-       (ample/rb4 "#4170A3")
-       (ample/rb5 "#757575")
-       
-       (ample/bg "#DBD9C1")
+       (ample/rb0 "#215083")
+       (ample/rb1 "#555555")
+       (ample/rb2 "#515003")
+       (ample/rb3 "#555555")
+       (ample/rb4 "#215083")
+       (ample/rb5 "#515003")
+
+       (ample/bg "#cBc9b1")
        (ample/fg "gray43"))
-  
-  
+
+
 
   ;; Set faces
   (custom-theme-set-faces
@@ -243,7 +246,7 @@
    `(web-mode-variable-name-face                ((t (:inherit font-lock-variable-name-face))))
    `(web-mode-warning-face                      ((t (:inherit font-lock-warning-face))))
    `(web-mode-whitespace-face                   ((t (:foreground nil :background "DarkOrchid4"))))
-   
+
    ;; helm
    `(helm-M-x-key			((t (:foreground ,ample/orange :underline nil))))
    ;;`(helm-action			((t ())))
@@ -339,11 +342,14 @@
    `(company-preview-common             ((t (:inherit font-lock-comment-face))))
    ;;`(company-preview-search           ((t (:foreground "wheat" :background "blue1"))))
    ;;`(company-template-field           ((t (:foreground "black" :background "orange"))))
+   `(company-scrollbar-bg               ((t (:foreground nil :background ,ample/fg))))
+   `(company-scrollbar-fg               ((t (:foreground nil :background ,ample/dark-gray))))
    `(company-tooltip                    ((t (:foreground ,ample/bg :background ,ample/region-dark))))
    `(company-tooltip-common             ((t (:foreground ,ample/light-blue :background ,ample/region-dark))))
    `(company-tooltip-common-selection   ((t (:foreground ,ample/bg :background ,ample/region))))
    `(company-tooltip-mouse              ((t (:foreground nil :background ,ample/light-red-bg))))
-   `(company-tooltip-selection          ((t (:foreground ,ample/fg :background ,ample/region))))
+   `(company-tooltip-selection          ((t (:foreground ,ample/fg :background ,ample/region-dark))))
+   `(company-tooltip-annotation         ((t (:foreground ,ample/red :background ,ample/region-dark))))
 
 
    ;; w3m
@@ -396,6 +402,23 @@
    `(ediff-odd-diff-B			((t (:foreground nil :background ,ample/region-dark))))
    `(ediff-odd-diff-C			((t (:foreground nil :background ,ample/region-dark))))
    ;;`(ediff-odd-diff-Ancestor		((t ())))
+
+   `(diff-added             ((t (:foreground nil :background ,ample/light-green-bg))))
+   `(diff-changed           ((t (:foreground nil :background ,ample/light-blue-bg))))
+   `(diff-removed           ((t (:foreground nil :background ,ample/light-red-bg))))
+   `(diff-context           ((t (:foreground ,ample/fg :background nil))))
+   `(diff-file-header       ((t (:foreground ,ample/bg :background ,ample/region-dark :bold t))))
+   `(diff-function          ((t (:foreground ,ample/bg :background ,ample/region-dark))))
+   `(diff-header            ((t (:foreground ,ample/bg :background ,ample/region-dark))))
+   `(diff-hunk-header       ((t (:foreground ,ample/bg :background ,ample/region-dark))))
+   `(diff-index             ((t (:foreground ,ample/bg :background ,ample/region-dark))))
+   `(diff-indicator-added   ((t (:inherit diff-added))))
+   `(diff-indicator-changed ((t (:inherit diff-changed))))
+   `(diff-indicator-removed ((t (:inherit diff-removed))))
+   `(diff-nonexistent       ((t (:foreground ,ample/fg :background "grey70"))))
+   `(diff-refine-added      ((t (:foreground ,ample/fg :background ,ample/green))))
+   `(diff-refine-changed    ((t (:foreground ,ample/fg :background ,ample/blue))))
+   `(diff-refine-removed    ((t (:foreground ,ample/fg :background ,ample/red))))
 
    ;; man pages
    `(Man-overstrike ((t (:foreground ,ample/blue))))
@@ -468,7 +491,7 @@
    ;;`(org-table ((t (:foreground nil :background nil))))
    ;;`(org-tag ((t (:foreground nil :background nil))))
    ;;`(org-target ((t (:foreground nil :background nil))))
-   ;;`(org-time-grid ((t (:foreground nil :background nil))))   
+   ;;`(org-time-grid ((t (:foreground nil :background nil))))
    ;;`(org-upcoming-deadline ((t (:foreground nil :background nil))))
    ;;`(org-verbatim ((t (:foreground nil :background nil))))
    ;;`(org-verse ((t (:foreground nil :background nil))))
@@ -584,13 +607,13 @@
    ;;`(magit-cherry-unmatched			((t (:foreground "magenta" :background nil))))
    `(magit-diff-add				((t (:foreground nil :background ,ample/light-green-bg))))
    `(magit-diff-del				((t (:foreground nil :background ,ample/light-red-bg))))
-   `(magit-diff-file-header			((t (:foreground ,ample/bg :background ,ample/region :bold t))))
-   `(magit-diff-hunk-header			((t (:foreground ,ample/bg :background ,ample/light-blue-bg))))
+   `(magit-diff-file-header			((t (:foreground ,ample/fg :background ,ample/region :bold t))))
+   `(magit-diff-hunk-header			((t (:foreground ,ample/fg :background ,ample/light-blue-bg))))
    `(magit-diff-merge-current			((t (:foreground ,ample/orange :background nil))))
    `(magit-diff-merge-diff3-separator		((t (:foreground ,ample/orange :background nil))))
    `(magit-diff-merge-proposed			((t (:foreground ,ample/orange :background nil))))
    `(magit-diff-merge-separator			((t (:foreground ,ample/orange :background nil))))
-   `(magit-diff-none				((t (:foreground ,ample/fg :background ,ample/region-dark))))
+   `(magit-diff-none				((t (:foreground ,ample/fg :background nil))))
    `(magit-header				((t (:foreground ,ample/blue :background nil))))
    `(magit-item-highlight			((t (:foreground nil :background ,ample/region-dark))))
    ;;`(magit-item-mark				((t (:foreground nil :background "darkolivegreen"))))
@@ -624,7 +647,7 @@
    `(magit-section-title			((t (:foreground ,ample/blue :background nil))))
    `(magit-tag					((t (:foreground ,ample/blue :background nil))))
    ;;`(magit-valid-signature			((t (:foreground "PaleTurquoise" :background nil :bold t))))
-   `(magit-whitespace-warning-face		((t (:foreground ,ample/bg :background "white" :bold t))))
+   `(magit-whitespace-warning-face		((t (:foreground ,ample/bg :background ,ample/purple :bold t))))
 
    `(git-gutter:deleted   ((t (:foreground ,ample/red :background nil :bold t))))
    `(git-gutter:modified  ((t (:foreground ,ample/purple :background nil :bold t))))

@@ -1,16 +1,13 @@
-ample               - https://github.com/jordonbiondo/ample-theme/
-base16              - https://github.com/neil477/base16-emacs/
-cyberpunk           - https://github.com/n3mo/cyberpunk-theme.el/
-dark blue           - https://github.com/emacs-jp/replace-colorthemes/
-gruvbox             - https://github.com/Greduan/emacs-theme-gruvbox/
-leuven              - https://github.com/fniessen/emacs-leuven-theme/
-molokai             - https://github.com/alloy-d/color-theme-molokai/
-monokai             - https://github.com/oneKelvinSmith/monokai-emacs/
-sanityinc solarized - https://github.com/purcell/color-theme-sanityinc-solarized/
-sanityinc tomorrow  - https://github.com/purcell/color-theme-sanityinc-tomorrow/
-solarized           - https://github.com/sellout/emacs-color-theme-solarized/
-spacegrey           - https://github.com/bruce/emacs-spacegray-theme/
-zenburn             - https://github.com/bbatsov/zenburn-emacs/
+ample - https://github.com/jordonbiondo/ample-theme/
 
 
 http://emacsthemes.caisah.info/
+
+http://ethanschoonover.com/solarized/
+http://kippura.org/zenburnpage/
+
+https://github.com/chriskempson/tomorrow-theme/
+https://github.com/chriskempson/base16/
+
+https://github.com/emacs-jp/replace-colorthemes/
+https://github.com/owainlewis/emacs-color-themes/
