@@ -28,7 +28,6 @@
 (defconst +backups-dir+       (expand-file-name "~/.emacs.d/backups/"))
 (defconst +dictionaries-dir+  (expand-file-name "~/.emacs.d/dictionaries/"))
 (defconst +fasl-dir+          (expand-file-name "~/.emacs.d/fasl/"))
-(defconst +server-dir+        (expand-file-name "~/.emacs.d/server/"))
 (defconst +session-dir+       (expand-file-name "~/.emacs.d/session/"))
 
 (defconst +configuration-dir+ (expand-file-name "~/.emacs.d/configuration/"))
@@ -67,8 +66,8 @@
 (require 'server)
 (setq server-raise-frame t
       server-kill-new-buffers t
-      server-auth-dir +server-dir+
-      server-name (format "server-%s" (emacs-pid)))
+      server-name "server"
+      server-auth-dir +session-dir+)
 (unless (and window-system
              (server-running-p))
   (server-start))

@@ -3,8 +3,7 @@
 
 ;; major mode
 (require 'cmd-mode)
-(setq auto-mode-alist (append '(("\\.\\(bat\\|cmd\\)\\'" . cmd-mode))
-                              auto-mode-alist))
+(setq auto-mode-alist (append auto-mode-alist '(("\\.\\(bat\\|cmd\\)\\'" . cmd-mode))))
 
 
 ;; -----------------------------------------------------------------------------

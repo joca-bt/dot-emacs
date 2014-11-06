@@ -10,6 +10,10 @@
       expand-region-contract-fast-key "c"
       expand-region-reset-fast-key "r")
 
+;; multiple cursors
+(require 'multiple-cursors)
+(setq mc/list-file (concat +session-dir+ ".mc"))
+
 ;; tabs
 (setq-default indent-tabs-mode t
               tab-width 4)
