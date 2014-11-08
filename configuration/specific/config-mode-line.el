@@ -73,14 +73,14 @@
                               (if (integerp index)
                                   index
                                 3)))))
-      (format "Encoding: %s\nTerminator: %s\nmouse-1: Describe encoding and terminator"
+      (format "Encoding: %s\nTerminator: %s\nmouse-2: Describe encoding and terminator"
               encoding
               terminator))))
 
 
 (defvar ml-encoding-and-terminator-map
   (let ((map (make-sparse-keymap)))
-    (define-key map [mode-line mouse-1] 'ml-describe-encoding-and-terminator)
+    (define-key map [mode-line mouse-2] 'ml-describe-encoding-and-terminator)
     (purecopy map)))
 
 (defun ml-describe-encoding-and-terminator (event)
@@ -169,11 +169,11 @@
 
 (defun ml-major-mode-help (window object point)
   (with-selected-window window
-    "Major mode\nmouse-1: Display major mode menu\nmouse-2: Show help for major mode\nmouse-3: Toggle minor modes"))
+    "Major mode\nmouse-1: Show major mode menu\nmouse-2: Describe major mode\nmouse-3: Toggle minor modes"))
 
 (defun ml-minor-mode-help (window object point)
   (with-selected-window window
-    "Minor mode\nmouse-1: Display minor mode menu\nmouse-2: Show help for minor mode\nmouse-3: Toggle minor modes"))
+    "Minor mode\nmouse-1: Show minor mode menu\nmouse-2: Describe minor mode\nmouse-3: Toggle minor modes"))
 
 
 (defvar ml-major-mode-map

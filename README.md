@@ -1,22 +1,32 @@
 # Emacs, batteries included
 
-My personal Emacs configuration.
-Ever-changing, micro optimized.
+This is my Emacs configuration.
+I'm a recent Emacs user and so this is still very much a work in progress.
+At the moment, it's tailored for Lisp development.
+
+Explore before using, as some common Emacs key bindings have been replaced.
 
 
-## Setup
+## Requirements
+
+- Emacs 24.4 or greater.
+- `hunspell`, if you want to use spell checking.
+
+
+## Installing
+
+To install, clone this repository to `~/.emacs.d/`, using:
+
+    git clone --recursive https://github.com/joca-bt/dot-emacs.git ~/.emacs.d/
 
 All dependencies are included.
-Clone with:
-
-    git clone --recursive https://github.com/joca-bt/dot-emacs.git .emacs.d
 
 
-## Notes
+## Organization
 
-Tailored for Lisp development.
-
-Explore before usage.
-Rebinds common Emacs key bindings.
-
-For Emacs 24.4+.
+- `init.el` - bootstrapper.
+- `configuration/` - general configuration files, split by category.
+- `configuration/languages/` - configuration files for programming languages and major modes.
+- `configuration/specific/` - configuration files for very specific topics.
+- `packages/` - packages go here.
+- `packages/themes/` - themes go here.
