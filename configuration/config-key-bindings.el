@@ -1,4 +1,4 @@
-﻿;; ---------------------------------------- -*- coding: utf-8-with-signature -*-
+﻿;; -----------------------------------------------------------------------------
 ;; key bindings ----------------------------------------------------------------
 ;;
 ;; organization:
@@ -118,9 +118,32 @@
 (define-key m-j-map (kbd "l") 'ace-jump-line-mode) ; jump to line
 (define-key m-j-map (kbd "j") 'ace-jump-word-mode) ; jump to word
 
+(global-set-key (kbd "<right>") 'forward-char) ; move → char
+(global-set-key (kbd "<left>") 'backward-char) ; move ← char
+(global-set-key (kbd "<down>") 'next-line) ; move ↓ line
+(global-set-key (kbd "<up>") 'previous-line) ; move ↑ line
+
+(global-set-key (kbd "C-<right>") 'forward-word) ; move → word
+(global-set-key (kbd "C-<left>") 'backward-word) ; move ← word
+
+(define-key sp-keymap (kbd "M-d") 'sp-forward-sexp) ; move → sexp
+(define-key sp-keymap (kbd "M-a") 'sp-backward-sexp) ; move ← sexp
+
+(define-key sp-keymap (kbd "M-s") 'sp-down-sexp) ; move ↓ → sexp
+(define-key sp-keymap (kbd "M-w") 'sp-backward-up-sexp) ; move ↑ ← sexp
+(define-key sp-keymap (kbd "M-S") 'sp-backward-down-sexp) ; move ↓ ← sexp
+(define-key sp-keymap (kbd "M-W") 'sp-up-sexp) ; move ↑ → sexp
+
+(define-key sp-keymap (kbd "M-q") 'sp-beginning-of-sexp) ; move to start of sexp
+(define-key sp-keymap (kbd "M-e") 'sp-end-of-sexp) ; move to end of sexp
+(global-set-key (kbd "M-Q") 'beginning-of-defun) ; move to start of function
+(global-set-key (kbd "M-E") 'end-of-defun) ; move to end of function
+
 
 ;; -----------------------------------------------------------------------------
 ;; selecting -------------------------------------------------------------------
+
+(global-set-key (kbd "M-c") 'mc/mark-all-dwim) ; multiple cursors
 
 (global-set-key (kbd "C-e") 'er/expand-region) ; expand region
 (global-set-key (kbd "C-S-e") 'er/contract-region) ; contract region
@@ -146,11 +169,30 @@
 (global-set-key (kbd "M-l") 'downcase-word) ; lower-case word
 (global-set-key (kbd "M-u") 'upcase-word) ; upper-case word
 
+(define-key sp-keymap (kbd "M-(") (fnify (sp-wrap-with-pair "("))) ; wrap sexp with ()
+(define-key sp-keymap (kbd "M-[") (fnify (sp-wrap-with-pair "["))) ; wrap sexp with []
+(define-key sp-keymap (kbd "M-{") (fnify (sp-wrap-with-pair "{"))) ; wrap sexp with {}
+(define-key sp-keymap (kbd "M-\"") (fnify (sp-wrap-with-pair "\""))) ; wrap sexp with ""
+(define-key sp-keymap (kbd "M-'") (fnify (sp-wrap-with-pair "'"))) ; wrap sexp with ''
+(define-key sp-keymap (kbd "H-u") 'sp-unwrap-sexp) ; unwrap sexp
+
+(define-key sp-keymap (kbd "H-k") 'sp-kill-sexp) ; forward kill sexp
+(define-key sp-keymap (kbd "H-K") 'sp-backward-kill-sexp) ; backward kill sexp
+
+(define-key sp-keymap (kbd "H-s") 'sp-split-sexp) ; split sexp
+(define-key sp-keymap (kbd "H-j") 'sp-join-sexp) ; join sexp
+
+(define-key sp-keymap (kbd "H-w") 'sp-raise-sexp) ; raise sexp
+(define-key sp-keymap (kbd "H-W") 'sp-splice-sexp-killing-backward) ; backward splice sexp
+
+(define-key sp-keymap (kbd "H-d") 'sp-forward-slurp-sexp) ; forward slurp sexp
+(define-key sp-keymap (kbd "H-a") 'sp-forward-barf-sexp) ; forward barf sexp
+
 
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
-(global-set-key (kbd "C-<SPC>") 'company-complete) ; completion
+(global-set-key (kbd "C-<SPC>") 'company-complete) ; show completion menu
 
 (define-key lisp-mode-map (kbd "M-.") 'slime-edit-defition) ; go to definition
 (define-key lisp-mode-map (kbd "M-,") 'slime-pop-find-definition-stack) ; go back
