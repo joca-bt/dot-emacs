@@ -179,8 +179,8 @@
 (defvar ml-major-mode-map
   (let ((map (make-sparse-keymap)))
     (bindings--define-key map [mode-line mouse-1] `(menu-item "Menu Bar" ignore
-                                                              :filter ,'(lambda (_)
-                                                                          (mouse-menu-major-mode-map))))
+                                                              :filter ,#'(lambda (_)
+                                                                           (mouse-menu-major-mode-map))))
     (define-key map [mode-line mouse-2] 'describe-mode)
     (define-key map [mode-line mouse-3] mode-line-mode-menu)
     (purecopy map)))

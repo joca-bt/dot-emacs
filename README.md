@@ -9,7 +9,7 @@ Explore before using, as some common Emacs key bindings have been replaced.
 
 ## Requirements
 
-- Emacs 24.4 or greater.
+- Emacs 24.4 or greater,
 - `hunspell`, if you want to use spell checking.
 
 
@@ -24,9 +24,9 @@ All dependencies are included.
 
 ## Organization
 
-- `init.el` - bootstrapper.
-- `configuration/` - general configuration files, split by category.
-- `configuration/languages/` - configuration files for programming languages and major modes.
-- `configuration/specific/` - configuration files for very specific topics.
-- `packages/` - packages go here.
+- `init.el` - bootstrapper,
+- `configuration/` - general configuration files, split by category,
+- `configuration/modes/` - programming languages and major modes,
+- `configuration/ui/` - ui customizations,
+- `packages/` - packages go here,
 - `packages/themes/` - themes go here.

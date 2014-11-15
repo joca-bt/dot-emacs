@@ -28,27 +28,6 @@
       (recentf-add-file file-name))))
 (add-to-list 'window-configuration-change-hook 'recentf-push-current-buffer)
 
-;; ido
-(require 'ido)
-(setq ido-everywhere t
-      ido-enable-flex-matching t
-      ido-enable-regexp nil
-      ido-case-fold t
-      ido-enable-prefix nil
-      ido-enable-dot-prefix nil
-      ido-use-filename-at-point nil
-      ido-use-url-at-point nil
-      ido-max-prospects 10
-      ido-buffer-disable-smart-matches t
-      ido-auto-merge-work-directories-length -1
-      ido-show-dot-for-dired t
-      ido-confirm-unique-completion t
-      ido-enable-last-directory-history t
-      ido-max-work-directory-list 20
-      ido-max-work-file-list 50
-      ido-save-directory-list-file (concat +session-dir+ ".ido"))
-(ido-mode 'both)
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

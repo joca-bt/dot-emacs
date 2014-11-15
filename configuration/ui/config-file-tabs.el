@@ -151,9 +151,9 @@
   "Returns the list of buffers to show in the tab bar.
    Exclude all buffers whose name starts with ' ' or '*'.
    Always include the current buffer."
-  (remove-if '(lambda (buffer)
-                (unless (eq buffer (current-buffer))
-                  (find (aref (buffer-name buffer) 0) " *")))
+  (remove-if #'(lambda (buffer)
+                 (unless (eq buffer (current-buffer))
+                   (find (aref (buffer-name buffer) 0) " *")))
              (buffer-list)))
 
 

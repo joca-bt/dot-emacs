@@ -1,7 +1,8 @@
 ;; -----------------------------------------------------------------------------
 ;; editing ---------------------------------------------------------------------
 
-(setq select-active-regions nil) ; no primary selection
+;; primary selection
+(setq select-active-regions nil)
 
 ;; expand region
 (require 'expand-region)
@@ -39,7 +40,8 @@
 (setq-default ws-trim-level 0)
 (global-ws-trim-mode t)
 
-(setq require-final-newline t) ; end files with a newline
+;; end files with a newline
+(setq require-final-newline t)
 
 
 ;; -----------------------------------------------------------------------------

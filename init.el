@@ -5,15 +5,16 @@
 ;;   load path, server, startup
 ;;   meta and utils
 ;;   configurations:
+;;     ido
 ;;     session, backups
 ;;     files and buffers
 ;;     display, navigation
 ;;     editing, spelling
 ;;     programming
-;;   languages:
+;;   programming languages and major modes:
 ;;     c, lisp, python
 ;;     shell script
-;;   commands, key bindings
+;;   key bindings
 ;;
 ;; the sidebar is called the 'fringe'
 ;; the status bar is called the 'mode line'
@@ -47,14 +48,13 @@
 
 (add-to-list 'load-path +configuration-dir+)
 (add-to-list 'load-path +packages-dir+)
+(add-to-list 'load-path (concat +packages-dir+ "slime/contrib/"))
 
 (let ((dirs (nconc (directory-files +configuration-dir+ t "\\w+")
                    (directory-files +packages-dir+ t "\\w+"))))
   (dolist (dir dirs)
     (when (file-directory-p dir)
       (add-to-list 'load-path dir))))
-
-(add-to-list 'load-path (concat +packages-dir+ "slime/contrib/"))
 
 (setq load-prefer-newer t) ; always load newer files
 
@@ -96,6 +96,7 @@
 (require 'config-utils)
 
 ;; configurations
+(require 'config-ido) ; ido
 (require 'config-session) ; session
 (require 'config-backups) ; backups
 (require 'config-files) ; files and buffers
@@ -105,12 +106,11 @@
 (require 'config-spelling) ; spelling
 (require 'config-programming) ; programming
 
-;; languages
+;; programming languages and major modes
 (require 'config-c) ; c
 (require 'config-lisp) ; lisp
 (require 'config-python) ; python
 (require 'config-shell-script) ; shell script
 
-;; more configurations
-(require 'config-commands) ; commands
-(require 'config-key-bindings) ; key bindings
+;; key bindings
+(require 'config-key-bindings)

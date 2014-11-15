@@ -20,15 +20,15 @@
                                        ("^pt" . ,(concat +dictionaries-dir+ ".dict-pt"))
                                        ("" . ,(concat +dictionaries-dir+ ".dict"))))
 
-;; automatic spell checking
+;; spell checking
 (require 'flyspell)
 (setq flyspell-sort-corrections nil
       flyspell-delay 2)
 
 (let ((modes '()))
   (dolist (mode modes)
-    (add-hook mode '(lambda ()
-                      (flyspell-prog-mode)))))
+    (add-hook mode #'(lambda ()
+                       (flyspell-prog-mode)))))
 
 
 ;; -----------------------------------------------------------------------------

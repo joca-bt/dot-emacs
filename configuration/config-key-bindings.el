@@ -104,19 +104,16 @@
 ;; -----------------------------------------------------------------------------
 ;; navigation ------------------------------------------------------------------
 
-(global-set-key (kbd "C-<down>") 'scroll-up-line) ; scroll 1 line down
-(global-set-key (kbd "C-<up>") 'scroll-down-line) ; scroll 1 line up
-
 (global-set-key (kbd "M-g c") 'goto-char) ; go to char
 (global-set-key (kbd "M-g l") 'goto-line) ; go to line
 (global-set-key (kbd "M-g g") 'goto-line) ; go to line
 
-(define-prefix-command 'm-j-map)
-(global-set-key (kbd "M-j") 'm-j-map)
-(define-key m-j-map (kbd "c") 'ace-jump-char-mode) ; jump to char
-(define-key m-j-map (kbd "w") 'ace-jump-word-mode) ; jump to word
-(define-key m-j-map (kbd "l") 'ace-jump-line-mode) ; jump to line
-(define-key m-j-map (kbd "j") 'ace-jump-word-mode) ; jump to word
+(define-prefix-command 'meta-j-map)
+(global-set-key (kbd "M-j") 'meta-j-map)
+(global-set-key (kbd "M-j c") 'ace-jump-char-mode) ; jump to char
+(global-set-key (kbd "M-j w") 'ace-jump-word-mode) ; jump to word
+(global-set-key (kbd "M-j l") 'ace-jump-line-mode) ; jump to line
+(global-set-key (kbd "M-j j") 'ace-jump-word-mode) ; jump to word
 
 (global-set-key (kbd "<right>") 'forward-char) ; move → char
 (global-set-key (kbd "<left>") 'backward-char) ; move ← char
@@ -125,10 +122,11 @@
 
 (global-set-key (kbd "C-<right>") 'forward-word) ; move → word
 (global-set-key (kbd "C-<left>") 'backward-word) ; move ← word
+(global-set-key (kbd "C-<down>") 'scroll-up-line) ; scroll ↓ line
+(global-set-key (kbd "C-<up>") 'scroll-down-line) ; scroll ↑ line
 
 (define-key sp-keymap (kbd "M-d") 'sp-forward-sexp) ; move → sexp
 (define-key sp-keymap (kbd "M-a") 'sp-backward-sexp) ; move ← sexp
-
 (define-key sp-keymap (kbd "M-s") 'sp-down-sexp) ; move ↓ → sexp
 (define-key sp-keymap (kbd "M-w") 'sp-backward-up-sexp) ; move ↑ ← sexp
 (define-key sp-keymap (kbd "M-S") 'sp-backward-down-sexp) ; move ↓ ← sexp
@@ -164,10 +162,14 @@
 (global-set-key (kbd "C-y") 'undo-tree-redo) ; redo
 (global-set-key (kbd "C-x u") 'undo-tree-visualize) ; view undo/redo history
 
-(global-set-key (kbd "C-k") 'kill-line) ; forward kill line
+(global-set-key (kbd "C-q") 'quoted-insert) ; insert character
 
 (global-set-key (kbd "M-l") 'downcase-word) ; lower-case word
 (global-set-key (kbd "M-u") 'upcase-word) ; upper-case word
+
+(global-set-key (kbd "C-k") 'kill-line) ; forward kill line
+(define-key sp-keymap (kbd "H-k") 'sp-kill-sexp) ; forward kill sexp
+(define-key sp-keymap (kbd "H-K") 'sp-backward-kill-sexp) ; backward kill sexp
 
 (define-key sp-keymap (kbd "M-(") (fnify (sp-wrap-with-pair "("))) ; wrap sexp with ()
 (define-key sp-keymap (kbd "M-[") (fnify (sp-wrap-with-pair "["))) ; wrap sexp with []
@@ -176,17 +178,13 @@
 (define-key sp-keymap (kbd "M-'") (fnify (sp-wrap-with-pair "'"))) ; wrap sexp with ''
 (define-key sp-keymap (kbd "H-u") 'sp-unwrap-sexp) ; unwrap sexp
 
-(define-key sp-keymap (kbd "H-k") 'sp-kill-sexp) ; forward kill sexp
-(define-key sp-keymap (kbd "H-K") 'sp-backward-kill-sexp) ; backward kill sexp
-
 (define-key sp-keymap (kbd "H-s") 'sp-split-sexp) ; split sexp
 (define-key sp-keymap (kbd "H-j") 'sp-join-sexp) ; join sexp
 
-(define-key sp-keymap (kbd "H-w") 'sp-raise-sexp) ; raise sexp
-(define-key sp-keymap (kbd "H-W") 'sp-splice-sexp-killing-backward) ; backward splice sexp
-
 (define-key sp-keymap (kbd "H-d") 'sp-forward-slurp-sexp) ; forward slurp sexp
 (define-key sp-keymap (kbd "H-a") 'sp-forward-barf-sexp) ; forward barf sexp
+(define-key sp-keymap (kbd "H-w") 'sp-raise-sexp) ; raise sexp
+(define-key sp-keymap (kbd "H-W") 'sp-splice-sexp-killing-backward) ; backward splice sexp
 
 
 ;; -----------------------------------------------------------------------------

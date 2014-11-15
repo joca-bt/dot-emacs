@@ -3,8 +3,7 @@
 
 ;; completion
 (require 'company)
-(setq ;;company-backends nil
-      company-idle-delay nil
+(setq company-idle-delay nil
       company-tooltip-limit 10
       company-tooltip-minimum-width 25
       company-selection-wrap-around t)

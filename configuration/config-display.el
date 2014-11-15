@@ -1,25 +1,31 @@
 ;; -----------------------------------------------------------------------------
 ;; display ---------------------------------------------------------------------
 
-(set-face-attribute 'default nil :font "Consolas" :height 108) ; font
+;; font
+(set-face-attribute 'default nil :font "Consolas" :height 108)
 
 ;; colour theme
 (setq custom-theme-directory +themes-dir+)
 (load-theme 'ample t)
 
-(require 'config-title-bar) ; title bar
+;; title bar
+(require 'config-title-bar)
 
-(tool-bar-mode -1) ; toolbar
+;; toolbar
+(tool-bar-mode -1)
 
-(require 'config-file-tabs) ; file tabs
+;; file tabs
+(require 'config-file-tabs)
 
-(require 'config-mode-line) ; mode line
+;; mode line
+(require 'config-mode-line)
 
 ;; highlight current line
 (require 'hl-line)
 (global-hl-line-mode t)
 
-(transient-mark-mode t) ; highlight active region
+;; highlight active region
+(transient-mark-mode t)
 
 ;; line numbers
 (require 'linum)
