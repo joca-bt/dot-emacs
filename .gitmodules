@@ -69,3 +69,7 @@ url = https://github.com/Fuco1/smartparens.git
 [submodule "packages/smex"]
 path = packages/smex
 url = https://github.com/nonsequitur/smex.git
+
+[submodule "packages/undo-tree"]
+path = packages/undo-tree
+url = http://www.dr-qubit.org/git/undo-tree.git

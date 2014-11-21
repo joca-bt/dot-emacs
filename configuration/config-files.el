@@ -1,6 +1,9 @@
 ;; -----------------------------------------------------------------------------
 ;; files and buffers -----------------------------------------------------------
 
+;; file locks
+(setq create-lockfiles nil)
+
 ;; name buffers uniquely
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward

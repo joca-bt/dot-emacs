@@ -15,9 +15,6 @@
       auto-save-list-file-name (concat +backups-dir+ (format ".auto-save-%s" (emacs-pid)))
       auto-save-file-name-transforms `(("." ,+backups-dir+ t)))
 
-;; file locks
-(setq create-lockfiles nil)
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

@@ -14,6 +14,7 @@
 ;;   programming languages and major modes:
 ;;     c, lisp, python
 ;;     shell script
+;;     markdown
 ;;   key bindings
 ;;
 ;; the sidebar is called the 'fringe'
@@ -111,6 +112,7 @@
 (require 'config-lisp) ; lisp
 (require 'config-python) ; python
 (require 'config-shell-script) ; shell script
+(require 'config-markdown) ; markdown
 
 ;; key bindings
 (require 'config-key-bindings)
