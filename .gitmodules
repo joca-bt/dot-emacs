@@ -34,6 +34,10 @@ url = https://github.com/DarwinAwardWinner/ido-ubiquitous.git
 path = packages/ido-vertical
 url = https://github.com/gempesaw/ido-vertical-mode.el.git
 
+[submodule "packages/markdown"]
+path = packages/markdown
+url = http://jblevins.org/git/markdown-mode.git
+
 [submodule "packages/multiple-cursors"]
 path = packages/multiple-cursors
 url = https://github.com/magnars/multiple-cursors.el.git

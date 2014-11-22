@@ -17,7 +17,7 @@ Explore before using, as some common Emacs key bindings have been replaced.
 
 To install, clone this repository to `~/.emacs.d/`, using:
 
-    git clone --recursive https://github.com/joca-bt/dot-emacs.git ~/.emacs.d/
+	git clone --recursive https://github.com/joca-bt/dot-emacs.git ~/.emacs.d/
 
 All dependencies are included.
 

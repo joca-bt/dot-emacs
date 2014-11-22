@@ -21,6 +21,7 @@ cmd              - http://www.emacswiki.org/emacs/CmdMode/
 diminish         - http://www.eskimo.com/~seldon/
 key-chord        - http://www.emacswiki.org/emacs/KeyChord/
 *linum           - emacs-24.4/lisp/
+markdown         - http://jblevins.org/projects/markdown-mode/
 rw               - ? Ralf Wachinger
 *swbuff          - http://emhacks.cvs.sourceforge.net/viewvc/emhacks/emhacks/
                    ? http://ourcomments.org/Emacs/DL/EmacsW32-only/src/EmacsW32/lisp/

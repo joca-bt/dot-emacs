@@ -3,7 +3,7 @@
 
 ;; batch mode
 (require 'cmd-mode)
-(setq auto-mode-alist (append auto-mode-alist '(("\\.\\(bat\\|cmd\\)\\'" . cmd-mode))))
+(add-to-list 'auto-mode-alist '("\\.\\(bat\\|cmd\\)\\'" . cmd-mode))
 
 
 ;; -----------------------------------------------------------------------------
