@@ -20,6 +20,10 @@
 ;; mode line
 (require 'config-mode-line)
 
+;; syntax highlighting
+(require 'font-lock)
+(global-font-lock-mode t)
+
 ;; highlight current line
 (require 'hl-line)
 (global-hl-line-mode t)

@@ -1,8 +1,13 @@
 # Emacs, batteries included
 
-This is my Emacs configuration.
-I'm a recent Emacs user and so this is still very much a work in progress.
+This is my Emacs configuration, continually used and regularly extended since 2014.
 At the moment, it's tailored for Lisp development.
+
+This configuration supports the following languages:
+- Common Lisp,
+- Emacs Lisp,
+- Shell Script (Unix and Windows),
+- Markdown.
 
 Explore before using, as some common Emacs key bindings have been replaced.
 
