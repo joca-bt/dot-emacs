@@ -1,7 +1,7 @@
 # Emacs, batteries included
 
-This is my Emacs configuration, continually used and regularly extended since 2014.
-At the moment, it's tailored for Lisp development.
+This is my Emacs configuration, continually used and extended since 2014.
+At the moment, it's mainly tailored for Lisp development.
 
 This configuration supports the following languages:
 - Common Lisp,

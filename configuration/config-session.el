@@ -4,9 +4,9 @@
 ;; save desktop between sessions
 (require 'desktop)
 (setq desktop-save t
-      desktop-auto-save-timeout +auto-save-timeout+
       desktop-load-locked-desktop t
       desktop-restore-frames t
+      desktop-auto-save-timeout +auto-save-interval+
       desktop-base-file-name ".desktop"
       desktop-base-lock-name ".desktop.lock"
       desktop-dirname +session-dir+
@@ -16,6 +16,7 @@
 ;; save history between sessions
 (require 'savehist)
 (setq history-length 100
+      savehist-autosave-interval +auto-save-interval+
       savehist-file (concat +session-dir+ ".history"))
 (savehist-mode t)
 

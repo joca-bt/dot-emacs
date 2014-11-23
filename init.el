@@ -36,7 +36,7 @@
 (defconst +packages-dir+      (expand-file-name "~/.emacs.d/packages/"))
 (defconst +themes-dir+        (expand-file-name "~/.emacs.d/packages/themes/"))
 
-(defconst +auto-save-timeout+ 300)
+(defconst +auto-save-interval+ 300)
 (defconst +documentation-delay+ 0.5)
 
 (fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions

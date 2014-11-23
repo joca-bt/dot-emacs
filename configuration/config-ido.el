@@ -3,8 +3,7 @@
 
 ;; ido
 (require 'ido)
-(setq ido-everywhere t
-      ido-enable-flex-matching t
+(setq ido-enable-flex-matching t
       ido-enable-regexp nil
       ido-case-fold t
       ido-enable-prefix nil
@@ -21,6 +20,7 @@
       ido-max-work-file-list 50
       ido-save-directory-list-file (concat +session-dir+ ".ido"))
 (ido-mode 'both)
+(ido-everywhere t)
 
 ;; ido everywhere
 (require 'ido-ubiquitous)
