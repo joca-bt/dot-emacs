@@ -9,6 +9,7 @@ ido-ubiquitous   - https://github.com/DarwinAwardWinner/ido-ubiquitous/
 ido-vertical     - https://github.com/gempesaw/ido-vertical-mode.el/
 multiple-cursors - https://github.com/magnars/multiple-cursors.el/
 neotree          - https://github.com/jaypei/emacs-neotree/
+parenface        - https://github.com/grettke/parenface/
 powerline        - https://github.com/dbordak/powerline/
 region-bindings  - https://github.com/fgallina/region-bindings-mode/
 s                - https://github.com/magnars/s.el/

@@ -46,6 +46,10 @@ url = https://github.com/magnars/multiple-cursors.el.git
 path = packages/neotree
 url = https://github.com/jaypei/emacs-neotree.git
 
+[submodule "packages/parenface"]
+path = packages/parenface
+url = https://github.com/grettke/parenface.git
+
 [submodule "packages/powerline"]
 path = packages/powerline
 url = https://github.com/dbordak/powerline.git
