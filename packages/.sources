@@ -20,6 +20,7 @@ smex             - https://github.com/nonsequitur/smex/
 
 cmd              - http://www.emacswiki.org/emacs/CmdMode/
 diminish         - http://www.eskimo.com/~seldon/
+google-c-style   - https://code.google.com/p/google-styleguide/
 key-chord        - http://www.emacswiki.org/emacs/KeyChord/
 *linum           - emacs-24.4/lisp/
 markdown         - http://jblevins.org/projects/markdown-mode/

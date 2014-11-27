@@ -84,7 +84,12 @@
       inhibit-startup-echo-area-message (user-login-name)
       initial-scratch-message nil)
 
-(set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
+;; maximize frame
+;;(set-frame-parameter nil 'fullscreen 'maximized)
+(defun maximize-frame ()
+  (interactive)
+  (w32-send-sys-command #xf030)) ; f030 = 61488
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 
 ;; -----------------------------------------------------------------------------
