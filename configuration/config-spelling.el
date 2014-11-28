@@ -27,8 +27,7 @@
 
 (let ((modes '()))
   (dolist (mode modes)
-    (add-hook mode #'(lambda ()
-                       (flyspell-prog-mode)))))
+    (add-hook mode 'flyspell-prog-mode t)))
 
 
 ;; -----------------------------------------------------------------------------

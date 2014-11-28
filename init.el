@@ -86,10 +86,7 @@
 
 ;; maximize frame
 ;;(set-frame-parameter nil 'fullscreen 'maximized)
-(defun maximize-frame ()
-  (interactive)
-  (w32-send-sys-command #xf030)) ; f030 = 61488
-(add-hook 'window-setup-hook 'maximize-frame t)
+(add-hook 'window-setup-hook #'(lambda () (w32-send-sys-command #xf030)) t)
 
 
 ;; -----------------------------------------------------------------------------

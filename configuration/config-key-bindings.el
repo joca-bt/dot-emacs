@@ -40,6 +40,8 @@
 
 (global-set-key (kbd "C-h f") 'describe-function) ; show function documentation
 (global-set-key (kbd "C-h v") 'describe-variable) ; show variable documentation
+(global-set-key (kbd "C-h C-f") 'find-function) ; go to function definition
+(global-set-key (kbd "C-h C-v") 'find-variable) ; go to variable definition
 
 
 ;; -----------------------------------------------------------------------------
@@ -80,15 +82,15 @@
 (global-set-key (kbd "M-2") 'split-window-vertically) ; split window vertically
 (global-set-key (kbd "M-3") 'split-window-horizontally) ; split window horizontally
 
-(global-set-key (kbd "M-S-<right>") (fnie 'windmove-right)) ; move → window
-(global-set-key (kbd "M-S-<left>") (fnie 'windmove-left)) ; move ← window
-(global-set-key (kbd "M-S-<down>") (fnie 'windmove-down)) ; move ↓ window
-(global-set-key (kbd "M-S-<up>") (fnie 'windmove-up)) ; move ↑ window
+(global-set-key (kbd "M-S-<right>") (ifnie 'windmove-right)) ; move → window
+(global-set-key (kbd "M-S-<left>") (ifnie 'windmove-left)) ; move ← window
+(global-set-key (kbd "M-S-<down>") (ifnie 'windmove-down)) ; move ↓ window
+(global-set-key (kbd "M-S-<up>") (ifnie 'windmove-up)) ; move ↑ window
 
-(global-set-key (kbd "C-M-S-<right>") (fnie 'buf-move-right)) ; swap → buffers
-(global-set-key (kbd "C-M-S-<left>") (fnie 'buf-move-left)) ; swap ← buffers
-(global-set-key (kbd "C-M-S-<down>") (fnie 'buf-move-down)) ; swap ↓ buffers
-(global-set-key (kbd "C-M-S-<up>") (fnie 'buf-move-up)) ; swap ↑ buffers
+(global-set-key (kbd "C-M-S-<right>") (ifnie 'buf-move-right)) ; swap → buffers
+(global-set-key (kbd "C-M-S-<left>") (ifnie 'buf-move-left)) ; swap ← buffers
+(global-set-key (kbd "C-M-S-<down>") (ifnie 'buf-move-down)) ; swap ↓ buffers
+(global-set-key (kbd "C-M-S-<up>") (ifnie 'buf-move-up)) ; swap ↑ buffers
 
 
 ;; -----------------------------------------------------------------------------
@@ -171,11 +173,11 @@
 (define-key sp-keymap (kbd "H-k") 'sp-kill-sexp) ; forward kill sexp
 (define-key sp-keymap (kbd "H-K") 'sp-backward-kill-sexp) ; backward kill sexp
 
-(define-key sp-keymap (kbd "M-(") (fnify (sp-wrap-with-pair "("))) ; wrap sexp with ()
-(define-key sp-keymap (kbd "M-[") (fnify (sp-wrap-with-pair "["))) ; wrap sexp with []
-(define-key sp-keymap (kbd "M-{") (fnify (sp-wrap-with-pair "{"))) ; wrap sexp with {}
-(define-key sp-keymap (kbd "M-\"") (fnify (sp-wrap-with-pair "\""))) ; wrap sexp with ""
-(define-key sp-keymap (kbd "M-'") (fnify (sp-wrap-with-pair "'"))) ; wrap sexp with ''
+(define-key sp-keymap (kbd "M-(") (ifn (sp-wrap-with-pair "("))) ; wrap sexp with ()
+(define-key sp-keymap (kbd "M-[") (ifn (sp-wrap-with-pair "["))) ; wrap sexp with []
+(define-key sp-keymap (kbd "M-{") (ifn (sp-wrap-with-pair "{"))) ; wrap sexp with {}
+(define-key sp-keymap (kbd "M-\"") (ifn (sp-wrap-with-pair "\""))) ; wrap sexp with ""
+(define-key sp-keymap (kbd "M-'") (ifn (sp-wrap-with-pair "'"))) ; wrap sexp with ''
 (define-key sp-keymap (kbd "H-u") 'sp-unwrap-sexp) ; unwrap sexp
 
 (define-key sp-keymap (kbd "H-s") 'sp-split-sexp) ; split sexp

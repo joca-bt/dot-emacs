@@ -32,7 +32,7 @@
 (elisp-slime-nav-mode t)
 
 ;; documentation
-;;(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+;;(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode t)
 
 ;; indentation
 (setq-mode-local emacs-lisp-mode lisp-indent-function 'lisp-indent-function)
