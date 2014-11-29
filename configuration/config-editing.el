@@ -16,6 +16,8 @@
 (setq mc/list-file (concat +session-dir+ ".mc"))
 
 ;; tabs
+(setq         tab-always-indent t
+              c-tab-always-indent t)
 (setq-default indent-tabs-mode t
               tab-width 4)
 

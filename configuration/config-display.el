@@ -37,7 +37,7 @@
 
 ;; cursor
 (setq-default cursor-type 'bar)
-(setq blink-cursor-blinks 0)
+(setq         blink-cursor-blinks 0)
 
 ;; text wrapping
 (setq-default truncate-lines t
