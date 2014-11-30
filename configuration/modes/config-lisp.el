@@ -8,11 +8,13 @@
       slime-load-failed-fasl 'always
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol
       slime-startup-animation nil
-      slime-repl-history-size 100
+      slime-repl-history-size +history-size+
       slime-repl-history-file (concat +session-dir+ ".slime"))
 (slime-setup '(slime-fancy
+               slime-asdf
                slime-banner
                slime-company))
+;;               slime-indentation
 ;;               slime-mdot-fu))
 (slime-autodoc-unload)
 

@@ -15,14 +15,14 @@
 
 ;; save history between sessions
 (require 'savehist)
-(setq history-length 100
+(setq history-length +history-size+
       savehist-autosave-interval +auto-save-interval+
       savehist-file (concat +session-dir+ ".history"))
 (savehist-mode t)
 
 ;; save point between file visits
 (require 'saveplace)
-(setq save-place-limit 100
+(setq save-place-limit +history-size+
       save-place-file (concat +session-dir+ ".point"))
 (setq-default save-place t)
 

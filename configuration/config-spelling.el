@@ -23,7 +23,7 @@
 ;; spell checking
 (require 'flyspell)
 (setq flyspell-sort-corrections nil
-      flyspell-delay 2)
+      flyspell-delay +auto-check-delay+)
 
 (let ((modes '()))
   (dolist (mode modes)

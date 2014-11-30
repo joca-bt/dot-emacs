@@ -26,6 +26,10 @@ url = https://github.com/magnars/expand-region.el.git
 path = packages/flx
 url = https://github.com/lewang/flx.git
 
+[submodule "packages/flycheck"]
+path = packages/flycheck
+url = https://github.com/flycheck/flycheck.git
+
 [submodule "packages/ido-ubiquitous"]
 path = packages/ido-ubiquitous
 url = https://github.com/DarwinAwardWinner/ido-ubiquitous.git

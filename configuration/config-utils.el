@@ -25,6 +25,12 @@
     (ignore-errors
       (funcall ,fn))))
 
+(defmacro bind (fn &rest args)
+  "Partially apply ARGS to FN."
+  (let ((future-args (make-symbol "args")))
+    `(lambda (&rest ,future-args)
+       (apply ,fn ,@args ,future-args))))
+
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

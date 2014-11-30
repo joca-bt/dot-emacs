@@ -5,6 +5,7 @@ dash             - https://github.com/magnars/dash.el/
 elisp-slime-nav  - https://github.com/purcell/elisp-slime-nav/
 expand-region    - https://github.com/magnars/expand-region.el/
 flx              - https://github.com/lewang/flx/
+flycheck         - https://github.com/flycheck/flycheck/
 ido-ubiquitous   - https://github.com/DarwinAwardWinner/ido-ubiquitous/
 ido-vertical     - https://github.com/gempesaw/ido-vertical-mode.el/
 multiple-cursors - https://github.com/magnars/multiple-cursors.el/
