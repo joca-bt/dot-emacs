@@ -1,7 +1,7 @@
 ;; -----------------------------------------------------------------------------
 ;; spelling --------------------------------------------------------------------
 
-;; spell checker
+;; spell checking
 (require 'ispell)
 (require 'rw-hunspell)
 (require 'rw-ispell)
@@ -20,7 +20,6 @@
                                        ("^pt" . ,(concat +dictionaries-dir+ "pdict-pt.dic"))
                                        ("" . ,(concat +dictionaries-dir+ "pdict.dic"))))
 
-;; spell checking
 (require 'flyspell)
 (setq flyspell-sort-corrections nil
       flyspell-delay +auto-check-delay+)

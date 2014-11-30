@@ -36,3 +36,14 @@ All dependencies are included.
 - `dictionaries/` - dictionaries go here,
 - `packages/` - packages go here,
 - `packages/themes/` - themes go here.
+
+
+## Emacs Terminology Primer
+
+- The sidebar is called the *fringe*,
+- The status bar is called the *mode line*,
+- clipboard `->` kill ring,
+- cut `->` kill,
+- save `->` copy,
+- paste `->` yank,
+- region - the text that is *marked* (selected), starting at *mark* and ending at *point* (cursor location).

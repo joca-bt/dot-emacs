@@ -24,12 +24,13 @@
       recentf-save-file (concat +session-dir+ ".recent-files"))
 (recentf-mode t)
 
-;; push the current buffer to the top of the recent files list
 (defun recentf-push-current-buffer ()
+  "Pushes the current buffer to the top of the recent files list."
   (let ((file-name (buffer-file-name (current-buffer))))
     (when file-name
       (recentf-add-file file-name))))
-(add-to-list 'window-configuration-change-hook 'recentf-push-current-buffer)
+
+(add-hook 'window-configuration-change-hook 'recentf-push-current-buffer t)
 
 
 ;; -----------------------------------------------------------------------------

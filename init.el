@@ -16,14 +16,6 @@
 ;;     shell script
 ;;     markdown
 ;;   key bindings
-;;
-;; the sidebar is called the 'fringe'
-;; the status bar is called the 'mode line'
-;; kill ring = clipboard
-;; kill = cut
-;; save = copy
-;; yank = paste
-;; region - the text that is marked (selected), starts at 'mark' and ends at 'point' (cursor location)
 
 (defconst +backups-dir+       (expand-file-name "~/.emacs.d/backups/"))
 (defconst +session-dir+       (expand-file-name "~/.emacs.d/session/"))

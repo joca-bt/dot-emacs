@@ -54,6 +54,10 @@ url = https://github.com/jaypei/emacs-neotree.git
 path = packages/parenface
 url = https://github.com/grettke/parenface.git
 
+[submodule "packages/popup"]
+path = packages/popup
+url = https://github.com/auto-complete/popup-el.git
+
 [submodule "packages/powerline"]
 path = packages/powerline
 url = https://github.com/dbordak/powerline.git
@@ -81,6 +85,10 @@ url = https://github.com/Fuco1/smartparens.git
 [submodule "packages/smex"]
 path = packages/smex
 url = https://github.com/nonsequitur/smex.git
+
+[submodule "packages/smooth-scrolling"]
+path = packages/smooth-scrolling
+url = https://github.com/aspiers/smooth-scrolling.git
 
 [submodule "packages/undo-tree"]
 path = packages/undo-tree

@@ -11,6 +11,7 @@ ido-vertical     - https://github.com/gempesaw/ido-vertical-mode.el/
 multiple-cursors - https://github.com/magnars/multiple-cursors.el/
 neotree          - https://github.com/jaypei/emacs-neotree/
 parenface        - https://github.com/grettke/parenface/
+popup            - https://github.com/auto-complete/popup-el/
 powerline        - https://github.com/dbordak/powerline/
 region-bindings  - https://github.com/fgallina/region-bindings-mode/
 s                - https://github.com/magnars/s.el/
@@ -18,6 +19,7 @@ slime            - https://github.com/slime/slime/
 slime-company    - https://github.com/anwyn/slime-company/
 smartparens      - https://github.com/Fuco1/smartparens/
 smex             - https://github.com/nonsequitur/smex/
+smooth-scrolling - https://github.com/aspiers/smooth-scrolling/
 
 cmd              - http://www.emacswiki.org/emacs/CmdMode/
 diminish         - http://www.eskimo.com/~seldon/

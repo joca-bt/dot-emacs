@@ -43,10 +43,16 @@
 (setq-default truncate-lines t
               word-wrap t)
 
+;; horizontal scrolling
+(setq hscroll-margin 0
+      hscroll-step 1)
+
 ;; vertical scrolling
-(setq scroll-margin 0
+(require 'smooth-scrolling)
+(setq smooth-scroll-margin 0
+      scroll-margin 0
       scroll-step 1
-      scroll-conservatively -1
+      scroll-conservatively most-positive-fixnum
       scroll-preserve-screen-position t
       mouse-wheel-progressive-speed nil)
 
