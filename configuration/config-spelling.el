@@ -16,9 +16,9 @@
       ispell-silently-savep t
       rw-hunspell-default-dictionary "en_GB-oed"
       rw-hunspell-dicpath-list `(,+dictionaries-dir+)
-      rw-ispell-language-pdict-alist `(("^en" . ,(concat +dictionaries-dir+ ".dict-en"))
-                                       ("^pt" . ,(concat +dictionaries-dir+ ".dict-pt"))
-                                       ("" . ,(concat +dictionaries-dir+ ".dict"))))
+      rw-ispell-language-pdict-alist `(("^en" . ,(concat +dictionaries-dir+ "pdict-en.dic"))
+                                       ("^pt" . ,(concat +dictionaries-dir+ "pdict-pt.dic"))
+                                       ("" . ,(concat +dictionaries-dir+ "pdict.dic"))))
 
 ;; spell checking
 (require 'flyspell)
