@@ -3,14 +3,14 @@
 ;;
 ;; organization:
 ;;   load path, server, startup
-;;   meta and utils
+;;   utils
 ;;   configurations:
-;;     ido
-;;     session, backups
+;;     ido, ui
+;;     backups, session
 ;;     files and buffers
-;;     display, navigation
 ;;     editing, spelling
 ;;     programming
+;;     navigation
 ;;   programming languages and major modes:
 ;;     c, lisp, python
 ;;     shell script
@@ -24,8 +24,6 @@
 ;; save = copy
 ;; yank = paste
 ;; region - the text that is marked (selected), starts at 'mark' and ends at 'point' (cursor location)
-
-;;(require 'cl-lib)
 
 (defconst +backups-dir+       (expand-file-name "~/.emacs.d/backups/"))
 (defconst +session-dir+       (expand-file-name "~/.emacs.d/session/"))
@@ -42,6 +40,8 @@
 (defconst +history-size+ 100)
 
 (fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
+
+(setq temporary-file-directory +temp-dir+) ; temporary files directory
 
 (setq debug-on-error t) ; debug on error
 
@@ -97,26 +97,26 @@
 ;; siscog
 ;;(load (expand-file-name "~/siscog/siscog"))
 
-;; meta and utils
+;; utils
 (require 'config-utils)
 
 ;; configurations
-(require 'config-ido) ; ido
-(require 'config-session) ; session
-(require 'config-backups) ; backups
-(require 'config-files) ; files and buffers
-(require 'config-display) ; display
-(require 'config-navigation) ; navigation
-(require 'config-editing) ; editing
-(require 'config-spelling) ; spelling
-(require 'config-programming) ; programming
+(require 'config-ido)
+(require 'config-ui)
+(require 'config-backups)
+(require 'config-session)
+(require 'config-files-and-buffers)
+(require 'config-editing)
+(require 'config-spelling)
+(require 'config-programming)
+(require 'config-navigation)
 
 ;; programming languages and major modes
-(require 'config-c) ; c
-(require 'config-lisp) ; lisp
-(require 'config-python) ; python
-(require 'config-shell-script) ; shell script
-(require 'config-markdown) ; markdown
+(require 'config-c)
+(require 'config-lisp)
+(require 'config-python)
+(require 'config-shell-script)
+(require 'config-markdown)
 
 ;; key bindings
 (require 'config-key-bindings)

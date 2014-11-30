@@ -33,5 +33,6 @@ All dependencies are included.
 - `configuration/` - general configuration files, split by category,
 - `configuration/modes/` - programming languages and major modes,
 - `configuration/ui/` - ui customizations,
+- `dictionaries/` - dictionaries go here,
 - `packages/` - packages go here,
 - `packages/themes/` - themes go here.
