@@ -28,11 +28,11 @@
 ;;(require 'cl-lib)
 
 (defconst +backups-dir+       (expand-file-name "~/.emacs.d/backups/"))
-(defconst +dictionaries-dir+  (expand-file-name "~/.emacs.d/dictionaries/"))
-(defconst +fasl-dir+          (expand-file-name "~/.emacs.d/fasl/"))
 (defconst +session-dir+       (expand-file-name "~/.emacs.d/session/"))
+(defconst +temp-dir+          (expand-file-name "~/.emacs.d/temp/"))
 
 (defconst +configuration-dir+ (expand-file-name "~/.emacs.d/configuration/"))
+(defconst +dictionaries-dir+  (expand-file-name "~/.emacs.d/dictionaries/"))
 (defconst +packages-dir+      (expand-file-name "~/.emacs.d/packages/"))
 (defconst +themes-dir+        (expand-file-name "~/.emacs.d/packages/themes/"))
 

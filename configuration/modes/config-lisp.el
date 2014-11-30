@@ -4,7 +4,7 @@
 ;; slime
 (require 'slime-autoloads)
 (setq inferior-lisp-program "sbcl"
-      slime-compile-file-options `(:fasl-directory ,+fasl-dir+)
+      slime-compile-file-options `(:fasl-directory ,(concat +temp-dir+ "fasl/"))
       slime-load-failed-fasl 'always
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol
       slime-startup-animation nil
