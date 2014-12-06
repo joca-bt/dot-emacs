@@ -51,7 +51,7 @@
     (when (file-directory-p dir)
       (add-to-list 'load-path dir))))
 
-(setq load-prefer-newer t) ; always load newer files
+(setq load-prefer-newer t) ; always load the newest version of a file
 
 
 ;; -----------------------------------------------------------------------------
@@ -78,9 +78,7 @@
       inhibit-startup-echo-area-message (user-login-name)
       initial-scratch-message nil)
 
-;; maximize frame
-;;(set-frame-parameter nil 'fullscreen 'maximized)
-(add-hook 'window-setup-hook #'(lambda () (w32-send-sys-command #xf030)) t)
+(set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
 
 
 ;; -----------------------------------------------------------------------------

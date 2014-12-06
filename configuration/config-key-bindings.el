@@ -150,7 +150,7 @@
 
 (global-set-key (kbd "C-a") 'mark-whole-buffer) ; select all
 
-(global-set-key (kbd "S-<SPC>") 'set-mark-command) ; set mark
+(global-set-key (kbd "M-<SPC>") 'set-mark-command) ; set mark
 
 
 ;; -----------------------------------------------------------------------------

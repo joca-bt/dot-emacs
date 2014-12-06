@@ -1,7 +1,7 @@
 ;; -----------------------------------------------------------------------------
 ;; mode line -------------------------------------------------------------------
 ;;
-;; based on emacs-24.4/lisp/bindings.el
+;; based on emacs/lisp/bindings.el
 
 (require 'powerline)
 (require 'diminish)
@@ -38,7 +38,6 @@
                          :box (:line-width 1 :color "grey25" :style nil)))
   ""
   :group 'ml)
-
 
 (defface ml-strong '((t
                       :inherit nil
