@@ -15,9 +15,11 @@
 (require 'multiple-cursors)
 (setq mc/list-file (concat +session-dir+ ".mc"))
 
+;; tab
+(setq tab-always-indent t
+      c-tab-always-indent t)
+
 ;; tabs
-(setq         tab-always-indent t
-              c-tab-always-indent t)
 (setq-default indent-tabs-mode t
               tab-width 4)
 

@@ -53,7 +53,11 @@
       scroll-margin 0
       scroll-step 1
       scroll-conservatively most-positive-fixnum
-      scroll-preserve-screen-position t
+      scroll-preserve-screen-position t)
+
+;; mouse scrolling
+(setq mouse-wheel-follow-mouse t
+      mouse-wheel-scroll-amount '(5 ((shift) . 1) ((control) . nil))
       mouse-wheel-progressive-speed nil)
 
 
