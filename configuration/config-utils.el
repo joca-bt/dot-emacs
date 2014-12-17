@@ -1,13 +1,6 @@
 ;; -----------------------------------------------------------------------------
 ;; utils -----------------------------------------------------------------------
 
-;; mode-local variables
-(require 'mode-local)
-
-
-;; -----------------------------------------------------------------------------
-;; helper macros and functions -------------------------------------------------
-
 (defmacro fn (&rest body)
   "Wraps a set of Lisp forms under a function."
   `(lambda ()
@@ -19,11 +12,11 @@
     (interactive)
     ,@body))
 
-(defmacro ifnie (fn)
+(defmacro ifncall (fn &rest args)
   "Wraps an interactive function call under the `ignore-errors' macro."
   `(ifn
     (ignore-errors
-      (funcall ,fn))))
+      (funcall ,fn ,@args))))
 
 (defmacro bind (fn &rest args)
   "Partially apply ARGS to FN."

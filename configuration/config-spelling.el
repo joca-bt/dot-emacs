@@ -2,10 +2,6 @@
 ;; spelling --------------------------------------------------------------------
 
 ;; spell checking
-(require 'ispell)
-(require 'rw-hunspell)
-(require 'rw-ispell)
-(require 'rw-language-and-country-codes)
 (setq ispell-program-name "hunspell"
       ispell-extra-args '("-a" "-i" "utf-8")
       ispell-check-comments 'exclusive
@@ -19,10 +15,6 @@
       rw-ispell-language-pdict-alist `(("^en" . ,(concat +dictionaries-dir+ "pdict-en.dic"))
                                        ("^pt" . ,(concat +dictionaries-dir+ "pdict-pt.dic"))
                                        ("" . ,(concat +dictionaries-dir+ "pdict.dic"))))
-
-(require 'flyspell)
-(setq flyspell-sort-corrections nil
-      flyspell-delay +auto-check-delay+)
 
 (let ((modes '()))
   (dolist (mode modes)

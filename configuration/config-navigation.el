@@ -2,17 +2,14 @@
 ;; navigation ------------------------------------------------------------------
 
 ;; jump to text
-(require 'ace-jump-mode)
 (setq ace-jump-mode-scope 'frame
       ace-jump-word-mode-use-query-char t
       ace-jump-mode-case-fold t
       ace-jump-mode-detect-punc t
-      ace-jump-mode-gray-background t
-      ace-jump-mode-mark-ring-max 50
+      ace-jump-mode-mark-ring-max +history-size+
       ace-jump-mode-move-keys (nconc (number-sequence ?a ?z) (number-sequence ?A ?Z)))
 
 ;; buffer switching
-(require 'swbuff-y)
 (setq swbuff-display-intermediate-buffers t
       swbuff-clear-delay 0.75
       swbuff-clear-delay-ends-switching t
@@ -22,15 +19,10 @@
       swbuff-include-buffer-regexps '("^*scratch*" "^*slime-")
       swbuff-exclude-buffer-regexps '("^[ *]"))
 
-;; buffer swapping
-(require 'buffer-move)
-
 ;; window navigation
-(require 'windmove)
 (setq windmove-wrap-around nil)
 
 ;; file browser
-(require 'neotree)
 (setq neo-smart-open t
       neo-dont-be-alone t
       neo-persist-show t

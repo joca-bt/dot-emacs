@@ -2,7 +2,6 @@
 ;; common lisp -----------------------------------------------------------------
 
 ;; slime
-(require 'slime-autoloads)
 (setq inferior-lisp-program "sbcl"
       slime-compile-file-options `(:fasl-directory ,(concat +temp-dir+ "fasl/"))
       slime-load-failed-fasl 'always
@@ -30,7 +29,6 @@
 ;; emacs lisp ------------------------------------------------------------------
 
 ;; tags
-(require 'elisp-slime-nav)
 (elisp-slime-nav-mode t)
 
 ;; documentation

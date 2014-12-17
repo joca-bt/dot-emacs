@@ -9,11 +9,9 @@
 ;;   programming
 
 ;; region-local key bindings
-(require 'region-bindings-mode)
 (region-bindings-mode-enable)
 
 ;; key chords
-(require 'key-chord)
 (key-chord-mode t)
 
 ;; set super and hyper keys
@@ -82,15 +80,15 @@
 (global-set-key (kbd "M-2") 'split-window-vertically) ; split window vertically
 (global-set-key (kbd "M-3") 'split-window-horizontally) ; split window horizontally
 
-(global-set-key (kbd "M-S-<right>") (ifnie 'windmove-right)) ; move → window
-(global-set-key (kbd "M-S-<left>") (ifnie 'windmove-left)) ; move ← window
-(global-set-key (kbd "M-S-<down>") (ifnie 'windmove-down)) ; move ↓ window
-(global-set-key (kbd "M-S-<up>") (ifnie 'windmove-up)) ; move ↑ window
+(global-set-key (kbd "M-S-<right>") (ifncall 'windmove-right)) ; move → window
+(global-set-key (kbd "M-S-<left>") (ifncall 'windmove-left)) ; move ← window
+(global-set-key (kbd "M-S-<down>") (ifncall 'windmove-down)) ; move ↓ window
+(global-set-key (kbd "M-S-<up>") (ifncall 'windmove-up)) ; move ↑ window
 
-(global-set-key (kbd "C-M-S-<right>") (ifnie 'buf-move-right)) ; swap → buffers
-(global-set-key (kbd "C-M-S-<left>") (ifnie 'buf-move-left)) ; swap ← buffers
-(global-set-key (kbd "C-M-S-<down>") (ifnie 'buf-move-down)) ; swap ↓ buffers
-(global-set-key (kbd "C-M-S-<up>") (ifnie 'buf-move-up)) ; swap ↑ buffers
+(global-set-key (kbd "C-M-S-<right>") (ifncall 'buf-move-right)) ; swap → buffers
+(global-set-key (kbd "C-M-S-<left>") (ifncall 'buf-move-left)) ; swap ← buffers
+(global-set-key (kbd "C-M-S-<down>") (ifncall 'buf-move-down)) ; swap ↓ buffers
+(global-set-key (kbd "C-M-S-<up>") (ifncall 'buf-move-up)) ; swap ↑ buffers
 
 
 ;; -----------------------------------------------------------------------------

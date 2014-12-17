@@ -5,7 +5,6 @@
 (setq create-lockfiles nil)
 
 ;; name buffers uniquely
-(require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward
       uniquify-after-kill-buffer-p t)
 
@@ -14,7 +13,6 @@
       mouse-buffer-menu-mode-mult 5)
 
 ;; recent files list
-(require 'recentf)
 (setq recentf-menu-title "Recent Files"
       recentf-show-file-shortcuts-flag t
       recentf-menu-open-all-flag t
@@ -26,7 +24,7 @@
 
 (defun recentf-push-current-buffer ()
   "Pushes the current buffer to the top of the recent files list."
-  (let ((file-name (buffer-file-name (current-buffer))))
+  (let ((file-name (buffer-file-name)))
     (when file-name
       (recentf-add-file file-name))))
 

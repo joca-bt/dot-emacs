@@ -3,35 +3,23 @@
 ;;
 ;; based on emacs/lisp/bindings.el
 
-(require 'powerline)
-(require 'diminish)
-
-
-;; -----------------------------------------------------------------------------
-;; format ----------------------------------------------------------------------
-
-(defconst +ml-space+ "  ")
-
-(defconst +ml-small-space+ (propertize " " 'display '(space :width 0.33)))
-
-
-(setq-default mode-line-format `("%e"
+(setq-default mode-line-format '("%e"
                                  " "
                                  (:eval (ml-encoding-and-terminator))
-                                 ,+ml-space+
+                                 "  "
                                  (:eval (ml-position))
-                                 ,+ml-space+
+                                 "  "
                                  (:eval (ml-buffer-status))
-                                 ,+ml-space+
+                                 "  "
                                  (:eval (ml-buffer-name))
-                                 ,+ml-space+
+                                 "  "
                                  (:eval (ml-modes))))
 
 (setq mode-line-default-help-echo nil)
 
 
 ;; -----------------------------------------------------------------------------
-;; style -----------------------------------------------------------------------
+;; -----------------------------------------------------------------------------
 
 (defface ml-highlight '((t
                          :inherit nil
@@ -92,11 +80,12 @@
 ;; position --------------------------------------------------------------------
 
 (defun ml-position ()
-  `("%l"
-    ,+ml-small-space+
-    ":"
-    ,+ml-small-space+
-    ,(format "%d" (+ (current-column) 1))))
+  (let ((small-space (propertize " " 'display '(space :width 0.33))))
+    `("%l"
+      ,small-space
+      ":"
+      ,small-space
+      ,(format "%d" (+ (current-column) 1)))))
 
 
 ;; -----------------------------------------------------------------------------
@@ -147,6 +136,7 @@
 ;; modes -----------------------------------------------------------------------
 
 (eval-after-load "company" '(diminish 'company-mode))
+(eval-after-load "elisp-slime-nav" '(diminish 'elisp-slime-nav-mode))
 (eval-after-load "region-bindings-mode" '(diminish 'region-bindings-mode))
 (eval-after-load "smartparens" '(diminish 'smartparens-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))

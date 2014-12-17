@@ -3,11 +3,9 @@
 ;;
 ;; based on aquamacs-tabbar and tabbar-ruler
 
-(require 'tabbar)
+(setq tabbar-buffer-home-button '(("") "")
+      tabbar-buffer-groups-function nil)
 
-
-;; -----------------------------------------------------------------------------
-;; style -----------------------------------------------------------------------
 
 (set-face-attribute 'tabbar-default nil
                     :inherit nil
@@ -83,10 +81,7 @@
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
-(setq tabbar-buffer-home-button '(("") ""))
-
-
-(defsubst tabbar-line-tab (tab)
+(defun tabbar-line-tab (tab)
   "Returns the display representation of a tab.
    That is, a propertized string used as an `header-line-format' template element.
    Call `tabbar-tab-label-function' to obtain a label for the tab."
@@ -141,25 +136,20 @@
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
-(defun tabbar-buffer-groups ()
-  "Returns the list of groups the current buffer belongs to.
-   Use the same group for all buffers."
-  '("all"))
-
-
 (defun tabbar-buffer-list ()
   "Returns the list of buffers to show in the tab bar.
-   Exclude all buffers whose name starts with ' ' or '*'.
+   Exclude all buffers whose names start with ' ' or '*' and that are not visiting a file.
    Always include the current buffer."
-  (remove-if #'(lambda (buffer)
-                 (unless (eq buffer (current-buffer))
-                   (find (aref (buffer-name buffer) 0) " *")))
-             (buffer-list)))
+  (cl-remove-if #'(lambda (buffer)
+                    (unless (or (eq buffer (current-buffer))
+                                (buffer-file-name buffer))
+                      (cl-find (aref (buffer-name buffer) 0) " *")))
+                (buffer-list)))
 
 
 (defun tabbar-help-on-tab (window object position)
   "Returns the help string shown when mouse-hovering a tab.
-   Return either the file name of the file the buffer is visiting or the buffer's name."
+   Return either the name of the file the buffer is visiting or the buffer's name."
   (with-selected-window window
     (let* ((tab (get-text-property position 'tabbar-tab object))
            (buffer (tabbar-tab-value tab))
@@ -172,8 +162,7 @@
 (defun tabbar-help-on-button (window object position)
   "Returns the help string shown when mouse-hovering a button.
    No help available."
-  (with-selected-window window
-    nil))
+  nil)
 
 
 (defun tabbar-update (&rest args)

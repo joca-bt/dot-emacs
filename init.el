@@ -2,8 +2,8 @@
 ;; dot emacs -------------------------------------------------------------------
 ;;
 ;; organization:
-;;   load path, server, startup
-;;   utils
+;;   load path, startup
+;;   packages, utils
 ;;   configurations:
 ;;     ido, ui
 ;;     backups, session
@@ -13,29 +13,25 @@
 ;;     navigation
 ;;   programming languages and major modes:
 ;;     c, lisp, python
-;;     shell script
-;;     markdown
 ;;   key bindings
 
-(defconst +backups-dir+       (expand-file-name "~/.emacs.d/backups/"))
-(defconst +session-dir+       (expand-file-name "~/.emacs.d/session/"))
-(defconst +temp-dir+          (expand-file-name "~/.emacs.d/temp/"))
+(defconst +emacs-dir+ (expand-file-name (or (when load-file-name
+                                              (file-name-directory load-file-name))
+                                            "~/.emacs.d/")))
 
-(defconst +configuration-dir+ (expand-file-name "~/.emacs.d/configuration/"))
-(defconst +dictionaries-dir+  (expand-file-name "~/.emacs.d/dictionaries/"))
-(defconst +packages-dir+      (expand-file-name "~/.emacs.d/packages/"))
-(defconst +themes-dir+        (expand-file-name "~/.emacs.d/packages/themes/"))
+(defconst +backups-dir+       (concat +emacs-dir+ "backups/"))
+(defconst +session-dir+       (concat +emacs-dir+ "session/"))
+(defconst +temp-dir+          (concat +emacs-dir+ "temp/"))
+
+(defconst +configuration-dir+ (concat +emacs-dir+ "configuration/"))
+(defconst +dictionaries-dir+  (concat +emacs-dir+ "dictionaries/"))
+(defconst +packages-dir+      (concat +emacs-dir+ "packages/"))
+(defconst +themes-dir+        (concat +emacs-dir+ "packages/themes/"))
 
 (defconst +auto-check-delay+ 2)
 (defconst +auto-save-interval+ 300) ; 5 min
 (defconst +documentation-delay+ 0.5)
 (defconst +history-size+ 100)
-
-(fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
-
-(setq temporary-file-directory +temp-dir+) ; temporary files directory
-
-(setq debug-on-error t) ; debug on error
 
 
 ;; -----------------------------------------------------------------------------
@@ -43,7 +39,6 @@
 
 (add-to-list 'load-path +configuration-dir+)
 (add-to-list 'load-path +packages-dir+)
-(add-to-list 'load-path (concat +packages-dir+ "slime/contrib/"))
 
 (let ((dirs (nconc (directory-files +configuration-dir+ t "\\w+")
                    (directory-files +packages-dir+ t "\\w+"))))
@@ -51,34 +46,32 @@
     (when (file-directory-p dir)
       (add-to-list 'load-path dir))))
 
-(setq load-prefer-newer t) ; always load the newest version of a file
-
 
 ;; -----------------------------------------------------------------------------
-;; server ----------------------------------------------------------------------
+;; startup ---------------------------------------------------------------------
+
+;; skip startup screen and messages
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
+(custom-set-variables `(inhibit-startup-echo-area-message ,(user-login-name)))
+
+(set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
 
 ;; server
 (require 'server)
-(setq server-raise-frame t
-      server-kill-new-buffers t
-      server-name "server"
+(setq server-name "server"
       server-auth-dir +session-dir+)
 (unless (and window-system
              (server-running-p))
   (server-start))
 
-(remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function) ; skip confirmation dialog
+(fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
 
+(setq temporary-file-directory +temp-dir+) ; temporary files directory
 
-;; -----------------------------------------------------------------------------
-;; startup ---------------------------------------------------------------------
+(setq load-prefer-newer t) ; always load the newest version of a file
 
-;; skip startup screen
-(setq inhibit-startup-screen t
-      inhibit-startup-echo-area-message (user-login-name)
-      initial-scratch-message nil)
-
-(set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
+(setq debug-on-error t) ; debug on error
 
 
 ;; -----------------------------------------------------------------------------
@@ -86,6 +79,9 @@
 
 ;; siscog
 ;;(load (expand-file-name "~/siscog/siscog"))
+
+;; packages
+(require 'config-packages)
 
 ;; utils
 (require 'config-utils)
@@ -105,8 +101,6 @@
 (require 'config-c)
 (require 'config-lisp)
 (require 'config-python)
-(require 'config-shell-script)
-(require 'config-markdown)
 
 ;; key bindings
 (require 'config-key-bindings)

@@ -4,7 +4,7 @@
 ;; font
 (set-face-attribute 'default nil :font "Consolas" :height 108)
 
-;; colour theme
+;; theme
 (setq custom-theme-directory +themes-dir+)
 (load-theme 'ample t)
 
@@ -21,18 +21,15 @@
 (require 'config-mode-line)
 
 ;; syntax highlighting
-(require 'font-lock)
 (global-font-lock-mode t)
 
 ;; highlight current line
-(require 'hl-line)
 (global-hl-line-mode t)
 
 ;; highlight active region
 (transient-mark-mode t)
 
 ;; line numbers
-(require 'linum)
 (global-linum-mode t)
 
 ;; cursor
@@ -48,7 +45,6 @@
       hscroll-step 1)
 
 ;; vertical scrolling
-(require 'smooth-scrolling)
 (setq smooth-scroll-margin 0
       scroll-margin 0
       scroll-step 1
