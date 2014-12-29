@@ -6,8 +6,11 @@
 ;;   swbuff-y - takes swbuff-clear-delay-ends-switching into consideration
 
 (defconst +packages+ '(;; libs
-                       dash
+                       async
+                       dash dash-functional
                        f flx
+                       ht
+                       ov
                        popup
                        s
                        ;; packages

@@ -1,4 +1,4 @@
-# Emacs, batteries included ![Emacs Icon](etc/omnisharp-icon.png)
+# ![Emacs Icon](etc/omnisharp-icon.png) Emacs, batteries included
 
 This is my Emacs configuration, continually used and extended since 2014.
 At the moment, it's mainly tailored for Lisp development.
@@ -51,4 +51,4 @@ Emacs terminology primer:
 - region - the text that is *marked* (selected), starting at *mark* and ending at *point* (cursor location).
 
 Links:
-- [Sexy Emacs!](http://emacs.sexy/)
+- [Sexy Emacs](http://emacs.sexy/)
