@@ -27,8 +27,9 @@
       neo-dont-be-alone t
       neo-persist-show t
       neo-cwd-line-style 'button
+      neo-show-updir-line nil
+      neo-show-hidden-files t
       neo-create-file-auto-open t
-      neo-hidden-files-regexp "^$"
       neo-window-width 30)
 
 

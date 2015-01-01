@@ -73,7 +73,8 @@
 (mapc 'require +packages-2+)
 
 ;; package menu
-(setq paradox-github-token t
+(setq paradox-execute-asynchronously nil
+      paradox-github-token t
       paradox-use-homepage-buttons nil
       paradox-display-star-count t
       paradox-display-download-count t
