@@ -19,7 +19,7 @@
                        company
                        diminish
                        elisp-slime-nav expand-region
-                       flx-ido
+                       flx-ido flycheck
                        ido-ubiquitous ido-vertical-mode
                        key-chord
                        multiple-cursors
@@ -61,8 +61,8 @@
 
 ;; package manager
 (require 'package)
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/"))
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+                         ("gnu" . "http://elpa.gnu.org/packages/"))
       package-user-dir +packages-dir+
       package-enable-at-startup nil)
 (package-initialize)

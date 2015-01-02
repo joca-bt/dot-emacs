@@ -23,7 +23,8 @@
 (setq windmove-wrap-around nil)
 
 ;; file browser
-(setq neo-smart-open t
+(setq neo-theme 'classic
+      neo-smart-open t
       neo-dont-be-alone t
       neo-persist-show t
       neo-cwd-line-style 'button
