@@ -5,7 +5,7 @@
 ;;   load path, startup
 ;;   packages, utils
 ;;   configurations:
-;;     ido, ui
+;;     ui, ido
 ;;     backups, session
 ;;     files and buffers
 ;;     editing, spelling
@@ -31,6 +31,7 @@
 (defconst +auto-check-delay+ 2)
 (defconst +auto-save-interval+ 300) ; 5 min
 (defconst +documentation-delay+ 0.5)
+(defconst +error-delay+ 1)
 (defconst +history-size+ 100)
 
 
@@ -87,8 +88,8 @@
 (require 'config-utils)
 
 ;; configurations
-(require 'config-ido)
 (require 'config-ui)
+(require 'config-ido)
 (require 'config-backups)
 (require 'config-session)
 (require 'config-files-and-buffers)

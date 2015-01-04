@@ -14,14 +14,9 @@
                     :width 'normal
                     :weight 'normal
                     :slant 'normal
-                    :underline nil
-                    :overline nil
-                    :strike-through nil
-;;                    :inverse-video nil ; inherit from frame
                     :foreground "black"
                     :background "grey80"
-                    :box nil
-                    :stipple nil)
+                    :box nil)
 
 
 (set-face-attribute 'tabbar-selected nil
