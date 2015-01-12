@@ -17,29 +17,22 @@
 ;;               slime-mdot-fu))
 (slime-autodoc-unload)
 
-;; indentation
-(setq-mode-local lisp-mode lisp-indent-function 'common-lisp-indent-function)
-
-;; tabs
-(setq-mode-local lisp-mode indent-tabs-mode nil
+;; style
+(setq-mode-local lisp-mode lisp-indent-function 'common-lisp-indent-function
+                           indent-tabs-mode nil
                            tab-width 8)
 
 
 ;; -----------------------------------------------------------------------------
 ;; emacs lisp ------------------------------------------------------------------
 
-;; tags
-(elisp-slime-nav-mode t)
-
-;; documentation
-;;(add-hook 'emacs-lisp-mode-hook 'eldoc-mode t)
-
-;; indentation
-(setq-mode-local emacs-lisp-mode lisp-indent-function 'lisp-indent-function)
-
-;; tabs
-(setq-mode-local emacs-lisp-mode indent-tabs-mode nil
+;; style
+(setq-mode-local emacs-lisp-mode lisp-indent-function 'lisp-indent-function
+                                 indent-tabs-mode nil
                                  tab-width 8)
+
+;; navigation
+(elisp-slime-nav-mode t)
 
 
 ;; -----------------------------------------------------------------------------

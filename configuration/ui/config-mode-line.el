@@ -1,10 +1,9 @@
 ;; -----------------------------------------------------------------------------
 ;; mode line -------------------------------------------------------------------
 ;;
-;; based on emacs/lisp/bindings.el
+;; based on Emacs' bindings.el
 
-(setq-default mode-line-format '("%e"
-                                 " "
+(setq-default mode-line-format '(" "
                                  (:eval (ml-encoding-and-terminator))
                                  "  "
                                  (:eval (ml-position))
@@ -24,14 +23,12 @@
 (defface ml-highlight '((t
                          :inherit nil
                          :box (:line-width 1 :color "grey25" :style nil)))
-  ""
-  :group 'ml)
+  "")
 
 (defface ml-strong '((t
                       :inherit nil
                       :weight bold))
-  ""
-  :group 'ml)
+  "")
 
 
 ;; -----------------------------------------------------------------------------
@@ -43,7 +40,6 @@
               'pointer 'arrow
               'help-echo 'ml-encoding-and-terminator-help
               'local-map ml-encoding-and-terminator-map))
-
 
 (defun ml-encoding-and-terminator-help (window object point)
   (with-selected-window window
@@ -64,14 +60,13 @@
               encoding
               terminator))))
 
-
 (defvar ml-encoding-and-terminator-map
   (let ((map (make-sparse-keymap)))
     (define-key map [mode-line mouse-2] 'ml-describe-encoding-and-terminator)
     (purecopy map)))
 
 (defun ml-describe-encoding-and-terminator (event)
-  (interactive "e")
+  (interactive "@e")
   (with-selected-window (posn-window (event-start event))
     (describe-coding-system buffer-file-coding-system)))
 
@@ -80,11 +75,11 @@
 ;; position --------------------------------------------------------------------
 
 (defun ml-position ()
-  (let ((small-space (propertize " " 'display '(space :width 0.33))))
+  (let ((space (propertize " " 'display '(space :width 0.33))))
     `("%l"
-      ,small-space
+      ,space
       ":"
-      ,small-space
+      ,space
       ,(format "%d" (+ (current-column) 1)))))
 
 
@@ -105,7 +100,6 @@
         (t
          "    ")))
 
-
 (defun ml-buffer-status-help (window object point)
   (with-selected-window window
     (if buffer-read-only
@@ -122,7 +116,6 @@
               'mouse-face 'ml-highlight
               'pointer 'arrow
               'help-echo 'ml-buffer-name-help))
-
 
 (defun ml-buffer-name-help (window object point)
   (with-selected-window window
@@ -142,7 +135,6 @@
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))
 
-
 (defun ml-modes ()
   `((:propertize ("" mode-name)
                  mouse-face ml-highlight
@@ -155,7 +147,6 @@
                  help-echo ml-minor-mode-help
                  local-map ,ml-minor-mode-map)))
 
-
 (defun ml-major-mode-help (window object point)
   (with-selected-window window
     "Major mode\nmouse-1: Show major mode menu\nmouse-2: Describe major mode\nmouse-3: Toggle minor modes"))
@@ -163,7 +154,6 @@
 (defun ml-minor-mode-help (window object point)
   (with-selected-window window
     "Minor mode\nmouse-1: Show minor mode menu\nmouse-2: Describe minor mode\nmouse-3: Toggle minor modes"))
-
 
 (defvar ml-major-mode-map
   (let ((map (make-sparse-keymap)))

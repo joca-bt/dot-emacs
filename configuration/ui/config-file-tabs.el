@@ -1,11 +1,7 @@
 ;; -----------------------------------------------------------------------------
 ;; file tabs -------------------------------------------------------------------
 ;;
-;; based on aquamacs-tabbar and tabbar-ruler
-
-(setq tabbar-buffer-home-button '(("") "")
-      tabbar-buffer-groups-function nil)
-
+;; based on Aquamacs' tabbar and tabbar-ruler
 
 (set-face-attribute 'tabbar-default nil
                     :inherit nil
@@ -17,7 +13,6 @@
                     :foreground "black"
                     :background "grey80"
                     :box nil)
-
 
 (set-face-attribute 'tabbar-selected nil
                     :inherit 'tabbar-default
@@ -35,7 +30,6 @@
                                      :weight bold))
   ""
   :group 'tabbar)
-
 
 (set-face-attribute 'tabbar-unselected nil
                     :inherit 'tabbar-default
@@ -56,9 +50,9 @@
   ""
   :group 'tabbar)
 
-
 (set-face-attribute 'tabbar-button nil
                     :inherit 'tabbar-default
+                    :foreground "black"
                     :background "grey80"
                     :box nil)
 
@@ -66,9 +60,9 @@
                     :inherit 'tabbar-button
                     :background "grey75")
 
-
 (set-face-attribute 'tabbar-separator nil
                     :inherit 'tabbar-default
+                    :foreground "black"
                     :background "grey55"
                     :height 1.0)
 
@@ -106,30 +100,34 @@
                                     'local-map (tabbar-make-tab-keymap tab))))
     (concat display-label tabbar-separator-value)))
 
-
 (defun tabbar-line-button (button)
   "Returns the display representation of a button.
    That is, a propertized string used as an `header-line-format' template element.
    Call `tabbar-button-label-function' to obtain a label for the button."
   (let ((label (if tabbar-button-label-function
                    (funcall tabbar-button-label-function button)
-                 (cons button button)))) ; (enabled . disabled)
-    ;; cache the display value of the enabled/disabled buttons in variable `tabbar-NAME-button-value'
+                 (cons button button))))
+    ;; cache the display value of the buttons in variable `tabbar-NAME-button-value'
     (set (intern (format "tabbar-%s-button-value" button))
-         (cons (propertize (car label) ; enabled
+         (cons ;; enabled
+               (propertize (car label)
                            'tabbar-button button
                            'face 'tabbar-button
                            'mouse-face 'tabbar-button-highlight
                            'pointer 'arrow
                            'help-echo 'tabbar-help-on-button
                            'local-map (tabbar-make-button-keymap button))
-               (propertize (cdr label) ; disabled
+               ;; disabled
+               (propertize (cdr label)
                            'face 'tabbar-button
                            'pointer 'arrow)))))
 
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
+
+(setq tabbar-buffer-home-button '(("") "")
+      tabbar-buffer-groups-function nil)
 
 (defun tabbar-buffer-list ()
   "Returns the list of buffers to show in the tab bar.
@@ -140,7 +138,6 @@
                                 (buffer-file-name buffer))
                       (cl-find (aref (buffer-name buffer) 0) " *")))
                 (buffer-list)))
-
 
 (defun tabbar-help-on-tab (window object position)
   "Returns the help string shown when mouse-hovering a tab.
@@ -153,18 +150,15 @@
           (abbreviate-file-name file-name)
         (buffer-name buffer)))))
 
-
 (defun tabbar-help-on-button (window object position)
   "Returns the help string shown when mouse-hovering a button.
    No help available."
   nil)
 
-
 (defun tabbar-update (&rest args)
   "Updates the tab bar."
   (tabbar-set-template tabbar-current-tabset nil)
   (tabbar-display-update))
-
 
 ;; update the tab bar whenever the current buffer is modified or saved
 (add-hook 'after-change-functions 'tabbar-update t)
