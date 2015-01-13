@@ -6,7 +6,7 @@
 ;;   swbuff-y - takes swbuff-clear-delay-ends-switching into consideration
 
 (defconst +packages+ '(;; libs
-                       async
+                       anaphora async
                        dash dash-functional
                        f flx
                        ht
@@ -20,14 +20,18 @@
                        diminish
                        elisp-slime-nav expand-region
                        flx-ido flycheck
+                       google-c-style
                        ido-ubiquitous ido-vertical-mode
                        key-chord
                        multiple-cursors
                        neotree
-                       paradox ;; parenface
+                       paradox
                        region-bindings-mode
                        slime slime-company smartparens smex smooth-scrolling
-                       undo-tree)
+                       undo-tree
+                       ;; not used
+                       ;; parenface
+                       )
   "Packages managed by the package manager.")
 
 (defconst +packages-2+ '(;; built-in
@@ -83,7 +87,10 @@
       paradox-column-width-status 9
       paradox-column-width-star 4
       paradox-column-width-download 4)
-(paradox-enable)
+
+(advice-add 'list-packages :around (alambda (&rest _)
+                                     (advice-remove 'list-packages #'self)
+                                     (paradox-list-packages nil)))
 
 
 ;; -----------------------------------------------------------------------------

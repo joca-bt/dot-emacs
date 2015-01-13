@@ -17,10 +17,6 @@
 (setq tab-always-indent t
       c-tab-always-indent t)
 
-;; tabs
-(setq-default indent-tabs-mode t
-              tab-width 4)
-
 ;; cua
 (setq cua-enable-cua-keys t
       cua-remap-control-z nil ; using undo-tree instead
