@@ -65,10 +65,10 @@
 
 ;; package manager
 (require 'package)
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+(setq package-enable-at-startup nil
+      package-archives '(("melpa" . "http://melpa.org/packages/")
                          ("gnu" . "http://elpa.gnu.org/packages/"))
-      package-user-dir +packages-dir+
-      package-enable-at-startup nil)
+      package-user-dir +packages-dir+)
 (package-initialize)
 
 ;; load and install packages

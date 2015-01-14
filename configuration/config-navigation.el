@@ -16,7 +16,7 @@
       swbuff-status-window-layout 'scroll
       swbuff-separator ", "
       swbuff-special-buffers-re "^[ *]"
-      swbuff-include-buffer-regexps '("^*scratch*" "^*slime-")
+      swbuff-include-buffer-regexps '("^*Customize" "^*Help" "^*Package" "^*scratch" "^*slime")
       swbuff-exclude-buffer-regexps '("^[ *]"))
 
 ;; window navigation
