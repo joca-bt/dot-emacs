@@ -131,6 +131,7 @@
 (eval-after-load "company" '(diminish 'company-mode))
 (eval-after-load "elisp-slime-nav" '(diminish 'elisp-slime-nav-mode))
 (eval-after-load "region-bindings-mode" '(diminish 'region-bindings-mode))
+(eval-after-load "shackle" '(diminish 'shackle-mode))
 (eval-after-load "smartparens" '(diminish 'smartparens-mode))
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "ws-trim" '(diminish 'ws-trim-mode))

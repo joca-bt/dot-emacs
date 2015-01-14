@@ -25,14 +25,12 @@
 (ido-ubiquitous-mode t)
 
 ;; ido in M-x
-(setq smex-flex-matching t
-      smex-history-length (/ ido-max-prospects 2)
+(setq smex-history-length (/ ido-max-prospects 2)
       smex-save-file (concat +session-dir+ ".smex"))
 (smex-initialize)
 
 ;; better flex in ido
-(setq ido-enable-flex-matching t
-      ido-use-faces nil
+(setq ido-use-faces nil
       flx-ido-use-faces t)
 (flx-ido-mode t)
 

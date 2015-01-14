@@ -27,7 +27,7 @@
                        neotree
                        paradox
                        region-bindings-mode
-                       slime slime-company smartparens smex smooth-scrolling
+                       shackle slime slime-company smartparens smex smooth-scrolling
                        undo-tree
                        ;; not used
                        ;; parenface
