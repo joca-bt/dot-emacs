@@ -1,14 +1,8 @@
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
-;; style
-(c-add-style "google" google-c-style)
-(setq         c-default-style "google")
-(setq-default c-auto-newline nil
-              c-electric-flag t
-              c-hungry-delete-key nil
-              c-syntactic-indentation t
-              indent-tabs-mode t
+;; indentation
+(setq-default indent-tabs-mode t
               tab-width 4)
 (electric-indent-mode t)
 

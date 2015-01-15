@@ -11,7 +11,7 @@
                        f flx
                        ht
                        ov
-                       popup
+                       popup pos-tip
                        s
                        ;; packages
                        ace-jump-mode
@@ -36,7 +36,9 @@
 
 (defconst +packages-2+ '(;; built-in
                          mode-local
+                         saveplace
                          ;; manually managed
+                         doxymacs
                          linum
                          powerline
                          rw-hunspell rw-ispell rw-language-and-country-codes
