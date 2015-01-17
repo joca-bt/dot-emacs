@@ -33,14 +33,6 @@
       flycheck-highlighting-mode 'sexps
       flycheck-display-errors-delay +error-delay+)
 
-(put 'error 'flycheck-fringe-bitmap 'filled-circle)
-(put 'warning 'flycheck-fringe-bitmap 'filled-circle)
-(put 'info 'flycheck-fringe-bitmap 'filled-circle)
-
-(set-face-underline 'flycheck-error (cl-substitute 'line 'wave (face-attribute 'flycheck-error :underline)))
-(set-face-underline 'flycheck-warning (cl-substitute 'line 'wave (face-attribute 'flycheck-warning :underline)))
-(set-face-underline 'flycheck-info (cl-substitute 'line 'wave (face-attribute 'flycheck-info :underline)))
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

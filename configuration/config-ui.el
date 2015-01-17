@@ -5,8 +5,7 @@
 (set-face-attribute 'default nil :font "Consolas" :height 108)
 
 ;; theme
-(setq custom-theme-directory +themes-dir+)
-(load-theme 'ample t)
+(require 'config-theme)
 
 ;; title bar
 (require 'config-title-bar)
