@@ -129,6 +129,7 @@
 ;; modes -----------------------------------------------------------------------
 
 (eval-after-load "company" '(diminish 'company-mode))
+(eval-after-load "doxymacs" '(diminish 'doxymacs-mode))
 (eval-after-load "elisp-slime-nav" '(diminish 'elisp-slime-nav-mode))
 (eval-after-load "region-bindings-mode" '(diminish 'region-bindings-mode))
 (eval-after-load "shackle" '(diminish 'shackle-mode))

@@ -1,7 +1,7 @@
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
-;; indentation
+;; style
 (setq-default indent-tabs-mode t
               tab-width 4)
 (electric-indent-mode t)
