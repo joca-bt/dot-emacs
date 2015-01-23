@@ -1,6 +1,9 @@
 ;; -----------------------------------------------------------------------------
 ;; c, c++ ----------------------------------------------------------------------
 
+;; syntax highlighting
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;; style
 (c-add-style "google" google-c-style)
 (setq         c-default-style "google")
@@ -10,8 +13,6 @@
               c-syntactic-indentation t)
 
 ;; documentation
-(setq doxymacs-doxygen-style "JavaDoc")
-
 (add-hook 'c-mode-common-hook 'doxymacs-mode t)
 (add-hook 'c-mode-common-hook 'doxymacs-font-lock t)
 

@@ -16,7 +16,7 @@
                        ;; packages
                        ace-jump-mode
                        buffer-move
-                       company
+                       cmake-font-lock cmake-mode company
                        diminish
                        elisp-slime-nav expand-region
                        flx-ido flycheck

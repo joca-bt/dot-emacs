@@ -72,8 +72,6 @@
 
 (setq load-prefer-newer t) ; always load the newest version of a file
 
-(setq debug-on-error t) ; debug on error
-
 
 ;; -----------------------------------------------------------------------------
 ;; configurations --------------------------------------------------------------

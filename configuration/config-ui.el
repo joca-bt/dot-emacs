@@ -51,7 +51,7 @@
       scroll-preserve-screen-position t
       mouse-wheel-progressive-speed nil)
 
-;; pop-up management
+;; pop-up buffer/window management
 (setq shackle-rules '((t :select t)))
 (shackle-mode t)
 

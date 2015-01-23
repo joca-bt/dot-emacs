@@ -22,8 +22,9 @@
 (global-company-mode t)
 
 ;; documentation
-(setq eldoc-echo-area-use-multiline-p t
-      eldoc-idle-delay +documentation-delay+)
+(setq doxymacs-doxygen-style "JavaDoc"
+      eldoc-idle-delay +documentation-delay+
+      eldoc-echo-area-use-multiline-p t)
 
 ;; syntax checking
 (setq flycheck-check-syntax-automatically '(save idle-change)
