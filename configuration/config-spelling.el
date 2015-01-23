@@ -16,10 +16,6 @@
                                        ("^pt" . ,(concat +dictionaries-dir+ "pdict-pt.dic"))
                                        ("" . ,(concat +dictionaries-dir+ "pdict.dic"))))
 
-(let ((modes '()))
-  (dolist (mode modes)
-    (add-hook mode 'flyspell-prog-mode t)))
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

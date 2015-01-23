@@ -41,8 +41,8 @@
 (add-to-list 'load-path +configuration-dir+)
 (add-to-list 'load-path +packages-dir+)
 
-(let ((dirs (nconc (directory-files +configuration-dir+ t "\\w+")
-                   (directory-files +packages-dir+ t "\\w+"))))
+(let ((dirs (append (directory-files +configuration-dir+ t "\\w+")
+                    (directory-files +packages-dir+ t "\\w+"))))
   (dolist (dir dirs)
     (when (file-directory-p dir)
       (add-to-list 'load-path dir))))
@@ -62,8 +62,8 @@
 (require 'server)
 (setq server-name "server"
       server-auth-dir +session-dir+)
-(unless (and window-system
-             (server-running-p))
+(when (and window-system
+           (not (server-running-p)))
   (server-start))
 
 (fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
