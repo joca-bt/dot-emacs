@@ -46,7 +46,7 @@
                          tabbar
                          ws-trim
                          ;; custom requires (from +packages+)
-                         slime-autoloads smartparens-config)
+                         smartparens-config)
   "Manually managed packages.")
 
 (defvar *package-archives-refreshed-p* nil
