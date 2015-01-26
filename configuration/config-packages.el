@@ -6,32 +6,29 @@
 ;;   swbuff-y - takes swbuff-clear-delay-ends-switching into consideration
 
 (defconst +packages+ '(;; libs
-                       anaphora async
-                       dash dash-functional
-                       f flx
-                       ht
-                       ov
-                       popup pos-tip
-                       s
-                       ;; packages
+                       anaphora dash dash-functional f ht names s
+                       async flx grizzl
+                       ov popup pos-tip
+                       ;; company
+                       company slime-company
+                       ;; flycheck
+                       flycheck
+                       ;; ido
+                       flx-ido ido-ubiquitous ido-vertical-mode smex
+                       ;; key bindings
+                       key-chord region-bindings-mode
+                       ;; rest
                        ace-jump-mode
                        buffer-move
-                       cmake-font-lock cmake-mode company
+                       cmake-font-lock cmake-mode
                        diminish
                        elisp-slime-nav expand-region
-                       flx-ido flycheck
                        google-c-style
-                       ido-ubiquitous ido-vertical-mode
-                       key-chord
                        multiple-cursors
                        neotree
                        paradox
-                       region-bindings-mode
-                       shackle slime slime-company smartparens smex smooth-scrolling
-                       undo-tree
-                       ;; not used
-                       ;; parenface
-                       )
+                       shackle slime smartparens smooth-scrolling
+                       undo-tree)
   "Packages managed by the package manager.")
 
 (defconst +packages-2+ '(;; built-in

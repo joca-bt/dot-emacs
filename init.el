@@ -39,10 +39,10 @@
 ;; load path -------------------------------------------------------------------
 
 (add-to-list 'load-path +configuration-dir+)
-(add-to-list 'load-path +packages-dir+)
+(add-to-list 'load-path (concat +packages-dir+ "manual/"))
 
 (let ((dirs (append (directory-files +configuration-dir+ t "\\w+")
-                    (directory-files +packages-dir+ t "\\w+"))))
+                    (directory-files (concat +packages-dir+ "manual/") t "\\w+"))))
   (dolist (dir dirs)
     (when (file-directory-p dir)
       (add-to-list 'load-path dir))))
