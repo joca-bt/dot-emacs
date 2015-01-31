@@ -20,14 +20,12 @@
                     :background "grey95"
                     :box '(:line-width 3 :color "grey95" :style nil))
 
-(defface tabbar-selected-highlight '((t
-                                      :inherit tabbar-selected))
+(defface tabbar-selected-highlight '((t :inherit tabbar-selected))
   ""
   :group 'tabbar)
 
-(defface tabbar-selected-modified '((t
-                                     :inherit tabbar-selected
-                                     :weight bold))
+(defface tabbar-selected-modified '((t :inherit tabbar-selected
+                                       :weight bold))
   ""
   :group 'tabbar)
 
@@ -37,16 +35,14 @@
                     :background "grey80"
                     :box '(:line-width 3 :color "grey80" :style nil))
 
-(defface tabbar-unselected-highlight '((t
-                                        :inherit tabbar-unselected
-                                        :background "grey75"
-                                        :box (:line-width 3 :color "grey75" :style nil)))
+(defface tabbar-unselected-highlight '((t :inherit tabbar-unselected
+                                          :background "grey75"
+                                          :box (:line-width 3 :color "grey75" :style nil)))
   ""
   :group 'tabbar)
 
-(defface tabbar-unselected-modified '((t
-                                       :inherit tabbar-unselected
-                                       :weight bold))
+(defface tabbar-unselected-modified '((t :inherit tabbar-unselected
+                                         :weight bold))
   ""
   :group 'tabbar)
 
