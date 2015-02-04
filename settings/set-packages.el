@@ -10,7 +10,7 @@
                        async flx grizzl
                        ov popup pos-tip
                        ;; company
-                       company slime-company
+                       company company-c-headers slime-company
                        ;; flycheck
                        flycheck
                        ;; ido
@@ -21,7 +21,7 @@
                        ace-jump-mode
                        buffer-move
                        cmake-font-lock cmake-mode
-                       diminish
+                       diminish disaster
                        elisp-slime-nav expand-region
                        google-c-style
                        multiple-cursors
@@ -95,4 +95,4 @@
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
-(provide 'config-packages)
+(provide 'set-packages)

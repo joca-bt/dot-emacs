@@ -4,7 +4,7 @@
 ;; organization:
 ;;   load path, startup
 ;;   packages, utils
-;;   configurations:
+;;   settings:
 ;;     ui, ido
 ;;     backups, session
 ;;     files and buffers
@@ -19,14 +19,15 @@
                                               (file-name-directory load-file-name))
                                             "~/.emacs.d/")))
 
-(defconst +backups-dir+       (concat +emacs-dir+ "backups/"))
-(defconst +session-dir+       (concat +emacs-dir+ "session/"))
-(defconst +temp-dir+          (concat +emacs-dir+ "temp/"))
+(defconst +settings-dir+     (concat +emacs-dir+ "settings/"))
+(defconst +packages-dir+     (concat +emacs-dir+ "packages/"))
+(defconst +themes-dir+       (concat +emacs-dir+ "packages/themes/"))
 
-(defconst +configuration-dir+ (concat +emacs-dir+ "configuration/"))
-(defconst +dictionaries-dir+  (concat +emacs-dir+ "dictionaries/"))
-(defconst +packages-dir+      (concat +emacs-dir+ "packages/"))
-(defconst +themes-dir+        (concat +emacs-dir+ "packages/themes/"))
+(defconst +backups-dir+      (concat +emacs-dir+ "backups/"))
+(defconst +session-dir+      (concat +emacs-dir+ "session/"))
+(defconst +temp-dir+         (concat +emacs-dir+ "temp/"))
+
+(defconst +dictionaries-dir+ (concat +emacs-dir+ "dictionaries/"))
 
 (defconst +auto-check-delay+ 2)
 (defconst +auto-save-interval+ 300) ; 5 min
@@ -38,10 +39,10 @@
 ;; -----------------------------------------------------------------------------
 ;; load path -------------------------------------------------------------------
 
-(add-to-list 'load-path +configuration-dir+)
+(add-to-list 'load-path +settings-dir+)
 (add-to-list 'load-path (concat +packages-dir+ "manual/"))
 
-(let ((dirs (append (directory-files +configuration-dir+ t "\\w+")
+(let ((dirs (append (directory-files +settings-dir+ t "\\w+")
                     (directory-files (concat +packages-dir+ "manual/") t "\\w+"))))
   (dolist (dir dirs)
     (when (file-directory-p dir)
@@ -74,32 +75,32 @@
 
 
 ;; -----------------------------------------------------------------------------
-;; configurations --------------------------------------------------------------
+;; settings --------------------------------------------------------------------
 
 ;; siscog
 ;;(load (expand-file-name "~/siscog/siscog"))
 
 ;; packages
-(require 'config-packages)
+(require 'set-packages)
 
 ;; utils
-(require 'config-utils)
+(require 'set-utils)
 
-;; configurations
-(require 'config-ui)
-(require 'config-ido)
-(require 'config-backups)
-(require 'config-session)
-(require 'config-files-and-buffers)
-(require 'config-editing)
-(require 'config-spelling)
-(require 'config-programming)
-(require 'config-navigation)
+;; settings
+(require 'set-ui)
+(require 'set-ido)
+(require 'set-backups)
+(require 'set-session)
+(require 'set-files-and-buffers)
+(require 'set-editing)
+(require 'set-spelling)
+(require 'set-programming)
+(require 'set-navigation)
 
 ;; programming languages and major modes
-(require 'config-c)
-(require 'config-lisp)
-(require 'config-python)
+(require 'set-c)
+(require 'set-lisp)
+(require 'set-python)
 
 ;; key bindings
-(require 'config-key-bindings)
+(require 'set-key-bindings)

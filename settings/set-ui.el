@@ -5,19 +5,19 @@
 (set-face-attribute 'default nil :font "Consolas" :height 108)
 
 ;; theme
-(require 'config-theme)
+(require 'set-theme)
 
 ;; title bar
-(require 'config-title-bar)
+(require 'set-title-bar)
 
 ;; toolbar
 (tool-bar-mode -1)
 
 ;; file tabs
-(require 'config-file-tabs)
+(require 'set-file-tabs)
 
 ;; mode line
-(require 'config-mode-line)
+(require 'set-mode-line)
 
 ;; syntax highlighting
 (global-font-lock-mode t)
@@ -59,4 +59,4 @@
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
-(provide 'config-ui)
+(provide 'set-ui)
