@@ -55,7 +55,7 @@
 ;; skip startup screen and messages
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
-(custom-set-variables `(inhibit-startup-echo-area-message ,(user-login-name)))
+(fset 'display-startup-echo-area-message 'ignore)
 
 (set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
 
@@ -69,9 +69,11 @@
 
 (fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
 
-(setq temporary-file-directory +temp-dir+) ; temporary files directory
-
-(setq load-prefer-newer t) ; always load the newest version of a file
+;; devices, locks, etc.
+(setq create-lockfiles nil
+      load-prefer-newer t
+      null-device "/dev/null"
+      temporary-file-directory +temp-dir+)
 
 
 ;; -----------------------------------------------------------------------------
