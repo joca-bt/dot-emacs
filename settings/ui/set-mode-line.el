@@ -1,4 +1,4 @@
-;; -------------------------------------------------- -*- lexical-binding: t -*-
+;; -----------------------------------------------------------------------------
 ;; mode line -------------------------------------------------------------------
 ;;
 ;; based on Emacs' bindings.el
@@ -37,7 +37,7 @@
   (propertize "%Z"
               'mouse-face 'ml-highlight
               'pointer 'arrow
-              'help-echo 'ml-encoding-and-terminator-help
+              'help-echo #'ml-encoding-and-terminator-help
               'local-map ml-encoding-and-terminator-map))
 
 (defun ml-encoding-and-terminator-help (window object point)
@@ -88,12 +88,12 @@
          (propertize " RO "
                      'mouse-face 'ml-highlight
                      'pointer 'arrow
-                     'help-echo 'ml-buffer-status-help))
+                     'help-echo #'ml-buffer-status-help))
         ((buffer-modified-p)
          (propertize " ** "
                      'mouse-face 'ml-highlight
                      'pointer 'arrow
-                     'help-echo 'ml-buffer-status-help))
+                     'help-echo #'ml-buffer-status-help))
         (t
          "    ")))
 
@@ -112,7 +112,7 @@
               'face 'ml-strong
               'mouse-face 'ml-highlight
               'pointer 'arrow
-              'help-echo 'ml-buffer-name-help))
+              'help-echo #'ml-buffer-name-help))
 
 (defun ml-buffer-name-help (window object point)
   (with-selected-window window
@@ -129,7 +129,7 @@
   `(:propertize ("" mode-name)
                 mouse-face ml-highlight
                 pointer arrow
-                help-echo ml-major-mode-help
+                help-echo ,#'ml-major-mode-help
                 local-map ,ml-major-mode-map))
 
 (defun ml-major-mode-help (window object point)
@@ -138,9 +138,9 @@
 
 (defvar ml-major-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map [mode-line mouse-1] `(menu-item "Menu Bar" ignore :filter ,#'(lambda (_)
-                                                                                   (mouse-menu-major-mode-map))))
-    (define-key map [mode-line mouse-2] 'describe-mode)
+    (define-key map [mode-line mouse-1] `(menu-item "Menu Bar" ,#'ignore :filter ,#'(lambda (_)
+                                                                                      (mouse-menu-major-mode-map))))
+    (define-key map [mode-line mouse-2] #'describe-mode)
     (define-key map [mode-line mouse-3] mode-line-mode-menu)
     (purecopy map)))
 
@@ -161,7 +161,7 @@
   `(:propertize ("" minor-mode-alist)
                 mouse-face ml-highlight
                 pointer arrow
-                help-echo ml-minor-mode-help
+                help-echo ,#'ml-minor-mode-help
                 local-map ,ml-minor-mode-map))
 
 (defun ml-minor-mode-help (window object point)
@@ -170,8 +170,8 @@
 
 (defvar ml-minor-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map [mode-line mouse-1] 'mouse-minor-mode-menu)
-    (define-key map [mode-line mouse-2] 'mode-line-minor-mode-help)
+    (define-key map [mode-line mouse-1] #'mouse-minor-mode-menu)
+    (define-key map [mode-line mouse-2] #'mode-line-minor-mode-help)
     (define-key map [mode-line mouse-3] mode-line-mode-menu)
     (purecopy map)))
 

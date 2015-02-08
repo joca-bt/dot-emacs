@@ -55,7 +55,7 @@
 ;; skip startup screen and messages
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
-(fset 'display-startup-echo-area-message 'ignore)
+(fset 'display-startup-echo-area-message #'ignore)
 
 (set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
 
@@ -67,7 +67,7 @@
            (not (server-running-p)))
   (server-start))
 
-(fset 'yes-or-no-p 'y-or-n-p) ; no more yes-or-no questions
+(fset 'yes-or-no-p #'y-or-n-p) ; no more yes-or-no questions
 
 ;; devices, locks, etc.
 (setq create-lockfiles nil

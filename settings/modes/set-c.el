@@ -13,8 +13,8 @@
               c-syntactic-indentation t)
 
 ;; documentation
-(add-hook 'c-mode-common-hook 'doxymacs-mode t)
-(add-hook 'c-mode-common-hook 'doxymacs-font-lock t)
+(add-hook 'c-mode-common-hook #'doxymacs-mode t)
+(add-hook 'c-mode-common-hook #'doxymacs-font-lock t)
 
 
 ;; -----------------------------------------------------------------------------

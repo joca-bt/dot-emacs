@@ -31,7 +31,6 @@
 (global-undo-tree-mode t)
 
 ;; trim whitespaces
-(setq         ws-trim-global-modes t)
 (setq-default ws-trim-level 0)
 (global-ws-trim-mode t)
 

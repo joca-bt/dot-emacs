@@ -92,7 +92,7 @@
                                     'face face
                                     'mouse-face mouse-face
                                     'pointer 'arrow
-                                    'help-echo 'tabbar-help-on-tab
+                                    'help-echo #'tabbar-help-on-tab
                                     'local-map (tabbar-make-tab-keymap tab))))
     (concat display-label tabbar-separator-value)))
 
@@ -111,7 +111,7 @@
                            'face 'tabbar-button
                            'mouse-face 'tabbar-button-highlight
                            'pointer 'arrow
-                           'help-echo 'tabbar-help-on-button
+                           'help-echo #'tabbar-help-on-button
                            'local-map (tabbar-make-button-keymap button))
                ;; disabled
                (propertize (cdr label)
@@ -157,8 +157,8 @@
   (tabbar-display-update))
 
 ;; update the tab bar whenever the current buffer is modified or saved
-(add-hook 'after-change-functions 'tabbar-update t)
-(add-hook 'after-save-hook 'tabbar-update t)
+(add-hook 'after-change-functions #'tabbar-update t)
+(add-hook 'after-save-hook #'tabbar-update t)
 
 
 ;; -----------------------------------------------------------------------------

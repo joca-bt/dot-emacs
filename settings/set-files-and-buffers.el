@@ -25,7 +25,7 @@
     (when file-name
       (recentf-add-file file-name))))
 
-(add-hook 'window-configuration-change-hook 'recentf-push-to-top t)
+(add-hook 'window-configuration-change-hook #'recentf-push-to-top t)
 
 
 ;; -----------------------------------------------------------------------------

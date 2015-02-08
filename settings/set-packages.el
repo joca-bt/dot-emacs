@@ -72,8 +72,8 @@
 
 ;; load and install packages
 (setq make-backup-files nil)
-(mapc 'load-package +packages+)
-(mapc 'require +packages-2+)
+(mapc #'load-package +packages+)
+(mapc #'require +packages-2+)
 
 ;; package menu
 (setq paradox-execute-asynchronously nil
