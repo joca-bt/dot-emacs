@@ -7,7 +7,7 @@
       ido-case-fold t
       ido-enable-prefix nil
       ido-enable-dot-prefix nil
-      ido-use-filename-at-point 'guess
+      ido-use-filename-at-point nil
       ido-use-url-at-point nil
       ido-max-prospects 10
       ido-buffer-disable-smart-matches t

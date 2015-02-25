@@ -11,9 +11,9 @@
 (slime-setup '(slime-fancy
                slime-asdf
                slime-banner
-               slime-company))
-;;               slime-indentation
-;;               slime-mdot-fu))
+               slime-company
+               slime-mdot-fu))
+;;               slime-indentation))
 (slime-autodoc-unload)
 
 ;; style
