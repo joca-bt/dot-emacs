@@ -3,19 +3,27 @@
 ;;
 ;; based on Emacs' bindings.el
 
-(setq-default mode-line-format '(" "
-                                 (:eval (ml-encoding-and-terminator))
-                                 "  "
-                                 (:eval (ml-position))
-                                 "  "
-                                 (:eval (ml-buffer-status))
-                                 "  "
-                                 (:eval (ml-buffer-name))
-                                 "  "
-                                 (:eval (ml-major-mode))
-                                 (:eval (ml-minor-modes))))
+(defconst +ml-default-mode-line+ mode-line-format)
+
+(setq-default mode-line-format '(:eval (ml-mode-line)))
 
 (setq mode-line-default-help-echo nil)
+
+(defun ml-mode-line ()
+  (let ((modes '(paradox-menu-mode)))
+    (if (cl-find major-mode modes)
+        +ml-default-mode-line+
+      '(" "
+        (:eval (ml-encoding-and-terminator))
+        "  "
+        (:eval (ml-position))
+        "  "
+        (:eval (ml-buffer-status))
+        "  "
+        (:eval (ml-buffer-name))
+        "  "
+        (:eval (ml-major-mode))
+        (:eval (ml-minor-modes))))))
 
 
 ;; -----------------------------------------------------------------------------
