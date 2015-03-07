@@ -24,7 +24,7 @@
                        diminish disaster
                        elisp-slime-nav expand-region
                        google-c-style
-                       multiple-cursors
+                       macrostep multiple-cursors
                        neotree
                        paradox
                        shackle slime smartparens smooth-scrolling

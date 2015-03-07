@@ -13,8 +13,8 @@
 (desktop-save-mode t)
 
 ;; save history between sessions
-(setq history-length +history-size+
-      savehist-autosave-interval +auto-save-interval+
+(setq savehist-autosave-interval +auto-save-interval+
+      history-length +history-size+
       savehist-file (concat +session-dir+ ".history"))
 (savehist-mode t)
 

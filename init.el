@@ -9,7 +9,7 @@
 ;;     backups, session
 ;;     files and buffers
 ;;     editing, spelling
-;;     programming
+;;     programming, tools
 ;;     navigation
 ;;   programming languages and major modes:
 ;;     c, lisp, python
@@ -97,6 +97,7 @@
 (require 'set-editing)
 (require 'set-spelling)
 (require 'set-programming)
+(require 'set-tools)
 (require 'set-navigation)
 
 ;; programming languages and major modes
