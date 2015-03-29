@@ -5,7 +5,7 @@
 (setq desktop-save t
       desktop-auto-save-timeout +auto-save-interval+
       desktop-load-locked-desktop t
-      desktop-restore-frames t
+      desktop-restore-frames nil
       desktop-base-file-name ".desktop"
       desktop-base-lock-name ".desktop.lock"
       desktop-dirname +session-dir+

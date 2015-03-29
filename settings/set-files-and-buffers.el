@@ -2,8 +2,7 @@
 ;; files and buffers -----------------------------------------------------------
 
 ;; name buffers uniquely
-(setq uniquify-buffer-name-style 'post-forward
-      uniquify-after-kill-buffer-p t)
+(setq uniquify-buffer-name-style 'post-forward)
 
 ;; mouse buffer list
 (setq mouse-buffer-menu-maxlen 20
@@ -20,7 +19,7 @@
 (recentf-mode t)
 
 (defun recentf-push-to-top ()
-  "Pushes the current buffer to the top of the recent files list."
+  "Pushes the file that the current buffer is visiting to the top of the recent files list, if any."
   (let ((file-name (buffer-file-name)))
     (when file-name
       (recentf-add-file file-name))))

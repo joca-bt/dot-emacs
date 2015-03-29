@@ -5,8 +5,7 @@
 (setq select-active-regions nil)
 
 ;; expand region
-(setq expand-region-skip-whitespace t
-      expand-region-fast-keys-enabled t
+(setq expand-region-fast-keys-enabled t
       expand-region-contract-fast-key "c"
       expand-region-reset-fast-key "r")
 

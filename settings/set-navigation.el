@@ -29,7 +29,6 @@
       neo-cwd-line-style 'button
       neo-show-updir-line nil
       neo-show-hidden-files t
-      neo-create-file-auto-open t
       neo-window-width 30)
 
 
