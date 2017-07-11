@@ -16,20 +16,14 @@
 ;; file tabs
 (require 'set-file-tabs)
 
+;; line numbers
+(global-linum-mode t)
+
 ;; mode line
 (require 'set-mode-line)
 
-;; syntax highlighting
-(global-font-lock-mode t)
-
 ;; highlight current line
 (global-hl-line-mode t)
-
-;; highlight active region
-(transient-mark-mode t)
-
-;; line numbers
-(global-linum-mode t)
 
 ;; cursor
 (setq-default cursor-type 'bar)
@@ -44,15 +38,16 @@
       hscroll-step 1)
 
 ;; vertical scrolling
-(setq smooth-scroll-margin 0
-      scroll-margin 0
+(setq scroll-margin 0
       scroll-step 1
       scroll-conservatively most-positive-fixnum
       scroll-preserve-screen-position t
       mouse-wheel-progressive-speed nil)
 
 ;; pop-up buffer/window management
-(setq shackle-rules '((t :select t)))
+(setq shackle-default-rule '(:select t)
+      shackle-select-reused-windows t
+      shackle-inhibit-window-quit-on-same-windows t)
 (shackle-mode t)
 
 

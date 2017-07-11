@@ -9,13 +9,9 @@
       mouse-buffer-menu-mode-mult 5)
 
 ;; recent files list
-(setq recentf-menu-title "Recent Files"
-      recentf-show-file-shortcuts-flag t
-      recentf-menu-open-all-flag t
-      recentf-max-menu-items 20
-      recentf-max-saved-items 50
-      recentf-auto-cleanup 'mode
-      recentf-save-file (concat +session-dir+ ".recent-files"))
+(setq recentf-max-menu-items 20
+      recentf-max-saved-items +history-size+
+      recentf-save-file (concat +session-dir+ ".rf"))
 (recentf-mode t)
 
 (defun recentf-push-to-top ()

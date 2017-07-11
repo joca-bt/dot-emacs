@@ -1,34 +1,27 @@
 ;; -----------------------------------------------------------------------------
 ;; theme -----------------------------------------------------------------------
 
-;; theme
 (setq custom-theme-directory +themes-dir+)
 (load-theme 'ample t)
 
-;; flycheck
-(put 'error 'flycheck-fringe-bitmap 'filled-circle)
-(put 'warning 'flycheck-fringe-bitmap 'filled-circle)
-(put 'info 'flycheck-fringe-bitmap 'filled-circle)
-
-(set-face-underline 'flycheck-error (cl-substitute 'line 'wave (face-attribute 'flycheck-error :underline)))
-(set-face-underline 'flycheck-warning (cl-substitute 'line 'wave (face-attribute 'flycheck-warning :underline)))
-(set-face-underline 'flycheck-info (cl-substitute 'line 'wave (face-attribute 'flycheck-info :underline)))
-
-
-;; -----------------------------------------------------------------------------
-;; bitmaps ---------------------------------------------------------------------
-
-(define-fringe-bitmap 'filled-circle
-  (vector #b00000000
-          #b00000000
-          #b00000000
-          #b00000000
-          #b00011100
-          #b00111110
-          #b00111110
-          #b00111110
-          #b00011100
-          #b00000000))
+(custom-theme-set-faces 'ample
+                        ;; avy
+                        '(avy-goto-char-timer-face ((t :inherit isearch)))
+                        '(avy-lead-face-0 ((t :inherit avy-lead-face)))
+                        '(avy-lead-face-1 ((t :inherit avy-lead-face)))
+                        '(avy-lead-face-2 ((t :inherit avy-lead-face)))
+                        ;; ivy
+                        '(ivy-current-match ((t :background "gray18")))
+                        '(ivy-minibuffer-match-face-1 ((t :inherit flx-highlight-face)))
+                        '(ivy-minibuffer-match-face-2 ((t :inherit flx-highlight-face)))
+                        '(ivy-minibuffer-match-face-3 ((t :inherit flx-highlight-face)))
+                        '(ivy-minibuffer-match-face-4 ((t :inherit flx-highlight-face)))
+                        ;; swiper
+                        '(swiper-line-face ((t :inherit hl-line)))
+                        '(swiper-match-face-1 ((t :inherit isearch)))
+                        '(swiper-match-face-2 ((t :inherit isearch)))
+                        '(swiper-match-face-3 ((t :inherit isearch)))
+                        '(swiper-match-face-4 ((t :inherit isearch))))
 
 
 ;; -----------------------------------------------------------------------------

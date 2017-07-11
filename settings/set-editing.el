@@ -1,7 +1,7 @@
 ;; -----------------------------------------------------------------------------
 ;; editing ---------------------------------------------------------------------
 
-;; primary selection
+;; disable primary selection
 (setq select-active-regions nil)
 
 ;; expand region
@@ -12,14 +12,8 @@
 ;; multiple cursors
 (setq mc/list-file (concat +session-dir+ ".mc"))
 
-;; tab
-(setq tab-always-indent t
-      c-tab-always-indent t)
-
 ;; cua
-(setq cua-enable-cua-keys t
-      cua-remap-control-z nil ; using undo-tree instead
-      cua-keep-region-after-copy t
+(setq cua-keep-region-after-copy t
       cua-delete-selection t)
 (cua-mode t)
 
@@ -30,8 +24,7 @@
 (global-undo-tree-mode t)
 
 ;; trim whitespaces
-(setq-default ws-trim-level 0)
-(global-ws-trim-mode t)
+(ws-butler-global-mode t)
 
 ;; end files with a newline
 (setq require-final-newline t)

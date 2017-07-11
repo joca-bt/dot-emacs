@@ -9,16 +9,12 @@
       slime-repl-history-size +history-size+
       slime-repl-history-file (concat +session-dir+ ".slime"))
 (slime-setup '(slime-fancy
-               slime-asdf
                slime-banner
                slime-company
-               slime-mdot-fu))
-;;               slime-indentation))
-(slime-autodoc-unload)
+               slime-indentation))
 
 ;; style
 (setq-mode-local lisp-mode lisp-indent-function #'common-lisp-indent-function
-                           indent-tabs-mode nil
                            tab-width 8)
 
 
@@ -27,11 +23,15 @@
 
 ;; style
 (setq-mode-local emacs-lisp-mode lisp-indent-function #'lisp-indent-function
-                                 indent-tabs-mode nil
                                  tab-width 8)
 
-;; navigation
-(elisp-slime-nav-mode t)
+
+;; -----------------------------------------------------------------------------
+;; -----------------------------------------------------------------------------
+
+;; smartparens
+(sp-with-modes sp-lisp-modes
+  (sp-local-pair "'" nil :actions nil))
 
 
 ;; -----------------------------------------------------------------------------

@@ -12,7 +12,7 @@
       desktop-path `(,+session-dir+))
 (desktop-save-mode t)
 
-;; save history between sessions
+;; save minibuffer history between sessions
 (setq savehist-autosave-interval +auto-save-interval+
       history-length +history-size+
       savehist-file (concat +session-dir+ ".history"))
@@ -21,7 +21,7 @@
 ;; save point between file visits
 (setq save-place-limit +history-size+
       save-place-file (concat +session-dir+ ".point"))
-(setq-default save-place t)
+(save-place-mode t)
 
 
 ;; -----------------------------------------------------------------------------
