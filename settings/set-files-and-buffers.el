@@ -15,7 +15,6 @@
 (recentf-mode t)
 
 (defun recentf-push-to-top ()
-  "Pushes the file that the current buffer is visiting to the top of the recent files list, if any."
   (let ((file-name (buffer-file-name)))
     (when file-name
       (recentf-add-file file-name))))

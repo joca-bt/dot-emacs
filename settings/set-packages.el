@@ -1,9 +1,8 @@
-;; -----------------------------------------------------------------------------
+;; -------------------------------------------------- -*- lexical-binding: t -*-
 ;; packages --------------------------------------------------------------------
 
 (defconst +packages+ '(;; ui
                        diminish
-                       face-explorer
                        shackle
                        tabbar
                        ;; ivy
@@ -23,6 +22,9 @@
                        company
                        company-quickhelp
                        smartparens
+                       ;; tools
+                       face-explorer
+                       regex-tool
                        ;; lisp
                        macrostep
                        slime
@@ -32,17 +34,14 @@
                        ;; built-in
                        mode-local))
 
-(defvar *package-archives-refreshed-p* nil
-  "Whether the package archives have already been refreshed in the current session.")
-
-(defun load-package (package)
-  "Loads a package, installing it first if necessary."
-  (unless (package-installed-p package)
-    (unless *package-archives-refreshed-p*
-      (package-refresh-contents)
-      (setq *package-archives-refreshed-p* t))
-    (package-install package))
-  (require package))
+(let ((refreshed-p nil))
+  (defun load-package (package)
+    (unless (package-installed-p package)
+      (unless refreshed-p
+        (package-refresh-contents)
+        (setq refreshed-p t))
+      (package-install package))
+    (require package)))
 
 
 ;; -----------------------------------------------------------------------------
@@ -56,7 +55,8 @@
                                    ("melpa" . 10)
                                    ("gnu" . 0))
       package-user-dir +packages-dir+
-      package-enable-at-startup nil)
+      package-enable-at-startup nil
+      package--init-file-ensured t)
 (package-initialize)
 
 ;; load packages

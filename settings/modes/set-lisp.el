@@ -31,6 +31,7 @@
 
 ;; smartparens
 (sp-with-modes sp-lisp-modes
+  (sp-local-pair "`" "'" :when '(sp-in-comment-p sp-in-docstring-p))
   (sp-local-pair "'" nil :actions nil))
 
 

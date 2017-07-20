@@ -2,7 +2,6 @@
 ;; key bindings ----------------------------------------------------------------
 
 (defmacro ifn (&rest body)
-  "Wraps a set of Lisp forms under an interactive function."
   `(lambda ()
      (interactive)
      ,@body))

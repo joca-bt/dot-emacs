@@ -15,7 +15,12 @@
 (show-smartparens-global-mode t)
 
 ;; completion
-(setq company-idle-delay nil
+(setq company-backends '(company-slime
+                         company-elisp
+                         company-capf
+                         company-files
+                         (company-dabbrev-code company-dabbrev company-keywords))
+      company-idle-delay nil
       company-quickhelp-delay +documentation-delay+
       company-tooltip-align-annotations t
       company-tooltip-minimum-width 25

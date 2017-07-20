@@ -75,7 +75,6 @@
 (require 'set-editing)
 (require 'set-navigation)
 (require 'set-programming)
+(require 'set-tools)
 (require 'set-lisp)
 (require 'set-key-bindings)
-
-;; (package-initialize)

@@ -162,7 +162,7 @@
 (diminish 'company-mode)
 (diminish 'eldoc-mode)
 (diminish 'ivy-mode)
-(diminish 'server-mode)
+(diminish 'server-buffer-clients)
 (diminish 'smartparens-mode)
 (diminish 'undo-tree-mode)
 (diminish 'ws-butler-mode)
