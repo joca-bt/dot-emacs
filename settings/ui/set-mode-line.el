@@ -140,6 +140,16 @@
         (column (number-to-string (1+ (current-column)))))
     `("%l" ,space ":" ,space ,column)))
 
+(defun ml-project-name ()
+  (propertize (projectile-project-name)
+              'mouse-face 'ml-highlight
+              'pointer 'arrow
+              'help-echo #'ml-project-name-help))
+
+(defun ml-project-name-help (window object point)
+  (with-selected-window window
+    (abbreviate-file-name (projectile-project-root))))
+
 (setq-default mode-line-format '(:eval (let ((left `("    "
                                                      (:eval (ml-buffer-status))
                                                      "    "
@@ -149,7 +159,11 @@
                                                      ,@(when (ml-active-window-p)
                                                          '("    "
                                                            (:eval (ml-minor-modes))))))
-                                             (right '((:eval (ml-coding-system))
+                                             (right `(,@(when (and (ml-active-window-p)
+                                                                   (projectile-project-p))
+                                                          '((:eval (ml-project-name))
+                                                            "    "))
+                                                      (:eval (ml-coding-system))
                                                       " | "
                                                       (:eval (ml-position)))))
                                          `(,left
@@ -162,6 +176,7 @@
 (diminish 'company-mode)
 (diminish 'eldoc-mode)
 (diminish 'ivy-mode)
+(diminish 'projectile-mode)
 (diminish 'server-buffer-clients)
 (diminish 'smartparens-mode)
 (diminish 'undo-tree-mode)

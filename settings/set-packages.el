@@ -23,8 +23,11 @@
                        company-quickhelp
                        smartparens
                        ;; tools
+                       ag
                        face-explorer
+                       projectile
                        regex-tool
+                       restclient
                        ;; lisp
                        macrostep
                        slime
@@ -58,6 +61,7 @@
       package-enable-at-startup nil
       package--init-file-ensured t)
 (package-initialize)
+(add-to-list 'load-path (concat +packages-dir+ "manual/"))
 
 ;; load packages
 (setq make-backup-files nil)

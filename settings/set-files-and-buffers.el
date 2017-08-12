@@ -11,8 +11,12 @@
 ;; recent files list
 (setq recentf-max-menu-items 20
       recentf-max-saved-items +history-size+
-      recentf-save-file (concat +session-dir+ ".rf"))
+      recentf-save-file (concat +session-dir+ ".recentf"))
 (recentf-mode t)
+
+(defun recentf-find-file (file-name)
+  (interactive (list (completing-read "[recentf] Find file: " recentf-list)))
+  (find-file file-name))
 
 (defun recentf-push-to-top ()
   (let ((file-name (buffer-file-name)))

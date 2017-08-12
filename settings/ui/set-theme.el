@@ -5,6 +5,8 @@
 (load-theme 'ample t)
 
 (custom-theme-set-faces 'ample
+                        ;; ag
+                        '(ag-match-face ((t :inherit isearch)))
                         ;; avy
                         '(avy-goto-char-timer-face ((t :inherit isearch)))
                         '(avy-lead-face-0 ((t :inherit avy-lead-face)))

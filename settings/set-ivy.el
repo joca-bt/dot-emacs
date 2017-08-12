@@ -5,7 +5,8 @@
 (setq enable-recursive-minibuffers t)
 
 ;; ivy
-(setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))
+(setq ivy-re-builders-alist '((swiper . regexp-quote)
+                              (t . ivy--regex-fuzzy))
       ivy-initial-inputs-alist nil
       ivy-format-function #'ivy-format-function-line
       ivy-count-format ""

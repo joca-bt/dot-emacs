@@ -6,7 +6,7 @@
               tab-width 4)
 (electric-indent-mode t)
 
-;; delimiter pairing, matching, and highlighting
+;; delimiters
 (setq sp-show-pair-delay 0
       sp-highlight-pair-overlay nil
       sp-highlight-wrap-overlay nil
@@ -19,7 +19,7 @@
                          company-elisp
                          company-capf
                          company-files
-                         (company-dabbrev-code company-dabbrev company-keywords))
+                         (company-dabbrev-code company-dabbrev company-abbrev company-keywords))
       company-idle-delay nil
       company-quickhelp-delay +documentation-delay+
       company-tooltip-align-annotations t

@@ -4,7 +4,7 @@
 ;; avy
 (setq avy-all-windows t
       avy-background t
-      avy-keys (number-sequence ?a ?z))
+      avy-keys '(?q ?w ?e ?a ?s ?d))
 
 
 ;; -----------------------------------------------------------------------------

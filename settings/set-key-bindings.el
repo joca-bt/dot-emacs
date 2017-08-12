@@ -22,6 +22,7 @@
 (define-key ivy-minibuffer-map (kbd "<next>") #'ivy-scroll-up-command)
 (define-key ivy-minibuffer-map (kbd "<prior>") #'ivy-scroll-down-command)
 (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
+(define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
 
 
 ;; -----------------------------------------------------------------------------
@@ -38,9 +39,6 @@
 (define-key smartparens-mode-map (kbd "M-e") #'sp-end-of-sexp) ; move to end of sexp
 (global-set-key (kbd "M-Q") #'beginning-of-defun) ; move to start of function
 (global-set-key (kbd "M-E") #'end-of-defun) ; move to end of function
-
-(define-key smartparens-mode-map (kbd "H-k") #'sp-kill-sexp) ; forward kill sexp
-(define-key smartparens-mode-map (kbd "H-K") #'sp-backward-kill-sexp) ; backward kill sexp
 
 (define-key smartparens-mode-map (kbd "H-s") #'sp-split-sexp) ; split sexp
 (define-key smartparens-mode-map (kbd "H-j") #'sp-join-sexp) ; join sexp
@@ -79,13 +77,16 @@
 (global-set-key (kbd "M-x") #'smex) ; execute command
 (global-set-key (kbd "M-X") #'smex-major-mode-commands) ; execute major-mode-relevant command
 
-(global-set-key (kbd "C-x C-r") #'recentf-open-files) ; recent files list
-
 (global-set-key (kbd "M-<down>") #'tabbar-forward) ; switch to next file tab
 (global-set-key (kbd "M-<up>") #'tabbar-backward) ; switch to previous file tab
 
 (global-set-key (kbd "C-<down>") #'scroll-up-line) ; scroll line ↓
 (global-set-key (kbd "C-<up>") #'scroll-down-line) ; scroll line ↑
+
+(global-set-key (kbd "H-f") #'find-file) ; find file
+(global-set-key (kbd "H-r") #'recentf-find-file) ; find file in recent files
+(global-set-key (kbd "H-p") #'projectile-find-file) ; find file in project
+(global-set-key (kbd "H-b") #'switch-to-buffer) ; switch to buffer
 
 (global-set-key (kbd "C-w") #'kill-this-buffer) ; close current buffer
 (global-set-key (kbd "C-a") #'mark-whole-buffer) ; select all

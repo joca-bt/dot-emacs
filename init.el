@@ -22,7 +22,6 @@
 ;; load path -------------------------------------------------------------------
 
 (add-to-list 'load-path +settings-dir+)
-(add-to-list 'load-path (concat +packages-dir+ "manual/"))
 
 (let ((default-directory +settings-dir+))
   (normal-top-level-add-subdirs-to-load-path))
