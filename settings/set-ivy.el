@@ -11,7 +11,7 @@
       ivy-format-function #'ivy-format-function-line
       ivy-count-format ""
       ivy-extra-directories nil
-      ivy-height 11)
+      ivy-height 16)
 (ivy-mode t)
 
 ;; smex

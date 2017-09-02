@@ -57,7 +57,8 @@
                      'mouse-face 'ml-highlight
                      'pointer 'arrow
                      'help-echo #'ml-buffer-status-help))
-        ((buffer-modified-p)
+        ((and (buffer-file-name)
+              (buffer-modified-p))
          (propertize " ** "
                      'mouse-face 'ml-highlight
                      'pointer 'arrow

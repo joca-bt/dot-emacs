@@ -56,7 +56,7 @@
 ;; settings --------------------------------------------------------------------
 
 ;; libs
-;;(require 'cl)
+;;(require 'cl-lib)
 (require 'subr-x)
 
 ;; language

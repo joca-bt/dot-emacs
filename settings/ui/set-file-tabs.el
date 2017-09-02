@@ -61,7 +61,8 @@
 (defun tabbar-line-tab (tab)
   (let* ((buffer (tabbar-tab-value tab))
          (selected-p (tabbar-selected-p tab (tabbar-current-tabset)))
-         (modified-p (buffer-modified-p buffer))
+         (modified-p (and (buffer-file-name buffer)
+                          (buffer-modified-p buffer)))
          (label (if tabbar-tab-label-function
                     (funcall tabbar-tab-label-function tab)
                   tab))
