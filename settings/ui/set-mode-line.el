@@ -89,7 +89,7 @@
     (let ((coding-system (if buffer-file-coding-system
                              (symbol-name buffer-file-coding-system)
                            "none")))
-      (format "Coding system: %s\nmouse-2: Describe coding system" coding-system))))
+      (format "%s\nmouse-2: Describe coding system" coding-system))))
 
 (defvar ml-coding-system-keymap
   (ml-make-keymap [mode-line mouse-2] #'(lambda (event)
@@ -145,11 +145,16 @@
   (propertize (projectile-project-name)
               'mouse-face 'ml-highlight
               'pointer 'arrow
-              'help-echo #'ml-project-name-help))
+              'help-echo #'ml-project-name-help
+              'local-map ml-project-name-keymap))
 
 (defun ml-project-name-help (window object point)
   (with-selected-window window
-    (abbreviate-file-name (projectile-project-root))))
+    (let ((project-name (abbreviate-file-name (projectile-project-root))))
+      (format "%s\nmouse-1: Show Projectile menu" project-name))))
+
+(defvar ml-project-name-keymap
+  (ml-make-keymap [mode-line mouse-1] (easy-menu-get-map nil '("Tools" "Projectile"))))
 
 (setq-default mode-line-format '(:eval (let ((left `("    "
                                                      (:eval (ml-buffer-status))

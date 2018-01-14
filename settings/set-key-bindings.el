@@ -13,14 +13,15 @@
 (global-unset-key [mouse-2])
 (global-unset-key [mouse-3])
 
+;; unset insert key
+(global-unset-key [insert])
+
 
 ;; -----------------------------------------------------------------------------
 ;; ivy -------------------------------------------------------------------------
 
 (define-key ivy-minibuffer-map (kbd "C-s") #'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-r") #'ivy-previous-line)
-(define-key ivy-minibuffer-map (kbd "<next>") #'ivy-scroll-up-command)
-(define-key ivy-minibuffer-map (kbd "<prior>") #'ivy-scroll-down-command)
 (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
 (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
 
@@ -28,8 +29,8 @@
 ;; -----------------------------------------------------------------------------
 ;; s-expressions ---------------------------------------------------------------
 
-(define-key smartparens-mode-map (kbd "M-d") #'sp-forward-sexp) ; move sexp →
-(define-key smartparens-mode-map (kbd "M-a") #'sp-backward-sexp) ; move sexp ←
+(define-key smartparens-mode-map (kbd "M-d") #'forward-sexp) ; move sexp →
+(define-key smartparens-mode-map (kbd "M-a") #'backward-sexp) ; move sexp ←
 (define-key smartparens-mode-map (kbd "M-s") #'sp-down-sexp) ; move sexp ↓ →
 (define-key smartparens-mode-map (kbd "M-w") #'sp-backward-up-sexp) ; move sexp ↑ ←
 (define-key smartparens-mode-map (kbd "M-S") #'sp-backward-down-sexp) ; move sexp ↓ ←
@@ -82,6 +83,11 @@
 
 (global-set-key (kbd "C-<down>") #'scroll-up-line) ; scroll line ↓
 (global-set-key (kbd "C-<up>") #'scroll-down-line) ; scroll line ↑
+
+(global-set-key (kbd "C-x C-f") #'find-file) ; find file
+(global-set-key (kbd "C-x C-r") #'recentf-find-file) ; find file in recent files
+(global-set-key (kbd "C-x C-p") #'projectile-find-file) ; find file in project
+(global-set-key (kbd "C-x C-b") #'switch-to-buffer) ; switch to buffer
 
 (global-set-key (kbd "H-f") #'find-file) ; find file
 (global-set-key (kbd "H-r") #'recentf-find-file) ; find file in recent files
