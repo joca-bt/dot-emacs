@@ -15,6 +15,7 @@
 
 (defconst +auto-save-interval+ 600) ; 10 min
 (defconst +documentation-delay+ 0.5)
+(defconst +file-history-size+ 1000)
 (defconst +history-size+ 100)
 
 

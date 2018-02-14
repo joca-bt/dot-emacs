@@ -10,7 +10,7 @@
 
 ;; recent files list
 (setq recentf-max-menu-items 20
-      recentf-max-saved-items +history-size+
+      recentf-max-saved-items +file-history-size+
       recentf-save-file (concat +session-dir+ ".recentf"))
 (recentf-mode t)
 
