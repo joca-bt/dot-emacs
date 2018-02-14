@@ -7,7 +7,8 @@
      ,@body))
 
 ;; set hyper key
-(setq w32-apps-modifier 'hyper)
+(when +windows-p+
+  (setq w32-apps-modifier 'hyper))
 
 ;; unset mouse keys
 (global-unset-key [mouse-2])

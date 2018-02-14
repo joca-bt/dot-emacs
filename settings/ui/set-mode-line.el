@@ -4,8 +4,7 @@
 (defvar ml-active-window nil)
 
 (defun ml-active-window-p ()
-  (eq (selected-window)
-      ml-active-window))
+  (eq (selected-window) ml-active-window))
 
 (defun ml-set-active-window ()
   (let ((active-window (frame-selected-window)))

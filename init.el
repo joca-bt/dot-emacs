@@ -18,6 +18,8 @@
 (defconst +file-history-size+ 1000)
 (defconst +history-size+ 100)
 
+(defconst +windows-p+ (string= system-type "windows-nt"))
+
 
 ;; -----------------------------------------------------------------------------
 ;; load path -------------------------------------------------------------------
