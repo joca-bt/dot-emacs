@@ -1,11 +1,17 @@
 ;; -----------------------------------------------------------------------------
 ;; file tabs -------------------------------------------------------------------
 
-(face-spec-set 'tabbar-default '((t :font "Segoe UI"
-                                    :height 90
-                                    :foreground "black"
-                                    :background "grey80"))
-               'face-defface-spec)
+(if +windows-p+
+    (face-spec-set 'tabbar-default '((t :font "Segoe UI"
+                                        :height 90
+                                        :foreground "black"
+                                        :background "grey80"))
+                   'face-defface-spec)
+  (face-spec-set 'tabbar-default '((t :font "Noto Sans"
+                                      :height 113
+                                      :foreground "black"
+                                      :background "grey80"))
+                 'face-defface-spec))
 
 (face-spec-set 'tabbar-selected '((t :inherit tabbar-default
                                      :foreground "grey15"
