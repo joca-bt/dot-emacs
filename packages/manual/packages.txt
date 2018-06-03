@@ -1,0 +1,3 @@
+buffer-move https://github.com/lukhas/buffer-move/pull/14/
+linum       https://www.emacswiki.org/emacs/LineNumbers/
+smex        https://github.com/nonsequitur/smex/pull/51/
