@@ -9,9 +9,9 @@
 (defconst +packages-dir+ (concat +emacs-dir+ "packages/"))
 (defconst +themes-dir+   (concat +emacs-dir+ "packages/themes/"))
 
-(defconst +backups-dir+  (concat +emacs-dir+ "backups/"))
-(defconst +session-dir+  (concat +emacs-dir+ "session/"))
-(defconst +temp-dir+     (concat +emacs-dir+ "temp/"))
+(defconst +backups-dir+ (concat +emacs-dir+ "backups/"))
+(defconst +session-dir+ (concat +emacs-dir+ "session/"))
+(defconst +temp-dir+    (concat +emacs-dir+ "temp/"))
 
 (defconst +auto-save-interval+ 600) ; 10 min
 (defconst +documentation-delay+ 0.5)
@@ -49,10 +49,11 @@
 ;; locks, temporary files, etc.
 (setq create-lockfiles nil
       load-prefer-newer t
+      ring-bell-function #'ignore
       temporary-file-directory +temp-dir+)
 (fset 'yes-or-no-p #'y-or-n-p)
 
-(set-frame-parameter nil 'fullscreen 'maximized) ; maximize frame
+(setq default-frame-alist '((fullscreen . maximized))) ; maximize frames
 
 
 ;; -----------------------------------------------------------------------------
