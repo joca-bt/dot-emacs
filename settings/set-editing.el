@@ -10,7 +10,9 @@
       expand-region-reset-fast-key "r")
 
 ;; multiple cursors
-(setq mc/list-file (concat +session-dir+ ".mc"))
+(setq mc/cmds-to-run-for-all '()
+      mc/cmds-to-run-once '(ivy-alt-done)
+      mc/list-file (concat +session-dir+ ".mc"))
 
 ;; cua
 (setq cua-keep-region-after-copy t
