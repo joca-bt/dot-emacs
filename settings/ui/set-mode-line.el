@@ -136,9 +136,8 @@
                                           (describe-minor-mode-from-indicator lighter))))
 
 (defun ml-position ()
-  (let ((space (propertize " " 'display '(space :width 0.33)))
-        (column (number-to-string (1+ (current-column)))))
-    `("%l" ,space ":" ,space ,column)))
+  (let ((space (propertize " " 'display '(space :width 0.33))))
+    `("%l" ,space ":" ,space "%C")))
 
 (defun ml-project-name ()
   (propertize (projectile-project-name)

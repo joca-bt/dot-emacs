@@ -19,7 +19,7 @@
 (require 'set-file-tabs)
 
 ;; line numbers
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 
 ;; mode line
 (require 'set-mode-line)
@@ -37,7 +37,8 @@
 
 ;; horizontal scrolling
 (setq hscroll-margin 0
-      hscroll-step 1)
+      hscroll-step 1
+      mouse-wheel-tilt-scroll t)
 
 ;; vertical scrolling
 (setq scroll-margin 0
