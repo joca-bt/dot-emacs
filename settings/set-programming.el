@@ -28,6 +28,9 @@
 (global-company-mode t)
 (company-quickhelp-mode t)
 
+;; comments
+(setq comment-empty-lines t)
+
 ;; documentation
 (setq eldoc-idle-delay +documentation-delay+
       eldoc-echo-area-use-multiline-p t)
