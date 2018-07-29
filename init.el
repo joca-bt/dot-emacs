@@ -13,6 +13,7 @@
 (defconst +session-dir+ (concat +emacs-dir+ "session/"))
 (defconst +temp-dir+    (concat +emacs-dir+ "temp/"))
 
+(defconst +auto-check-delay+ 1)
 (defconst +auto-save-interval+ 600) ; 10 min
 (defconst +documentation-delay+ 0.5)
 (defconst +file-history-size+ 1000)

@@ -21,6 +21,7 @@
                        ;; programming
                        company
                        company-quickhelp
+                       flycheck
                        smartparens
                        ;; tools
                        ag

@@ -28,6 +28,15 @@
 (global-company-mode t)
 (company-quickhelp-mode t)
 
+;; syntax checking
+(setq flycheck-checkers '()
+      flycheck-check-syntax-automatically '(save idle-change)
+      flycheck-idle-change-delay +auto-check-delay+
+      flycheck-indication-mode 'left-fringe
+      flycheck-highlighting-mode 'symbols
+      flycheck-display-errors-delay +documentation-delay+)
+(global-flycheck-mode t)
+
 ;; comments
 (setq comment-empty-lines t)
 

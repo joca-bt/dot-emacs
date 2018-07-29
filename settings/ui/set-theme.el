@@ -25,6 +25,28 @@
                         '(swiper-match-face-3 ((t :inherit isearch)))
                         '(swiper-match-face-4 ((t :inherit isearch))))
 
+;; flycheck
+(put 'error 'flycheck-fringe-bitmap-double-arrow 'filled-circle)
+(put 'warning 'flycheck-fringe-bitmap-double-arrow 'filled-circle)
+(put 'info 'flycheck-fringe-bitmap-double-arrow 'filled-circle)
+(set-face-underline 'flycheck-error (face-attribute 'error :foreground))
+(set-face-underline 'flycheck-warning (face-attribute 'warning :foreground))
+(set-face-underline 'flycheck-info (face-attribute 'success :foreground))
+
+
+;; -----------------------------------------------------------------------------
+;; bitmaps ---------------------------------------------------------------------
+
+(define-fringe-bitmap 'filled-circle
+  (vector #b00000000
+          #b00000000
+          #b00000000
+          #b00011100
+          #b00111110
+          #b00111110
+          #b00111110
+          #b00011100))
+
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

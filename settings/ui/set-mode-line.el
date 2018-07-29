@@ -137,22 +137,45 @@
 
 (defun ml-position ()
   (let ((space (propertize " " 'display '(space :width 0.33))))
-    `("%l" ,space ":" ,space "%C")))
+    (format "%%l%s:%s%%C" space space)))
 
-(defun ml-project-name ()
+(defun ml-project ()
   (propertize (projectile-project-name)
               'mouse-face 'ml-highlight
               'pointer 'arrow
-              'help-echo #'ml-project-name-help
-              'local-map ml-project-name-keymap))
+              'help-echo #'ml-project-help
+              'local-map ml-project-keymap))
 
-(defun ml-project-name-help (window object point)
+(defun ml-project-help (window object point)
   (with-selected-window window
-    (let ((project-name (abbreviate-file-name (projectile-project-root))))
-      (format "%s\nmouse-1: Show Projectile menu" project-name))))
+    "Projectile\nmouse-1: Show Projectile menu"))
 
-(defvar ml-project-name-keymap
+(defvar ml-project-keymap
   (ml-make-keymap [mode-line mouse-1] (easy-menu-get-map nil '("Tools" "Projectile"))))
+
+(defun ml-syntax-checking ()
+  (let-alist (flycheck-count-errors flycheck-current-errors)
+    (let ((indicator (pcase flycheck-last-status-change
+                       ('running "*")
+                       ((or 'errored 'interrupted 'suspicious) "!")
+                       (_ "")))
+          (errors (or .error 0))
+          (warnings (or .warning 0))
+          (infos (or .info 0)))
+      (propertize (if (eq flycheck-last-status-change 'finished)
+                      (format "%s/%s/%s" errors warnings infos)
+                    (format "  %s  " indicator))
+                  'mouse-face 'ml-highlight
+                  'pointer 'arrow
+                  'help-echo #'ml-syntax-checking-help
+                  'local-map ml-syntax-checking-keymap))))
+
+(defun ml-syntax-checking-help (window object point)
+  (with-selected-window window
+    "Flycheck\nmouse-1: Show Flycheck menu"))
+
+(defvar ml-syntax-checking-keymap
+  (ml-make-keymap [mode-line mouse-1] (easy-menu-get-map nil '("Tools" "Syntax Checking"))))
 
 (setq-default mode-line-format '(:eval (let ((left `("    "
                                                      (:eval (ml-buffer-status))
@@ -161,11 +184,14 @@
                                                      "    "
                                                      (:eval (ml-major-mode))
                                                      ,@(when (ml-active-window-p)
-                                                         '("    "
+                                                         `("    "
+                                                           ,@(when (flycheck-get-checker-for-buffer)
+                                                               `((:eval (ml-syntax-checking))
+                                                                 "  "))
                                                            (:eval (ml-minor-modes))))))
                                              (right `(,@(when (and (ml-active-window-p)
                                                                    (projectile-project-p))
-                                                          '((:eval (ml-project-name))
+                                                          `((:eval (ml-project))
                                                             "    "))
                                                       (:eval (ml-coding-system))
                                                       " | "
@@ -179,6 +205,7 @@
 
 (diminish 'company-mode)
 (diminish 'eldoc-mode)
+(diminish 'flycheck-mode)
 (diminish 'ivy-mode)
 (diminish 'projectile-mode)
 (diminish 'server-buffer-clients)
