@@ -2,9 +2,7 @@
 ;; ui --------------------------------------------------------------------------
 
 ;; font
-(if +windows-p+
-    (set-face-attribute 'default nil :font "Consolas" :height 108)
-  (set-face-attribute 'default nil :font "Source Code Pro" :height 128))
+(apply #'set-face-attribute 'default nil +source-code-font+)
 
 ;; theme
 (require 'set-theme)

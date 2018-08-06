@@ -1,17 +1,19 @@
 ;; -----------------------------------------------------------------------------
 ;; dot emacs -------------------------------------------------------------------
 
+(defconst +windows-p+ (string= system-type "windows-nt"))
+
 (defconst +emacs-dir+ (expand-file-name (if load-file-name
                                             (file-name-directory load-file-name)
                                           "~/.emacs.d/")))
 
 (defconst +settings-dir+ (concat +emacs-dir+ "settings/"))
 (defconst +packages-dir+ (concat +emacs-dir+ "packages/"))
-(defconst +themes-dir+   (concat +emacs-dir+ "packages/themes/"))
+(defconst +themes-dir+ (concat +emacs-dir+ "packages/themes/"))
 
 (defconst +backups-dir+ (concat +emacs-dir+ "backups/"))
 (defconst +session-dir+ (concat +emacs-dir+ "session/"))
-(defconst +temp-dir+    (concat +emacs-dir+ "temp/"))
+(defconst +temp-dir+ (concat +emacs-dir+ "temp/"))
 
 (defconst +auto-check-delay+ 1)
 (defconst +auto-save-interval+ 600) ; 10 min
@@ -19,7 +21,12 @@
 (defconst +file-history-size+ 1000)
 (defconst +history-size+ 100)
 
-(defconst +windows-p+ (string= system-type "windows-nt"))
+(defconst +source-code-font+ (if +windows-p+
+                                 '(:font "Consolas" :height 108)
+                               '(:font "Source Code Pro" :height 128)))
+(defconst +ui-font+ (if +windows-p+
+                        '(:font "Segoe UI" :height 90)
+                      '(:font "Noto Sans" :height 113)))
 
 
 ;; -----------------------------------------------------------------------------
