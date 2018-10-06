@@ -1,10 +1,21 @@
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
+;; projects
+(setq projectile-completion-system 'ivy
+      projectile-indexing-method 'alien
+      projectile-enable-caching t
+      projectile-cache-file (concat +session-dir+ ".projectile.cache")
+      projectile-known-projects-file (concat +session-dir+ ".projectile"))
+(projectile-mode t)
+
 ;; indentation
 (setq-default indent-tabs-mode nil
               tab-width 4)
 (electric-indent-mode t)
+
+;; comments
+(setq comment-empty-lines t)
 
 ;; delimiters
 (setq sp-show-pair-delay 0
@@ -28,6 +39,11 @@
 (global-company-mode t)
 (company-quickhelp-mode t)
 
+;; documentation
+(setq eldoc-idle-delay +documentation-delay+
+      eldoc-echo-area-use-multiline-p t)
+(global-eldoc-mode t)
+
 ;; syntax checking
 (setq flycheck-checkers '()
       flycheck-check-syntax-automatically '(save idle-change)
@@ -36,14 +52,6 @@
       flycheck-highlighting-mode 'symbols
       flycheck-display-errors-delay +documentation-delay+)
 (global-flycheck-mode t)
-
-;; comments
-(setq comment-empty-lines t)
-
-;; documentation
-(setq eldoc-idle-delay +documentation-delay+
-      eldoc-echo-area-use-multiline-p t)
-(global-eldoc-mode t)
 
 
 ;; -----------------------------------------------------------------------------

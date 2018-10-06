@@ -19,11 +19,11 @@
 ;; line numbers
 (global-display-line-numbers-mode t)
 
-;; mode line
-(require 'set-mode-line)
-
 ;; highlight current line
 (global-hl-line-mode t)
+
+;; mode line
+(require 'set-mode-line)
 
 ;; cursor
 (setq-default cursor-type 'bar)

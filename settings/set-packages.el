@@ -22,11 +22,11 @@
                        company
                        company-quickhelp
                        flycheck
+                       projectile
                        smartparens
                        ;; tools
                        ag
                        face-explorer
-                       projectile
                        regex-tool
                        restclient
                        ;; lisp
