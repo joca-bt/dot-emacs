@@ -4,26 +4,9 @@
 ;; projects
 (setq projectile-completion-system 'ivy
       projectile-indexing-method 'alien
-      projectile-enable-caching t
-      projectile-cache-file (concat +session-dir+ ".projectile.cache")
+      projectile-enable-caching nil
       projectile-known-projects-file (concat +session-dir+ ".projectile"))
 (projectile-mode t)
-
-;; indentation
-(setq-default indent-tabs-mode nil
-              tab-width 4)
-(electric-indent-mode t)
-
-;; comments
-(setq comment-empty-lines t)
-
-;; delimiters
-(setq sp-show-pair-delay 0
-      sp-highlight-pair-overlay nil
-      sp-highlight-wrap-overlay nil
-      sp-highlight-wrap-tag-overlay nil)
-(smartparens-global-mode t)
-(show-smartparens-global-mode t)
 
 ;; completion
 (setq company-backends '(company-slime
@@ -53,6 +36,21 @@
       flycheck-display-errors-delay +documentation-delay+)
 (global-flycheck-mode t)
 
+;; comments
+(setq comment-empty-lines t)
+
+;; indentation
+(setq-default indent-tabs-mode nil
+              tab-width 4)
+(electric-indent-mode t)
+
+;; delimiters
+(setq sp-show-pair-delay 0
+      sp-highlight-pair-overlay nil
+      sp-highlight-wrap-overlay nil
+      sp-highlight-wrap-tag-overlay nil)
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

@@ -6,7 +6,7 @@
       slime-compile-file-options `(:fasl-directory ,(concat +temp-dir+ "fasl/"))
       slime-load-failed-fasl 'always
       slime-startup-animation nil
-      slime-repl-history-size +history-size+
+      slime-repl-history-size +command-history-size+
       slime-repl-history-file (concat +session-dir+ ".slime"))
 (slime-setup '(slime-fancy
                slime-banner
@@ -17,7 +17,6 @@
 (setq-mode-local lisp-mode lisp-indent-function #'common-lisp-indent-function
                            tab-width 8)
 
-
 ;; -----------------------------------------------------------------------------
 ;; emacs lisp ------------------------------------------------------------------
 
@@ -25,15 +24,13 @@
 (setq-mode-local emacs-lisp-mode lisp-indent-function #'lisp-indent-function
                                  tab-width 8)
 
-
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
-;; smartparens
+;; delimiters
 (sp-with-modes sp-lisp-modes
   (sp-local-pair "`" "'" :when '(sp-in-comment-p sp-in-docstring-p))
   (sp-local-pair "'" nil :actions nil))
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

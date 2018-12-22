@@ -14,7 +14,7 @@
 
 ;; save minibuffer history between sessions
 (setq savehist-autosave-interval +auto-save-interval+
-      history-length +history-size+
+      history-length +command-history-size+
       savehist-file (concat +session-dir+ ".history"))
 (savehist-mode t)
 
@@ -22,7 +22,6 @@
 (setq save-place-limit +file-history-size+
       save-place-file (concat +session-dir+ ".point"))
 (save-place-mode t)
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

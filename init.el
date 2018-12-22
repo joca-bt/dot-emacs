@@ -18,8 +18,8 @@
 (defconst +auto-check-delay+ 1)
 (defconst +auto-save-interval+ 600) ; 10 min
 (defconst +documentation-delay+ 0.5)
+(defconst +command-history-size+ 100)
 (defconst +file-history-size+ 1000)
-(defconst +history-size+ 100)
 
 (defconst +source-code-font+ (if +windows-p+
                                  '(:font "Consolas" :height 108)
@@ -28,7 +28,6 @@
                         '(:font "Segoe UI" :height 90)
                       '(:font "Noto Sans" :height 113)))
 
-
 ;; -----------------------------------------------------------------------------
 ;; load path -------------------------------------------------------------------
 
@@ -36,7 +35,6 @@
 
 (let ((default-directory +settings-dir+))
   (normal-top-level-add-subdirs-to-load-path))
-
 
 ;; -----------------------------------------------------------------------------
 ;; startup ---------------------------------------------------------------------
@@ -61,8 +59,8 @@
       temporary-file-directory +temp-dir+)
 (fset 'yes-or-no-p #'y-or-n-p)
 
-(setq default-frame-alist '((fullscreen . maximized))) ; maximize frames
-
+;; maximize frames
+(setq default-frame-alist '((fullscreen . maximized)))
 
 ;; -----------------------------------------------------------------------------
 ;; settings --------------------------------------------------------------------

@@ -1,6 +1,12 @@
 ;; -------------------------------------------------- -*- lexical-binding: t -*-
 ;; mode line -------------------------------------------------------------------
 
+(defface ml-strong '((t :weight bold))
+  "")
+
+(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
+  "")
+
 (defvar ml-active-window nil)
 
 (defun ml-active-window-p ()
@@ -17,24 +23,17 @@
 (defadvice handle-switch-frame (after ml-handle-switch-frame activate)
   (ml-set-active-window))
 
+(defun ml-fill (reserve)
+  (propertize " " 'display `(space :align-to (- right ,reserve))))
+
 (defun ml-make-keymap (&rest args)
   (let ((map (make-sparse-keymap)))
     (cl-loop for (key value) on args by #'cddr
              do (define-key map key value))
-    (purecopy map)))
-
-(defun ml-fill (reserve)
-  (propertize " " 'display `(space :align-to (- right ,reserve))))
-
+    map))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
-
-(defface ml-strong '((t :weight bold))
-  "")
-
-(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
-  "")
 
 (defun ml-buffer-name ()
   (propertize "%20b"
@@ -212,7 +211,6 @@
 (diminish 'smartparens-mode)
 (diminish 'undo-tree-mode)
 (diminish 'ws-butler-mode)
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

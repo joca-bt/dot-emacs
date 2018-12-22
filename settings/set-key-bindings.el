@@ -10,13 +10,12 @@
 (when +windows-p+
   (setq w32-apps-modifier 'hyper))
 
-;; unset mouse keys
-(global-unset-key [mouse-2])
-(global-unset-key [mouse-3])
-
 ;; unset insert key
 (global-unset-key [insert])
 
+;; unset mouse keys
+(global-unset-key [mouse-2])
+(global-unset-key [mouse-3])
 
 ;; -----------------------------------------------------------------------------
 ;; ivy -------------------------------------------------------------------------
@@ -26,6 +25,18 @@
 (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
 (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
 
+;; -----------------------------------------------------------------------------
+;; windows ---------------------------------------------------------------------
+
+(global-set-key (kbd "M-\\") #'delete-window) ; close current window
+(global-set-key (kbd "M-1") #'delete-other-windows) ; close all other windows
+(global-set-key (kbd "M-2") #'split-window-vertically) ; split window vertically
+(global-set-key (kbd "M-3") #'split-window-horizontally) ; split window horizontally
+
+(global-set-key (kbd "M-S-<right>") #'windmove-right) ; move window →
+(global-set-key (kbd "M-S-<left>") #'windmove-left) ; move window ←
+(global-set-key (kbd "M-S-<down>") #'windmove-down) ; move window ↓
+(global-set-key (kbd "M-S-<up>") #'windmove-up) ; move window ↑
 
 ;; -----------------------------------------------------------------------------
 ;; s-expressions ---------------------------------------------------------------
@@ -58,21 +69,6 @@
 (define-key smartparens-mode-map (kbd "M-\"") (ifn (sp-wrap-with-pair "\""))) ; wrap sexp with ""
 (define-key smartparens-mode-map (kbd "H-u") #'sp-unwrap-sexp) ; unwrap sexp
 
-
-;; -----------------------------------------------------------------------------
-;; windows ---------------------------------------------------------------------
-
-(global-set-key (kbd "M-\\") #'delete-window) ; close current window
-(global-set-key (kbd "M-1") #'delete-other-windows) ; close all other windows
-(global-set-key (kbd "M-2") #'split-window-vertically) ; split window vertically
-(global-set-key (kbd "M-3") #'split-window-horizontally) ; split window horizontally
-
-(global-set-key (kbd "M-S-<right>") #'windmove-right) ; move window →
-(global-set-key (kbd "M-S-<left>") #'windmove-left) ; move window ←
-(global-set-key (kbd "M-S-<down>") #'windmove-down) ; move window ↓
-(global-set-key (kbd "M-S-<up>") #'windmove-up) ; move window ↑
-
-
 ;; -----------------------------------------------------------------------------
 ;; rest ------------------------------------------------------------------------
 
@@ -101,14 +97,9 @@
 (global-set-key (kbd "C-y") #'undo-tree-redo) ; redo
 
 (global-set-key (kbd "C-e") #'er/expand-region) ; expand region
-(global-set-key (kbd "C-S-e") #'er/contract-region) ; contract region
-
 (global-set-key (kbd "M-c") #'mc/mark-all-dwim) ; multiple cursors
-
 (global-set-key (kbd "M-z") #'avy-goto-char-timer) ; avy
-
 (global-set-key (kbd "C-<SPC>") #'company-complete) ; auto-complete
-
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

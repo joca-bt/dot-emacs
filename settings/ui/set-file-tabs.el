@@ -46,10 +46,6 @@
                                       :background "grey50"))
                'face-defface-spec)
 
-(setq tabbar-buffer-home-button '(("") "")
-      tabbar-buffer-groups-function nil
-      tabbar-separator '(0.2))
-
 (defun tabbar-buffer-list ()
   (cl-remove-if #'(lambda (buffer)
                     (unless (or (eq buffer (current-buffer))
@@ -80,11 +76,11 @@
                         'face face
                         'mouse-face mouse-face
                         'pointer 'arrow
-                        'help-echo #'tabbar-help-on-tab
+                        'help-echo #'tabbar-line-tab-help
                         'local-map (tabbar-make-tab-keymap tab))
             tabbar-separator-value)))
 
-(defun tabbar-help-on-tab (window object position)
+(defun tabbar-line-tab-help (window object position)
   (with-selected-window window
     (let* ((tab (get-text-property position 'tabbar-tab object))
            (buffer (tabbar-tab-value tab))
@@ -112,12 +108,13 @@
   (tabbar-set-template (tabbar-current-tabset) nil)
   (tabbar-display-update))
 
-(add-hook 'after-change-functions #'tabbar-update t)
-(add-hook 'after-save-hook #'tabbar-update t)
-
+(setq tabbar-buffer-home-button '(("") "")
+      tabbar-buffer-groups-function nil
+      tabbar-separator '(0.2))
 (tabbar-mode t)
 (tabbar-mwheel-mode -1)
-
+(add-hook 'after-change-functions #'tabbar-update t)
+(add-hook 'after-save-hook #'tabbar-update t)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
