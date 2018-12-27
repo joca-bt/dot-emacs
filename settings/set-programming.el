@@ -1,12 +1,37 @@
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
+(defun xref-select-xref (xrefs alist)
+  (let ((collection (cl-loop for (file-name . xrefs) in (xref--analyze xrefs)
+                             nconc (mapcar (lambda (xref)
+                                             (list (format "%s: %s"
+                                                           (propertize (file-name-nondirectory file-name) 'face 'compilation-info)
+                                                           (xref-item-summary xref))
+                                                   (xref-item-location xref)))
+                                           xrefs)))
+        (windows (count-windows)))
+    (setq xref--original-window (assoc-default 'window alist)
+          xref--original-window-intent (assoc-default 'display-action alist))
+    (ivy-read "xref: "
+              collection
+              :action (lambda (candidate)
+                        (xref--show-location (cadr candidate) t)
+                        (when (= windows 1)
+                          (delete-window xref--original-window)))
+              :require-match t)))
+
+;; -----------------------------------------------------------------------------
+;; -----------------------------------------------------------------------------
+
 ;; projects
 (setq projectile-completion-system 'ivy
       projectile-indexing-method 'alien
       projectile-enable-caching nil
       projectile-known-projects-file (concat +session-dir+ ".projectile"))
 (projectile-mode t)
+
+;; references
+(setq xref-show-xrefs-function #'xref-select-xref)
 
 ;; completion
 (setq company-backends '(company-slime

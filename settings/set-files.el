@@ -1,9 +1,11 @@
 ;; -----------------------------------------------------------------------------
 ;; files -----------------------------------------------------------------------
 
-(defun recentf-find-file (file-name)
-  (interactive (list (completing-read "[recentf] Find file: " recentf-list)))
-  (find-file file-name))
+(defun recentf-find-file ()
+  (interactive)
+  (ivy-read "[recentf] Find file: "
+            recentf-list
+            :action #'find-file))
 
 (defun recentf-move-to-top ()
   (let ((file-name (buffer-file-name)))
