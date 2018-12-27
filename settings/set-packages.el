@@ -29,6 +29,10 @@
                        face-explorer
                        regex-tool
                        restclient
+                       ;; data
+                       json-mode
+                       protobuf-mode
+                       yaml-mode
                        ;; lisp
                        macrostep
                        slime

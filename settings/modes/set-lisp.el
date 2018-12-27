@@ -14,15 +14,13 @@
                slime-indentation))
 
 ;; style
-(setq-mode-local lisp-mode lisp-indent-function #'common-lisp-indent-function
-                           tab-width 8)
+(setq-mode-local lisp-mode lisp-indent-function #'common-lisp-indent-function)
 
 ;; -----------------------------------------------------------------------------
 ;; emacs lisp ------------------------------------------------------------------
 
 ;; style
-(setq-mode-local emacs-lisp-mode lisp-indent-function #'lisp-indent-function
-                                 tab-width 8)
+(setq-mode-local emacs-lisp-mode lisp-indent-function #'lisp-indent-function)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

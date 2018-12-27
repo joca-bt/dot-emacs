@@ -85,5 +85,6 @@
 (require 'set-navigation)
 (require 'set-programming)
 (require 'set-tools)
+(require 'set-data)
 (require 'set-lisp)
 (require 'set-key-bindings)
