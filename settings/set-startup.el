@@ -9,8 +9,7 @@
 ;; start emacs server
 (setq server-name "server"
       server-auth-dir +session-dir+)
-(when (and (display-graphic-p)
-           (not (server-running-p)))
+(unless (server-running-p)
   (server-start))
 
 ;; -----------------------------------------------------------------------------

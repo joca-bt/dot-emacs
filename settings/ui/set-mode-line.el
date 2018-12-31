@@ -1,10 +1,10 @@
-;; -------------------------------------------------- -*- lexical-binding: t -*-
+;; -----------------------------------------------------------------------------
 ;; mode line -------------------------------------------------------------------
 
-(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
+(defface ml-emphasis '((t :weight bold))
   "")
 
-(defface ml-strong '((t :weight bold))
+(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
   "")
 
 (defvar ml-active-window nil)
@@ -12,19 +12,16 @@
 (defun ml-active-window-p ()
   (eq (selected-window) ml-active-window))
 
-(defun ml-set-active-window ()
+(defun ml-set-active-window (&rest args)
   (let ((active-window (frame-selected-window)))
     (unless (minibuffer-window-active-p active-window)
       (setq ml-active-window active-window))))
 
-(defadvice select-window (after ml-select-window activate)
-  (ml-set-active-window))
+(advice-add 'handle-switch-frame :after #'ml-set-active-window)
+(advice-add 'select-window :after #'ml-set-active-window)
 
-(defadvice handle-switch-frame (after ml-handle-switch-frame activate)
-  (ml-set-active-window))
-
-(defun ml-fill (reserve)
-  (propertize " " 'display `(space :align-to (- right ,reserve))))
+(defun ml-fill (width)
+  (propertize " " 'display `(space :align-to (- right ,width))))
 
 (defun ml-make-keymap (&rest args)
   (let ((keymap (make-sparse-keymap)))
@@ -32,12 +29,19 @@
              do (define-key keymap key value))
     keymap))
 
+(defun ml-set-height (height)
+  (let ((xpm (format "/* XPM */ static char * xpm[] = { \"1 %s 1 1\", \"a c none\", %s };"
+                     height
+                     (cl-loop for i from 1 to height
+                              concat "\"a\","))))
+    (propertize " " 'display (create-image xpm 'xpm t :ascent 'center))))
+
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
 (defun ml-buffer-name ()
   (propertize "%20b"
-              'face 'ml-strong
+              'face 'ml-emphasis
               'mouse-face 'ml-highlight
               'pointer 'arrow
               'help-echo #'ml-buffer-name-help))
@@ -185,17 +189,18 @@
                                                      ,@(when (ml-active-window-p)
                                                          `("    "
                                                            ,@(when (flycheck-get-checker-for-buffer)
-                                                               `((:eval (ml-syntax-checking))
+                                                               '((:eval (ml-syntax-checking))
                                                                  "  "))
                                                            (:eval (ml-minor-modes))))))
                                              (right `(,@(when (and (ml-active-window-p)
                                                                    (projectile-project-p))
-                                                          `((:eval (ml-project))
+                                                          '((:eval (ml-project))
                                                             "    "))
                                                       (:eval (ml-coding-system))
                                                       " | "
                                                       (:eval (ml-position)))))
                                          `(,left
+                                           ,(ml-set-height 25)
                                            ,(ml-fill (- (string-width (format-mode-line right))
                                                         1.34))
                                            ,right))))
