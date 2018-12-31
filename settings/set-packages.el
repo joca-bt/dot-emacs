@@ -38,7 +38,8 @@
                        slime
                        slime-company
                        ;; built-in
-                       mode-local))
+                       mode-local
+                       server))
 
 (let ((refreshed-p nil))
   (defun load-package (package)
@@ -66,7 +67,6 @@
 (add-to-list 'load-path (concat +packages-dir+ "manual/"))
 
 ;; load packages
-(setq make-backup-files nil)
 (mapc #'load-package +packages+)
 
 ;; -----------------------------------------------------------------------------

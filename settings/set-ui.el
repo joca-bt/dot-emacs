@@ -1,6 +1,16 @@
 ;; -----------------------------------------------------------------------------
 ;; ui --------------------------------------------------------------------------
 
+(defconst +source-code-font+ (if +windows-p+
+                                 '(:font "Consolas" :height 108)
+                               '(:font "Source Code Pro" :height 128)))
+(defconst +ui-font+ (if +windows-p+
+                        '(:font "Segoe UI" :height 90)
+                      '(:font "Noto Sans" :height 113)))
+
+;; -----------------------------------------------------------------------------
+;; -----------------------------------------------------------------------------
+
 ;; font
 (apply #'set-face-attribute 'default nil +source-code-font+)
 
@@ -10,7 +20,7 @@
 ;; title bar
 (require 'set-title-bar)
 
-;; toolbar
+;; disable toolbar
 (tool-bar-mode -1)
 
 ;; file tabs
@@ -45,11 +55,20 @@
       scroll-preserve-screen-position t
       mouse-wheel-progressive-speed nil)
 
+;; maximize frames
+(setq default-frame-alist '((fullscreen . maximized)))
+
 ;; pop-up buffer/window management
 (setq shackle-default-rule '(:select t)
       shackle-select-reused-windows t
       shackle-inhibit-window-quit-on-same-windows t)
 (shackle-mode t)
+
+;; disable prompts
+(fset 'yes-or-no-p #'y-or-n-p)
+
+;; disable beeping
+(setq ring-bell-function #'ignore)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

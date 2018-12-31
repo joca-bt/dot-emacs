@@ -1,10 +1,10 @@
 ;; -------------------------------------------------- -*- lexical-binding: t -*-
 ;; mode line -------------------------------------------------------------------
 
-(defface ml-strong '((t :weight bold))
+(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
   "")
 
-(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
+(defface ml-strong '((t :weight bold))
   "")
 
 (defvar ml-active-window nil)
@@ -27,10 +27,10 @@
   (propertize " " 'display `(space :align-to (- right ,reserve))))
 
 (defun ml-make-keymap (&rest args)
-  (let ((map (make-sparse-keymap)))
+  (let ((keymap (make-sparse-keymap)))
     (cl-loop for (key value) on args by #'cddr
-             do (define-key map key value))
-    map))
+             do (define-key keymap key value))
+    keymap))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
@@ -90,9 +90,9 @@
       (format "%s\nmouse-2: Describe coding system" coding-system))))
 
 (defvar ml-coding-system-keymap
-  (ml-make-keymap [mode-line mouse-2] #'(lambda (event)
-                                          (interactive "@e")
-                                          (describe-coding-system buffer-file-coding-system))))
+  (ml-make-keymap [mode-line mouse-2] (lambda (event)
+                                        (interactive "@e")
+                                        (describe-coding-system buffer-file-coding-system))))
 
 (defun ml-major-mode ()
   (propertize mode-name
@@ -106,8 +106,8 @@
     "Major mode\nmouse-1: Show major mode menu\nmouse-2: Describe major mode"))
 
 (defvar ml-major-mode-keymap
-  (ml-make-keymap [mode-line mouse-1] `(menu-item "Menu Bar" ,#'ignore :filter ,#'(lambda (_)
-                                                                                    (mouse-menu-major-mode-map)))
+  (ml-make-keymap [mode-line mouse-1] '(menu-item "Major Mode" nil :filter (lambda (command)
+                                                                             (mouse-menu-major-mode-map)))
                   [mode-line mouse-2] #'describe-mode))
 
 (defun ml-minor-modes ()
@@ -127,12 +127,12 @@
     "Minor mode\nmouse-1: Show minor mode menu\nmouse-2: Describe minor mode"))
 
 (defun ml-minor-mode-keymap (lighter)
-  (ml-make-keymap [mode-line mouse-1] #'(lambda (event)
-                                          (interactive "@e")
-                                          (minor-mode-menu-from-indicator lighter))
-                  [mode-line mouse-2] #'(lambda (event)
-                                          (interactive "@e")
-                                          (describe-minor-mode-from-indicator lighter))))
+  (ml-make-keymap [mode-line mouse-1] (lambda (event)
+                                        (interactive "@e")
+                                        (minor-mode-menu-from-indicator lighter))
+                  [mode-line mouse-2] (lambda (event)
+                                        (interactive "@e")
+                                        (describe-minor-mode-from-indicator lighter))))
 
 (defun ml-position ()
   (let ((space (propertize " " 'display '(space :width 0.33))))

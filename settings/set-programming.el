@@ -12,7 +12,6 @@
 (setq company-backends '(company-slime
                          company-elisp
                          company-capf
-                         company-files
                          (company-dabbrev-code company-dabbrev company-abbrev company-keywords))
       company-idle-delay nil
       company-quickhelp-delay +documentation-delay+
@@ -29,8 +28,7 @@
 
 ;; syntax checking
 (setq flycheck-checkers '()
-      flycheck-check-syntax-automatically '(save idle-change)
-      flycheck-idle-change-delay +auto-check-delay+
+      flycheck-check-syntax-automatically '(save)
       flycheck-indication-mode 'left-fringe
       flycheck-highlighting-mode 'symbols
       flycheck-display-errors-delay +documentation-delay+)

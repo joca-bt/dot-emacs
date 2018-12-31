@@ -47,10 +47,10 @@
                'face-defface-spec)
 
 (defun tabbar-buffer-list ()
-  (cl-remove-if #'(lambda (buffer)
-                    (unless (or (eq buffer (current-buffer))
-                                (buffer-file-name buffer))
-                      (cl-find (aref (buffer-name buffer) 0) " *")))
+  (cl-remove-if (lambda (buffer)
+                  (unless (or (eq buffer (current-buffer))
+                              (buffer-file-name buffer))
+                    (cl-find (aref (buffer-name buffer) 0) " *")))
                 (buffer-list)))
 
 (defun tabbar-line-tab (tab)

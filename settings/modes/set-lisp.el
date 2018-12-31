@@ -3,7 +3,6 @@
 
 ;; slime
 (setq inferior-lisp-program "sbcl"
-      slime-compile-file-options `(:fasl-directory ,(concat +temp-dir+ "fasl/"))
       slime-load-failed-fasl 'always
       slime-startup-animation nil
       slime-repl-history-size +command-history-size+
