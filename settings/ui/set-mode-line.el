@@ -154,7 +154,7 @@
     "Projectile\nmouse-1: Show Projectile menu"))
 
 (defvar ml-project-keymap
-  (ml-make-keymap [mode-line mouse-1] (easy-menu-get-map nil '("Tools" "Projectile"))))
+  (ml-make-keymap [mode-line mouse-1] projectile-mode-menu))
 
 (defun ml-syntax-checking ()
   (let-alist (flycheck-count-errors flycheck-current-errors)
@@ -178,7 +178,7 @@
     "Flycheck\nmouse-1: Show Flycheck menu"))
 
 (defvar ml-syntax-checking-keymap
-  (ml-make-keymap [mode-line mouse-1] (easy-menu-get-map nil '("Tools" "Syntax Checking"))))
+  (ml-make-keymap [mode-line mouse-1] flycheck-mode-menu-map))
 
 (setq-default mode-line-format '(:eval (let ((left `("    "
                                                      (:eval (ml-buffer-status))
