@@ -3,10 +3,11 @@
 
 (defconst +source-code-font+ (if +windows-p+
                                  '(:font "Consolas" :height 108)
-                               '(:font "Source Code Pro" :height 128)))
+                               '(:font "Source Code Pro" :height 143)))
+
 (defconst +ui-font+ (if +windows-p+
                         '(:font "Segoe UI" :height 90)
-                      '(:font "Noto Sans" :height 113)))
+                      '(:font "Noto Sans" :height 120)))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
@@ -46,7 +47,8 @@
 ;; horizontal scrolling
 (setq hscroll-margin 0
       hscroll-step 1
-      mouse-wheel-tilt-scroll t)
+      mouse-wheel-tilt-scroll t
+      mouse-wheel-flip-direction (not +windows-p+))
 
 ;; vertical scrolling
 (setq scroll-margin 0
