@@ -72,9 +72,6 @@
 ;; -----------------------------------------------------------------------------
 ;; rest ------------------------------------------------------------------------
 
-(global-set-key (kbd "M-x") #'smex) ; execute command
-(global-set-key (kbd "M-X") #'smex-major-mode-commands) ; execute major-mode-relevant command
-
 (global-set-key (kbd "M-<down>") #'tabbar-forward) ; switch to next file tab
 (global-set-key (kbd "M-<up>") #'tabbar-backward) ; switch to previous file tab
 

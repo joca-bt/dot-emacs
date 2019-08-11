@@ -1,2 +1,1 @@
 buffer-move https://github.com/lukhas/buffer-move/pull/14/
-smex        https://github.com/nonsequitur/smex/pull/51/

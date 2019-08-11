@@ -6,9 +6,9 @@
                        shackle
                        tabbar
                        ;; ivy
+                       amx
                        flx
                        ivy
-                       smex
                        ;; editing
                        expand-region
                        multiple-cursors
