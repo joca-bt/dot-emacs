@@ -95,7 +95,6 @@
 
 (global-set-key (kbd "C-e") #'er/expand-region) ; expand region
 (global-set-key (kbd "M-c") #'mc/mark-all-dwim) ; multiple cursors
-(global-set-key (kbd "M-z") #'avy-goto-char-timer) ; avy
 (global-set-key (kbd "C-<SPC>") #'company-complete) ; auto-complete
 
 ;; -----------------------------------------------------------------------------

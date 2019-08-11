@@ -7,11 +7,6 @@
 (custom-theme-set-faces 'ample
                         ;; ag
                         '(ag-match-face ((t :inherit isearch)))
-                        ;; avy
-                        '(avy-goto-char-timer-face ((t :inherit isearch)))
-                        '(avy-lead-face-0 ((t :inherit avy-lead-face)))
-                        '(avy-lead-face-1 ((t :inherit avy-lead-face)))
-                        '(avy-lead-face-2 ((t :inherit avy-lead-face)))
                         ;; ivy
                         '(ivy-current-match ((t :background "gray18")))
                         '(ivy-minibuffer-match-face-1 ((t :inherit flx-highlight-face)))

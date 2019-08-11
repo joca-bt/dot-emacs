@@ -15,7 +15,6 @@
                        undo-tree
                        ws-butler
                        ;; navigation
-                       avy
                        buffer-move
                        swiper
                        ;; programming
