@@ -1,19 +1,19 @@
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
-(defun xref-select-xref (xrefs alist)
-  (let ((collection (cl-loop for (file-name . xrefs) in (xref--analyze xrefs)
-                             nconc (mapcar (lambda (xref)
-                                             (list (format "%s: %s"
-                                                           (propertize (file-name-nondirectory file-name) 'face 'compilation-info)
-                                                           (xref-item-summary xref))
-                                                   (xref-item-location xref)))
-                                           xrefs)))
+(defun ivy-xref-show-xrefs (xrefs alist)
+  (let ((xrefs (cl-loop for (file-name . xrefs) in (xref--analyze xrefs)
+                        nconc (mapcar (lambda (xref)
+                                        (list (format "%s: %s"
+                                                      (propertize (file-name-nondirectory file-name) 'face 'compilation-info)
+                                                      (xref-item-summary xref))
+                                              (xref-item-location xref)))
+                                      xrefs)))
         (windows (count-windows)))
     (setq xref--original-window (assoc-default 'window alist)
           xref--original-window-intent (assoc-default 'display-action alist))
     (ivy-read "xref: "
-              collection
+              xrefs
               :action (lambda (candidate)
                         (xref--show-location (cadr candidate) t)
                         (when (= windows 1)
@@ -31,7 +31,9 @@
 (projectile-mode t)
 
 ;; references
-(setq xref-show-xrefs-function #'xref-select-xref)
+(setq xref-show-xrefs-function #'ivy-xref-show-xrefs
+      xref-after-jump-hook '(recenter)
+      xref-after-return-hook nil)
 
 ;; completion
 (setq company-backends '(company-slime

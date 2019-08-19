@@ -1,10 +1,10 @@
 ;; -----------------------------------------------------------------------------
 ;; mode line -------------------------------------------------------------------
 
-(defface ml-emphasis '((t :weight bold))
+(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
   "")
 
-(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
+(defface ml-strong '((t :weight bold))
   "")
 
 (defvar ml-active-window nil)
@@ -13,12 +13,12 @@
   (eq (selected-window) ml-active-window))
 
 (defun ml-set-active-window (&rest args)
-  (let ((active-window (frame-selected-window)))
+  (let ((active-window (selected-window)))
     (unless (minibuffer-window-active-p active-window)
       (setq ml-active-window active-window))))
 
-(advice-add 'handle-switch-frame :after #'ml-set-active-window)
 (advice-add 'select-window :after #'ml-set-active-window)
+(advice-add 'select-frame :after #'ml-set-active-window)
 
 (defun ml-fill (width)
   (propertize " " 'display `(space :align-to (- right ,width))))
@@ -41,7 +41,7 @@
 
 (defun ml-buffer-name ()
   (propertize "%20b"
-              'face 'ml-emphasis
+              'face 'ml-strong
               'mouse-face 'ml-highlight
               'pointer 'arrow
               'help-echo #'ml-buffer-name-help))
@@ -59,8 +59,8 @@
                      'mouse-face 'ml-highlight
                      'pointer 'arrow
                      'help-echo #'ml-buffer-status-help))
-        ((and (buffer-file-name)
-              (buffer-modified-p))
+        ((and (buffer-modified-p)
+              (buffer-file-name))
          (propertize " ** "
                      'mouse-face 'ml-highlight
                      'pointer 'arrow

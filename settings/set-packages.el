@@ -54,16 +54,15 @@
 ;; package manager
 (setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
-                         ("gnu" . "https://elpa.gnu.org/packages/"))
+                         ("elpa" . "https://elpa.gnu.org/packages/"))
       package-archive-priorities '(("melpa-stable" . 20)
                                    ("melpa" . 10)
-                                   ("gnu" . 0))
-      package-user-dir +packages-dir+
-      package-enable-at-startup nil
-      package--init-file-ensured t)
-(package-initialize)
+                                   ("elpa" . 0))
+      package-user-dir +packages-dir+)
 
 ;; load packages
+(setq load-prefer-newer t)
+(package-initialize)
 (mapc #'load-package +packages+)
 
 ;; -----------------------------------------------------------------------------

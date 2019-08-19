@@ -14,7 +14,7 @@
 ;; amx
 (setq amx-backend 'ivy
       amx-show-key-bindings nil
-      amx-history-length (/ ivy-height 2)
+      amx-history-length 10
       amx-save-file (concat +session-dir+ ".amx"))
 (amx-mode t)
 

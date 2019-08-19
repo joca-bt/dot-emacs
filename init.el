@@ -13,12 +13,12 @@
 (defconst +backups-dir+ (concat +emacs-dir+ "backups/"))
 (defconst +session-dir+ (concat +emacs-dir+ "session/"))
 
-(defconst +auto-save-interval+ 600) ; 10 min
+(defconst +auto-save-interval+ 60) ; 1 min
 (defconst +documentation-delay+ 0.5) ; 0.5 sec
 (defconst +command-history-size+ 100)
 (defconst +file-history-size+ 1000)
 
-(defconst +windows-p+ (string= system-type "windows-nt"))
+(defconst +windows-p+ (string= system-type 'windows-nt))
 
 ;; load path
 (add-to-list 'load-path +settings-dir+)

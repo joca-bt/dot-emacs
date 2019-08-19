@@ -7,11 +7,6 @@
             recentf-list
             :action #'find-file))
 
-(defun recentf-move-to-top ()
-  (let ((file-name (buffer-file-name)))
-    (when file-name
-      (recentf-add-file file-name))))
-
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
@@ -33,7 +28,7 @@
       recentf-max-saved-items +file-history-size+
       recentf-save-file (concat +session-dir+ ".recentf"))
 (recentf-mode t)
-(add-hook 'window-configuration-change-hook #'recentf-move-to-top t)
+(add-hook 'window-configuration-change-hook #'recentf-track-opened-file t)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
