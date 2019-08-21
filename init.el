@@ -34,6 +34,7 @@
 (require 'set-backups)
 (require 'set-session)
 (require 'set-editing)
+(require 'set-navigation)
 (require 'set-programming)
 (require 'set-tools)
 (require 'set-data)

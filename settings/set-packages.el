@@ -15,7 +15,6 @@
                        undo-tree
                        ws-butler
                        ;; navigation
-                       buffer-move
                        swiper
                        ;; programming
                        company
@@ -63,7 +62,6 @@
       package-enable-at-startup nil
       package--init-file-ensured t)
 (package-initialize)
-(add-to-list 'load-path (concat +packages-dir+ "manual/"))
 
 ;; load packages
 (mapc #'load-package +packages+)
