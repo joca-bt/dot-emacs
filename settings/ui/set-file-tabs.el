@@ -1,50 +1,14 @@
 ;; -----------------------------------------------------------------------------
 ;; file tabs -------------------------------------------------------------------
 
-(face-spec-set 'tabbar-default `((t ,@+ui-font+
-                                    :foreground "black"
-                                    :background "grey80"))
-               'face-defface-spec)
-
-(face-spec-set 'tabbar-selected '((t :inherit tabbar-default
-                                     :foreground "grey15"
-                                     :background "grey95"
-                                     :box (:line-width 3 :color "grey95")))
-               'face-defface-spec)
-
-(defface tabbar-selected-highlight '((t :inherit tabbar-selected))
+(defface tabbar-selected-highlight '((t))
   "")
 
-(face-spec-set 'tabbar-selected-modified '((t :inherit tabbar-selected
-                                              :weight bold))
-               'face-defface-spec)
-
-(face-spec-set 'tabbar-unselected '((t :inherit tabbar-default
-                                       :foreground "black"
-                                       :background "grey80"
-                                       :box (:line-width 3 :color "grey80")))
-               'face-defface-spec)
-
-(defface tabbar-unselected-highlight '((t :inherit tabbar-unselected
-                                          :background "grey65"
-                                          :box (:line-width 3 :color "grey65")))
+(defface tabbar-unselected-highlight '((t))
   "")
 
-(defface tabbar-unselected-modified '((t :inherit tabbar-unselected
-                                         :weight bold))
+(defface tabbar-unselected-modified '((t))
   "")
-
-(face-spec-set 'tabbar-button '((t :inherit tabbar-unselected
-                                   :box nil))
-               'face-defface-spec)
-
-(face-spec-set 'tabbar-button-highlight '((t :inherit tabbar-unselected-highlight
-                                             :box nil))
-               'face-defface-spec)
-
-(face-spec-set 'tabbar-separator '((t :inherit tabbar-default
-                                      :background "grey50"))
-               'face-defface-spec)
 
 (defun tabbar-buffer-list ()
   (cl-remove-if (lambda (buffer)
@@ -52,6 +16,9 @@
                               (buffer-file-name buffer))
                     (cl-find (aref (buffer-name buffer) 0) " *")))
                 (buffer-list)))
+
+(defun tabbar-line-buttons (tabset)
+  (list ""))
 
 (defun tabbar-line-tab (tab)
   (let* ((buffer (tabbar-tab-value tab))
@@ -71,14 +38,16 @@
          (mouse-face (if selected-p
                          'tabbar-selected-highlight
                        'tabbar-unselected-highlight)))
-    (concat (propertize label
+    (concat (propertize (format "%s%s%s" (make-space 1) label (make-space 1))
                         'tabbar-tab tab
                         'face face
                         'mouse-face mouse-face
                         'pointer 'arrow
                         'help-echo #'tabbar-line-tab-help
                         'local-map (tabbar-make-tab-keymap tab))
-            tabbar-separator-value)))
+            (if selected-p
+                (make-xpm 30 1 (face-attribute 'tabbar-separator :background))
+              tabbar-separator-value))))
 
 (defun tabbar-line-tab-help (window object position)
   (with-selected-window window
@@ -89,28 +58,12 @@
           (abbreviate-file-name file-name)
         (buffer-name buffer)))))
 
-(defun tabbar-line-button (button)
-  (let ((label (if tabbar-button-label-function
-                   (funcall tabbar-button-label-function button)
-                 (cons button button))))
-    (set (intern (format "tabbar-%s-button-value" button))
-         (cons (propertize (car label)
-                           'tabbar-button button
-                           'face 'tabbar-button
-                           'mouse-face 'tabbar-button-highlight
-                           'pointer 'arrow
-                           'local-map (tabbar-make-button-keymap button))
-               (propertize (cdr label)
-                           'face 'tabbar-button
-                           'pointer 'arrow)))))
-
 (defun tabbar-update (&rest args)
   (tabbar-set-template (tabbar-current-tabset) nil)
   (tabbar-display-update))
 
-(setq tabbar-buffer-home-button '(("") "")
-      tabbar-buffer-groups-function nil
-      tabbar-separator '(0.2))
+(setq tabbar-buffer-groups-function nil
+      tabbar-separator '(0.1))
 (tabbar-mode t)
 (tabbar-mwheel-mode -1)
 (add-hook 'after-change-functions #'tabbar-update t)

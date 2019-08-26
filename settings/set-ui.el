@@ -9,6 +9,17 @@
                         '(:font "Segoe UI" :height 90)
                       '(:font "Noto Sans" :height 120)))
 
+(defun make-space (size)
+  (propertize " " 'display `(space :width ,size)))
+
+(defun make-xpm (height width &optional color)
+  (let ((xpm (format "/* XPM */ static char * xpm[] = { \"%s %s 1 1\", \". c %s\", %s };"
+                     width
+                     height
+                     (or color "none")
+                     (apply #'concat (make-list height (format "\"%s\"," (make-string width ?.)))))))
+    (propertize " " 'display (create-image xpm 'xpm t :ascent 'center))))
+
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
@@ -30,8 +41,8 @@
 ;; line numbers
 (global-display-line-numbers-mode t)
 
-;; highlight current line
-(global-hl-line-mode t)
+;; disable scrollbars
+(scroll-bar-mode -1)
 
 ;; mode line
 (require 'set-mode-line)

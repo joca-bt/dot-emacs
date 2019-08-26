@@ -1,10 +1,13 @@
-;; -----------------------------------------------------------------------------
+;; -------------------------------------------------- -*- lexical-binding: t -*-
 ;; mode line -------------------------------------------------------------------
 
-(defface ml-highlight '((t :box (:line-width 1 :color "grey25")))
+(defface ml-buffer-name '((t))
   "")
 
-(defface ml-strong '((t :weight bold))
+(defface ml-active-highlight '((t))
+  "")
+
+(defface ml-inactive-highlight '((t))
   "")
 
 (defvar ml-active-window nil)
@@ -20,8 +23,13 @@
 (advice-add 'select-window :after #'ml-set-active-window)
 (advice-add 'select-frame :after #'ml-set-active-window)
 
-(defun ml-fill (width)
-  (propertize " " 'display `(space :align-to (- right ,width))))
+(defun ml-fill (size)
+  (propertize " " 'display `(space :align-to (- right ,size))))
+
+(defun ml-highlight ()
+  (if (ml-active-window-p)
+      'ml-active-highlight
+    'ml-inactive-highlight))
 
 (defun ml-make-keymap (&rest args)
   (let ((keymap (make-sparse-keymap)))
@@ -30,19 +38,15 @@
     keymap))
 
 (defun ml-set-height (height)
-  (let ((xpm (format "/* XPM */ static char * xpm[] = { \"1 %s 1 1\", \"a c none\", %s };"
-                     height
-                     (cl-loop for i from 1 to height
-                              concat "\"a\","))))
-    (propertize " " 'display (create-image xpm 'xpm t :ascent 'center))))
+  (make-xpm 25 1))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
 (defun ml-buffer-name ()
   (propertize "%20b"
-              'face 'ml-strong
-              'mouse-face 'ml-highlight
+              'face 'ml-buffer-name
+              'mouse-face (ml-highlight)
               'pointer 'arrow
               'help-echo #'ml-buffer-name-help))
 
@@ -56,13 +60,13 @@
 (defun ml-buffer-status ()
   (cond (buffer-read-only
          (propertize " RO "
-                     'mouse-face 'ml-highlight
+                     'mouse-face (ml-highlight)
                      'pointer 'arrow
                      'help-echo #'ml-buffer-status-help))
         ((and (buffer-modified-p)
               (buffer-file-name))
          (propertize " ** "
-                     'mouse-face 'ml-highlight
+                     'mouse-face (ml-highlight)
                      'pointer 'arrow
                      'help-echo #'ml-buffer-status-help))
         (t
@@ -79,9 +83,9 @@
                       (0 "unix")
                       (1 "dos")
                       (2 "mac")
-                      (_ "undecided"))))
+                      (_ "!?"))))
     (propertize terminator
-                'mouse-face 'ml-highlight
+                'mouse-face (ml-highlight)
                 'pointer 'arrow
                 'help-echo #'ml-coding-system-help
                 'local-map ml-coding-system-keymap)))
@@ -90,17 +94,18 @@
   (with-selected-window window
     (let ((coding-system (if buffer-file-coding-system
                              (symbol-name buffer-file-coding-system)
-                           "none")))
-      (format "%s\nmouse-2: Describe coding system" coding-system))))
+                           "!?")))
+      (format "%s\nmouse-2: Describe coding system\nmouse-3: Set coding system" coding-system))))
 
 (defvar ml-coding-system-keymap
   (ml-make-keymap [mode-line mouse-2] (lambda (event)
                                         (interactive "@e")
-                                        (describe-coding-system buffer-file-coding-system))))
+                                        (describe-coding-system buffer-file-coding-system))
+                  [mode-line mouse-3] #'set-buffer-file-coding-system))
 
 (defun ml-major-mode ()
   (propertize mode-name
-              'mouse-face 'ml-highlight
+              'mouse-face (ml-highlight)
               'pointer 'arrow
               'help-echo #'ml-major-mode-help
               'local-map ml-major-mode-keymap))
@@ -120,7 +125,7 @@
                                   (symbol-value mode)
                                   (not (string-empty-p (setq lighter (string-trim (format-mode-line lighter))))))
                         collect (propertize lighter
-                                            'mouse-face 'ml-highlight
+                                            'mouse-face (ml-highlight)
                                             'pointer 'arrow
                                             'help-echo #'ml-minor-mode-help
                                             'local-map (ml-minor-mode-keymap lighter)))
@@ -139,12 +144,11 @@
                                         (describe-minor-mode-from-indicator lighter))))
 
 (defun ml-position ()
-  (let ((space (propertize " " 'display '(space :width 0.33))))
-    (format "%%l%s:%s%%C" space space)))
+  (format "%%l%s:%s%%C" (make-space 0.33) (make-space 0.33)))
 
 (defun ml-project ()
   (propertize (projectile-project-name)
-              'mouse-face 'ml-highlight
+              'mouse-face (ml-highlight)
               'pointer 'arrow
               'help-echo #'ml-project-help
               'local-map ml-project-keymap))
@@ -161,14 +165,15 @@
     (let ((indicator (pcase flycheck-last-status-change
                        ('running "*")
                        ((or 'errored 'interrupted 'suspicious) "!")
-                       (_ "")))
+                       (_ "-")))
           (errors (or .error 0))
           (warnings (or .warning 0))
           (infos (or .info 0)))
-      (propertize (if (eq flycheck-last-status-change 'finished)
-                      (format "%s/%s/%s" errors warnings infos)
-                    (format "  %s  " indicator))
-                  'mouse-face 'ml-highlight
+      (propertize (if (and (eq flycheck-last-status-change 'finished)
+                           (> (+ errors warnings infos) 0))
+                      (format "%s|%s|%s" errors warnings infos)
+                    indicator)
+                  'mouse-face (ml-highlight)
                   'pointer 'arrow
                   'help-echo #'ml-syntax-checking-help
                   'local-map ml-syntax-checking-keymap))))
