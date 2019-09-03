@@ -36,15 +36,24 @@
       xref-after-return-hook nil)
 
 ;; completion
-(setq company-backends '(company-slime
+(setq company-backends '(;; lisp
+                         company-slime
                          company-elisp
+                         ;; rest
                          company-capf
-                         (company-dabbrev-code company-dabbrev company-abbrev company-keywords))
+                         (company-dabbrev-code company-dabbrev company-keywords))
       company-idle-delay nil
       company-quickhelp-delay +documentation-delay+
       company-tooltip-align-annotations t
-      company-tooltip-minimum-width 25
-      company-tooltip-limit 10)
+      company-quickhelp-use-propertized-text t
+      company-tooltip-minimum 5
+      company-tooltip-limit 10
+      company-tooltip-minimum-width 30
+      company-quickhelp-max-lines 20
+      ;; backends
+      company-dabbrev-downcase nil
+      company-dabbrev-ignore-case nil
+      company-dabbrev-other-buffers t)
 (global-company-mode t)
 (company-quickhelp-mode t)
 
@@ -56,10 +65,12 @@
 ;; syntax checking
 (setq flycheck-checkers '()
       flycheck-check-syntax-automatically '(save)
-      flycheck-indication-mode 'left-fringe
+      flycheck-indication-mode nil
       flycheck-highlighting-mode 'symbols
-      flycheck-display-errors-delay +documentation-delay+)
+      flycheck-display-errors-delay +documentation-delay+
+      flycheck-pos-tip-timeout -1)
 (global-flycheck-mode t)
+(flycheck-pos-tip-mode t)
 
 ;; comments
 (setq comment-empty-lines t)

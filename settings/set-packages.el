@@ -20,6 +20,7 @@
                        company
                        company-quickhelp
                        flycheck
+                       flycheck-pos-tip
                        projectile
                        smartparens
                        ;; tools

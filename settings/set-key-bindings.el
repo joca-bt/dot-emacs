@@ -18,6 +18,14 @@
 (global-unset-key (kbd "<mouse-3>"))
 
 ;; -----------------------------------------------------------------------------
+;; company ---------------------------------------------------------------------
+
+(global-set-key (kbd "C-<SPC>") #'company-complete)
+(define-key company-active-map (kbd "M-.") #'company-show-location)
+(define-key company-active-map (kbd "C-s") #'company-select-next)
+(define-key company-active-map (kbd "C-r") #'company-select-previous)
+
+;; -----------------------------------------------------------------------------
 ;; ivy -------------------------------------------------------------------------
 
 (define-key ivy-minibuffer-map (kbd "RET") #'ivy-alt-done)
@@ -93,7 +101,6 @@
 
 (global-set-key (kbd "C-e") #'er/expand-region) ; expand region
 (global-set-key (kbd "M-c") #'mc/mark-all-dwim) ; multiple cursors
-(global-set-key (kbd "C-<SPC>") #'company-complete) ; auto-complete
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
