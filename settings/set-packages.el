@@ -53,12 +53,16 @@
 ;; -----------------------------------------------------------------------------
 
 ;; package manager
-(setq package-archives '(("melpa-stable" . "https://stable.melpa.org/packages/")
+(setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
-                         ("elpa" . "https://elpa.gnu.org/packages/"))
-      package-archive-priorities '(("melpa-stable" . 20)
-                                   ("melpa" . 10)
-                                   ("elpa" . 0))
+                         ("melpa-stable" . "https://stable.melpa.org/packages/"))
+      package-archive-priorities '(("melpa" . 10))
+      package-pinned-packages '((company . "melpa-stable")
+                                (flycheck . "melpa-stable")
+                                (ivy . "melpa-stable")
+                                (projectile . "melpa-stable")
+                                (slime . "melpa-stable")
+                                (swiper . "melpa-stable"))
       package-user-dir +packages-dir+)
 
 ;; load packages

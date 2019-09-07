@@ -3,6 +3,7 @@
 
 ;; ag
 (setq ag-highlight-search t
+      ag-group-matches nil
       ag-reuse-buffers t)
 
 ;; ediff

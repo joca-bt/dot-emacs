@@ -1,0 +1,58 @@
+--- ag.el	2019-07-26 12:00:00.000000000 +0000
++++ ag.el	2019-07-26 12:00:00.000000000 +0000
+@@ -233,9 +233,6 @@
+       (setq arguments (cons "--nogroup" arguments)))
+     (unless regexp
+       (setq arguments (cons "--literal" arguments)))
+-    (when (or (eq system-type 'windows-nt) (eq system-type 'cygwin))
+-      ;; Use --vimgrep to work around issue #97 on Windows.
+-      (setq arguments (cons "--vimgrep" arguments)))
+     (when (char-or-string-p file-regex)
+       (setq arguments (append `("--file-search-regex" ,file-regex) arguments)))
+     (when file-type
+
+--- ivy.el	2019-07-20 12:00:00.000000000 +0000
++++ ivy.el	2019-07-20 12:00:00.000000000 +0000
+@@ -413,9 +413,6 @@
+ (defvar ivy-minibuffer-map
+   (let ((map (make-sparse-keymap)))
+     (define-key map (kbd "C-m") 'ivy-done)
+-    (define-key map [down-mouse-1] 'ignore)
+-    (define-key map [mouse-1] 'ivy-mouse-done)
+-    (define-key map [mouse-3] 'ivy-mouse-dispatching-done)
+     (define-key map (kbd "C-M-m") 'ivy-call)
+     (define-key map (kbd "C-j") 'ivy-alt-done)
+     (define-key map (kbd "C-M-j") 'ivy-immediate-done)
+@@ -3715,17 +3712,6 @@
+                 str))
+          (olen (length str))
+          (annot (plist-get completion-extra-properties :annotation-function)))
+-    (add-text-properties
+-     0 olen
+-     '(mouse-face
+-       ivy-minibuffer-match-highlight
+-       help-echo
+-       (format
+-        (if tooltip-mode
+-            "mouse-1: %s\nmouse-3: %s"
+-          "mouse-1: %s   mouse-3: %s")
+-        ivy-mouse-1-tooltip ivy-mouse-3-tooltip))
+-     str)
+     (when annot
+       (setq str (concat str (funcall annot str)))
+       (ivy-add-face-text-property
+
+--- multiple-cursors-core.el	2019-08-20 12:00:00.000000000 +0000
++++ multiple-cursors-core.el	2019-08-20 12:00:00.000000000 +0000
+@@ -104,10 +104,7 @@
+        (set-marker ,s nil))))
+
+ (defun mc/cursor-is-bar ()
+-  "Return non-nil if the cursor is a bar."
+-  (or (eq cursor-type 'bar)
+-    (and (listp cursor-type)
+-         (eq (car cursor-type) 'bar))))
++  nil)
+
+ (defun mc/line-number-at-pos (&optional pos absolute)
+   "Faster implementation of `line-number-at-pos'."
