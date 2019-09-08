@@ -39,4 +39,5 @@
 (require 'set-tools)
 (require 'set-data)
 (require 'set-lisp)
+(require 'set-perl)
 (require 'set-key-bindings)

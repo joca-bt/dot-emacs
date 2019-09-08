@@ -20,6 +20,9 @@
                      (apply #'concat (make-list height (format "\"%s\"," (make-string width ?.)))))))
     (propertize " " 'display (create-image xpm 'xpm t :ascent 'center))))
 
+(defun set-face (face spec)
+  (face-spec-set face spec 'face-defface-spec))
+
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 

@@ -12,14 +12,8 @@
                slime-company
                slime-indentation))
 
-;; style
+;; indentation
 (setq-mode-local lisp-mode lisp-indent-function #'common-lisp-indent-function)
-
-;; -----------------------------------------------------------------------------
-;; emacs lisp ------------------------------------------------------------------
-
-;; style
-(setq-mode-local emacs-lisp-mode lisp-indent-function #'lisp-indent-function)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
