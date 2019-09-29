@@ -45,10 +45,10 @@
       company-idle-delay nil
       company-quickhelp-delay +documentation-delay+
       company-tooltip-align-annotations t
-      company-quickhelp-use-propertized-text t
       company-tooltip-minimum 5
       company-tooltip-limit 10
       company-tooltip-minimum-width 30
+      company-quickhelp-use-propertized-text t
       company-quickhelp-max-lines 20
       ;; backends
       company-dabbrev-downcase nil
@@ -64,7 +64,7 @@
 
 ;; syntax checking
 (setq flycheck-checkers '()
-      flycheck-check-syntax-automatically '(save)
+      flycheck-check-syntax-automatically '(mode-enabled save)
       flycheck-indication-mode nil
       flycheck-highlighting-mode 'symbols
       flycheck-display-errors-delay +documentation-delay+

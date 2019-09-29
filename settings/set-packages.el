@@ -28,14 +28,13 @@
                        face-explorer
                        regex-tool
                        restclient
-                       ;; data
+                       ;; modes
                        json-mode
-                       protobuf-mode
-                       yaml-mode
-                       ;; lisp
                        macrostep
+                       protobuf-mode
                        slime
                        slime-company
+                       yaml-mode
                        ;; built-in
                        mode-local
                        server))
@@ -69,6 +68,7 @@
 (setq load-prefer-newer t)
 (package-initialize)
 (mapc #'load-package +packages+)
+(require 'smartparens-config)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

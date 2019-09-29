@@ -1,9 +1,9 @@
 ;; -----------------------------------------------------------------------------
 ;; ui --------------------------------------------------------------------------
 
-(defconst +source-code-font+ (if +windows-p+
-                                 '(:font "Consolas" :height 108)
-                               '(:font "Source Code Pro" :height 143)))
+(defconst +editor-font+ (if +windows-p+
+                            '(:font "Consolas" :height 108)
+                          '(:font "Source Code Pro" :height 143)))
 
 (defconst +ui-font+ (if +windows-p+
                         '(:font "Segoe UI" :height 90)
@@ -27,7 +27,7 @@
 ;; -----------------------------------------------------------------------------
 
 ;; font
-(apply #'set-face-attribute 'default nil +source-code-font+)
+(apply #'set-face-attribute 'default nil +editor-font+)
 
 ;; theme
 (require 'set-theme)

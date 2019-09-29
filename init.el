@@ -18,7 +18,7 @@
 (defconst +command-history-size+ 100)
 (defconst +file-history-size+ 1000)
 
-(defconst +windows-p+ (string= system-type 'windows-nt))
+(defconst +windows-p+ (eq system-type 'windows-nt))
 
 ;; load path
 (add-to-list 'load-path +settings-dir+)
@@ -37,7 +37,7 @@
 (require 'set-navigation)
 (require 'set-programming)
 (require 'set-tools)
-(require 'set-data)
 (require 'set-lisp)
 (require 'set-perl)
+(require 'set-xml)
 (require 'set-key-bindings)
