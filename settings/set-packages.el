@@ -32,6 +32,7 @@
                        json-mode
                        macrostep
                        protobuf-mode
+                       puppet-mode
                        slime
                        slime-company
                        yaml-mode
