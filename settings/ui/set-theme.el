@@ -18,10 +18,8 @@
                         `(tabbar-default ((t ,@+ui-font+ :foreground "black" :background "grey80")))
                         '(tabbar-selected ((t :inherit tabbar-default :foreground "grey15" :background "grey95")))
                         '(tabbar-selected-highlight ((t :inherit tabbar-selected)))
-                        '(tabbar-selected-modified ((t :inherit tabbar-selected :weight bold)))
                         '(tabbar-unselected ((t :inherit tabbar-default)))
                         '(tabbar-unselected-highlight ((t :inherit tabbar-unselected :background "grey65")))
-                        '(tabbar-unselected-modified ((t :inherit tabbar-unselected :weight bold)))
                         '(tabbar-separator ((t :inherit tabbar-default :background "grey50")))
                         ;; mode line
                         '(ml-buffer-name ((t :weight bold)))

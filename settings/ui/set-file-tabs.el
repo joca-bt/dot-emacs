@@ -7,9 +7,6 @@
 (defface tabbar-unselected-highlight '((t))
   "")
 
-(defface tabbar-unselected-modified '((t))
-  "")
-
 (defun tabbar-buffer-list ()
   (cl-remove-if (lambda (buffer)
                   (unless (or (eq buffer (current-buffer))
@@ -23,18 +20,12 @@
 (defun tabbar-line-tab (tab)
   (let* ((buffer (tabbar-tab-value tab))
          (selected-p (tabbar-selected-p tab (tabbar-current-tabset)))
-         (modified-p (and (buffer-modified-p buffer)
-                          (buffer-file-name buffer)))
          (label (if tabbar-tab-label-function
                     (funcall tabbar-tab-label-function tab)
                   tab))
          (face (if selected-p
-                   (if modified-p
-                       'tabbar-selected-modified
-                     'tabbar-selected)
-                 (if modified-p
-                     'tabbar-unselected-modified
-                   'tabbar-unselected)))
+                   'tabbar-selected
+                 'tabbar-unselected))
          (mouse-face (if selected-p
                          'tabbar-selected-highlight
                        'tabbar-unselected-highlight)))
@@ -66,8 +57,6 @@
       tabbar-separator '(0.1))
 (tabbar-mode t)
 (tabbar-mwheel-mode -1)
-(add-hook 'after-change-functions #'tabbar-update t)
-(add-hook 'after-save-hook #'tabbar-update t)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
