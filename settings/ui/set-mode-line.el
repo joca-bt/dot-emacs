@@ -31,52 +31,36 @@
       'ml-active-highlight
     'ml-inactive-highlight))
 
-(defun ml-make-keymap (&rest args)
+(defun ml-make-keymap (&rest map)
   (let ((keymap (make-sparse-keymap)))
-    (cl-loop for (key value) on args by #'cddr
+    (cl-loop for (key value) on map by #'cddr
              do (define-key keymap key value))
     keymap))
 
+(defun ml-propertize (string &rest properties)
+  (propertize string
+              'face (plist-get properties 'face)
+              'mouse-face (ml-highlight)
+              'pointer 'arrow
+              'help-echo (plist-get properties 'help-echo)
+              'local-map (plist-get properties 'local-map)))
+
 (defun ml-set-height (height)
-  (make-xpm 25 1))
+  (make-xpm height 1))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
 (defun ml-buffer-name ()
-  (propertize "%20b"
-              'face 'ml-buffer-name
-              'mouse-face (ml-highlight)
-              'pointer 'arrow
-              'help-echo #'ml-buffer-name-help))
+  (ml-propertize "%20b"
+                 'face 'ml-buffer-name
+                 'help-echo (ml-buffer-name-help)))
 
-(defun ml-buffer-name-help (window object point)
-  (with-selected-window window
-    (let ((file-name (buffer-file-name)))
-      (if file-name
-          (abbreviate-file-name file-name)
-        (buffer-name)))))
-
-(defun ml-buffer-status ()
-  (cond (buffer-read-only
-         (propertize " RO "
-                     'mouse-face (ml-highlight)
-                     'pointer 'arrow
-                     'help-echo #'ml-buffer-status-help))
-        ((and (buffer-modified-p)
-              (buffer-file-name))
-         (propertize " ** "
-                     'mouse-face (ml-highlight)
-                     'pointer 'arrow
-                     'help-echo #'ml-buffer-status-help))
-        (t
-         "    ")))
-
-(defun ml-buffer-status-help (window object point)
-  (with-selected-window window
-    (if buffer-read-only
-        "The buffer is read-only"
-      "The buffer has been modified")))
+(defun ml-buffer-name-help ()
+  (let ((file-name (buffer-file-name)))
+    (if file-name
+        (abbreviate-file-name file-name)
+      (buffer-name))))
 
 (defun ml-coding-system ()
   (let ((terminator (pcase (coding-system-eol-type buffer-file-coding-system)
@@ -84,18 +68,15 @@
                       (1 "dos")
                       (2 "mac")
                       (_ "!?"))))
-    (propertize terminator
-                'mouse-face (ml-highlight)
-                'pointer 'arrow
-                'help-echo #'ml-coding-system-help
-                'local-map ml-coding-system-keymap)))
+    (ml-propertize terminator
+                   'help-echo (ml-coding-system-help)
+                   'local-map ml-coding-system-keymap)))
 
-(defun ml-coding-system-help (window object point)
-  (with-selected-window window
-    (let ((coding-system (if buffer-file-coding-system
-                             (symbol-name buffer-file-coding-system)
-                           "!?")))
-      (format "%s\nmouse-2: Describe coding system\nmouse-3: Set coding system" coding-system))))
+(defun ml-coding-system-help ()
+  (let ((coding-system (if buffer-file-coding-system
+                           (symbol-name buffer-file-coding-system)
+                         "!?")))
+    (format "%s\nmouse-2: Describe coding system\nmouse-3: Set coding system" coding-system)))
 
 (defvar ml-coding-system-keymap
   (ml-make-keymap [mode-line mouse-2] (lambda (event)
@@ -104,15 +85,12 @@
                   [mode-line mouse-3] #'set-buffer-file-coding-system))
 
 (defun ml-major-mode ()
-  (propertize mode-name
-              'mouse-face (ml-highlight)
-              'pointer 'arrow
-              'help-echo #'ml-major-mode-help
-              'local-map ml-major-mode-keymap))
+  (ml-propertize mode-name
+                 'help-echo (ml-major-mode-help)
+                 'local-map ml-major-mode-keymap))
 
-(defun ml-major-mode-help (window object point)
-  (with-selected-window window
-    "Major mode\nmouse-1: Show major mode menu\nmouse-2: Describe major mode"))
+(defun ml-major-mode-help ()
+  (format "%s\nmouse-1: Show mode menu\nmouse-2: Describe mode" mode-name))
 
 (defvar ml-major-mode-keymap
   (ml-make-keymap [mode-line mouse-1] '(menu-item "Major Mode" nil :filter (lambda (command)
@@ -124,16 +102,14 @@
                         when (and (boundp mode)
                                   (symbol-value mode)
                                   (not (string-empty-p (setq lighter (string-trim (format-mode-line lighter))))))
-                        collect (propertize lighter
-                                            'mouse-face (ml-highlight)
-                                            'pointer 'arrow
-                                            'help-echo #'ml-minor-mode-help
-                                            'local-map (ml-minor-mode-keymap lighter)))
+                        collect (ml-propertize lighter
+                                               'help-echo (ml-minor-mode-help mode)
+                                               'local-map (ml-minor-mode-keymap lighter)))
                " "))
 
-(defun ml-minor-mode-help (window object point)
-  (with-selected-window window
-    "Minor mode\nmouse-1: Show minor mode menu\nmouse-2: Describe minor mode"))
+(defun ml-minor-mode-help (mode)
+  (let ((name (capitalize (replace-regexp-in-string "\\(-minor\\)?-mode" "" (symbol-name mode)))))
+    (format "%s\nmouse-1: Show mode menu\nmouse-2: Describe mode" name)))
 
 (defun ml-minor-mode-keymap (lighter)
   (ml-make-keymap [mode-line mouse-1] (lambda (event)
@@ -147,63 +123,75 @@
   (format "%%l%s:%s%%C" (make-space 0.33) (make-space 0.33)))
 
 (defun ml-project ()
-  (propertize (projectile-project-name)
-              'mouse-face (ml-highlight)
-              'pointer 'arrow
-              'help-echo #'ml-project-help
-              'local-map ml-project-keymap))
+  (when (projectile-project-p)
+    (ml-propertize (projectile-project-name)
+                   'help-echo (ml-project-help)
+                   'local-map ml-project-keymap)))
 
-(defun ml-project-help (window object point)
-  (with-selected-window window
-    "Projectile\nmouse-1: Show Projectile menu"))
+(defun ml-project-help ()
+  "Projectile\nmouse-1: Show Projectile menu")
 
 (defvar ml-project-keymap
   (ml-make-keymap [mode-line mouse-1] projectile-mode-menu))
 
-(defun ml-syntax-checking ()
-  (let-alist (flycheck-count-errors flycheck-current-errors)
-    (let ((indicator (pcase flycheck-last-status-change
-                       ('running "*")
-                       ((or 'errored 'interrupted 'suspicious) "!")
-                       (_ "-")))
-          (errors (or .error 0))
-          (warnings (or .warning 0))
-          (infos (or .info 0)))
-      (propertize (if (and (eq flycheck-last-status-change 'finished)
-                           (> (+ errors warnings infos) 0))
-                      (format "%s|%s|%s" errors warnings infos)
-                    indicator)
-                  'mouse-face (ml-highlight)
-                  'pointer 'arrow
-                  'help-echo #'ml-syntax-checking-help
-                  'local-map ml-syntax-checking-keymap))))
+(defun ml-status ()
+  (cond (buffer-read-only
+         (ml-propertize " RO "
+                        'help-echo (ml-status-help)))
+        ((and (buffer-modified-p)
+              (buffer-file-name))
+         (ml-propertize " ** "
+                        'help-echo (ml-status-help)))
+        (t
+         "    ")))
 
-(defun ml-syntax-checking-help (window object point)
-  (with-selected-window window
-    "Flycheck\nmouse-1: Show Flycheck menu"))
+(defun ml-status-help ()
+  (if buffer-read-only
+      "The buffer is read-only"
+    "The buffer has been modified"))
+
+(defun ml-syntax-checking ()
+  (when (flycheck-get-checker-for-buffer)
+    (let-alist (flycheck-count-errors flycheck-current-errors)
+      (let ((indicator (pcase flycheck-last-status-change
+                         ('running "*")
+                         ((or 'errored 'interrupted 'suspicious) "!")
+                         (_ "-")))
+            (errors (or .error 0))
+            (warnings (or .warning 0))
+            (infos (or .info 0)))
+        (ml-propertize (if (and (eq flycheck-last-status-change 'finished)
+                                (> (+ errors warnings infos) 0))
+                           (format "%s|%s|%s" errors warnings infos)
+                         indicator)
+                       'help-echo (ml-syntax-checking-help)
+                       'local-map ml-syntax-checking-keymap)))))
+
+(defun ml-syntax-checking-help ()
+  "Flycheck\nmouse-1: Show Flycheck menu")
 
 (defvar ml-syntax-checking-keymap
   (ml-make-keymap [mode-line mouse-1] flycheck-mode-menu-map))
 
 (setq-default mode-line-format '(:eval (let ((left `("    "
-                                                     (:eval (ml-buffer-status))
+                                                     ,(ml-status)
                                                      "    "
-                                                     (:eval (ml-buffer-name))
+                                                     ,(ml-buffer-name)
                                                      "    "
-                                                     (:eval (ml-major-mode))
+                                                     ,(ml-major-mode)
                                                      ,@(when (ml-active-window-p)
                                                          `("    "
-                                                           ,@(when (flycheck-get-checker-for-buffer)
-                                                               '((:eval (ml-syntax-checking))
+                                                           ,@(when-let ((syntax-checking (ml-syntax-checking)))
+                                                               `(,syntax-checking
                                                                  "  "))
-                                                           (:eval (ml-minor-modes))))))
-                                             (right `(,@(when (and (ml-active-window-p)
-                                                                   (projectile-project-p))
-                                                          '((:eval (ml-project))
-                                                            "    "))
-                                                      (:eval (ml-coding-system))
+                                                           ,(ml-minor-modes)))))
+                                             (right `(,@(when (ml-active-window-p)
+                                                          (when-let ((project (ml-project)))
+                                                            `(,project
+                                                              "    ")))
+                                                      ,(ml-coding-system)
                                                       " | "
-                                                      (:eval (ml-position)))))
+                                                      ,(ml-position))))
                                          `(,left
                                            ,(ml-set-height 25)
                                            ,(ml-fill (- (string-width (format-mode-line right))

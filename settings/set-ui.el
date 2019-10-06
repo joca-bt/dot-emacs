@@ -9,8 +9,8 @@
                         '(:font "Segoe UI" :height 90)
                       '(:font "Noto Sans" :height 120)))
 
-(defun make-space (size)
-  (propertize " " 'display `(space :width ,size)))
+(defun make-space (size &optional face)
+  (propertize " " 'display `(space :width ,size) 'face face))
 
 (defun make-xpm (height width &optional color)
   (let ((xpm (format "/* XPM */ static char * xpm[] = { \"%s %s 1 1\", \". c %s\", %s };"
