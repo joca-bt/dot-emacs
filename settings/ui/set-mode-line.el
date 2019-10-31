@@ -4,10 +4,10 @@
 (defface ml-buffer-name '((t))
   "")
 
-(defface ml-active-highlight '((t))
+(defface ml-active-window-highlight '((t))
   "")
 
-(defface ml-inactive-highlight '((t))
+(defface ml-inactive-window-highlight '((t))
   "")
 
 (defvar ml-active-window nil)
@@ -15,7 +15,7 @@
 (defun ml-active-window-p ()
   (eq (selected-window) ml-active-window))
 
-(defun ml-set-active-window (&rest args)
+(defun ml-set-active-window (&rest _)
   (let ((active-window (selected-window)))
     (unless (minibuffer-window-active-p active-window)
       (setq ml-active-window active-window))))
@@ -28,8 +28,8 @@
 
 (defun ml-highlight ()
   (if (ml-active-window-p)
-      'ml-active-highlight
-    'ml-inactive-highlight))
+      'ml-active-window-highlight
+    'ml-inactive-window-highlight))
 
 (defun ml-make-keymap (&rest map)
   (let ((keymap (make-sparse-keymap)))
@@ -57,10 +57,9 @@
                  'help-echo (ml-buffer-name-help)))
 
 (defun ml-buffer-name-help ()
-  (let ((file-name (buffer-file-name)))
-    (if file-name
-        (abbreviate-file-name file-name)
-      (buffer-name))))
+  (if-let ((file-name (buffer-file-name)))
+      (abbreviate-file-name file-name)
+    (buffer-name)))
 
 (defun ml-coding-system ()
   (let ((terminator (pcase (coding-system-eol-type buffer-file-coding-system)
@@ -73,9 +72,7 @@
                    'local-map ml-coding-system-keymap)))
 
 (defun ml-coding-system-help ()
-  (let ((coding-system (if buffer-file-coding-system
-                           (symbol-name buffer-file-coding-system)
-                         "!?")))
+  (let ((coding-system (or buffer-file-coding-system "!?")))
     (format "%s\nmouse-2: Describe coding system\nmouse-3: Set coding system" coding-system)))
 
 (defvar ml-coding-system-keymap
@@ -93,7 +90,7 @@
   (format "%s\nmouse-1: Show mode menu\nmouse-2: Describe mode" mode-name))
 
 (defvar ml-major-mode-keymap
-  (ml-make-keymap [mode-line mouse-1] '(menu-item "Major Mode" nil :filter (lambda (command)
+  (ml-make-keymap [mode-line mouse-1] '(menu-item "Major Mode" nil :filter (lambda (_)
                                                                              (mouse-menu-major-mode-map)))
                   [mode-line mouse-2] #'describe-mode))
 
@@ -120,10 +117,12 @@
                                         (describe-minor-mode-from-indicator lighter))))
 
 (defun ml-position ()
-  (format "%%l%s:%s%%C" (make-space 0.33) (make-space 0.33)))
+  (let ((space (make-space 0.33)))
+    (format "%%l%s:%s%%C" space space)))
 
 (defun ml-project ()
-  (when (projectile-project-p)
+  (when (and projectile-mode
+             (projectile-project-p))
     (ml-propertize (projectile-project-name)
                    'help-echo (ml-project-help)
                    'local-map ml-project-keymap)))
@@ -151,7 +150,8 @@
     "The buffer has been modified"))
 
 (defun ml-syntax-checking ()
-  (when (flycheck-get-checker-for-buffer)
+  (when (and flycheck-mode
+             (flycheck-get-checker-for-buffer))
     (let-alist (flycheck-count-errors flycheck-current-errors)
       (let ((indicator (pcase flycheck-last-status-change
                          ('running "*")
@@ -192,20 +192,21 @@
                                                       ,(ml-coding-system)
                                                       " | "
                                                       ,(ml-position))))
-                                         `(,left
-                                           ,(ml-set-height 25)
+                                         `(,(ml-set-height 25)
+                                           ,left
                                            ,(ml-fill (- (string-width (format-mode-line right))
                                                         1.34))
                                            ,right))))
 
 (setq mode-line-default-help-echo nil)
 
+(setq slime-autodoc-mode-string nil)
 (diminish 'company-mode)
 (diminish 'eldoc-mode)
 (diminish 'flycheck-mode)
 (diminish 'ivy-mode)
 (diminish 'projectile-mode)
-(diminish 'server-buffer-clients)
+(diminish 'slime-mode)
 (diminish 'smartparens-mode)
 (diminish 'undo-tree-mode)
 (diminish 'ws-butler-mode)

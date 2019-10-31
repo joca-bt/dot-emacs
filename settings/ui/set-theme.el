@@ -23,8 +23,8 @@
                         '(tabbar-separator ((t :inherit tabbar-default :background "grey50")))
                         ;; mode line
                         '(ml-buffer-name ((t :weight bold)))
-                        '(ml-active-highlight ((t :foreground "cornsilk4" :background "#454545")))
-                        '(ml-inactive-highlight ((t :foreground "#252525" :background "cornsilk4")))
+                        '(ml-active-window-highlight ((t :foreground "cornsilk4" :background "#454545")))
+                        '(ml-inactive-window-highlight ((t :foreground "#252525" :background "cornsilk4")))
                         ;; flycheck
                         '(flycheck-error-list-highlight ((t :background "gray17")))
                         '(flycheck-error ((t :underline "#cd5542")))
