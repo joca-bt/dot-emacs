@@ -1,24 +1,21 @@
 ;; -----------------------------------------------------------------------------
 ;; programming -----------------------------------------------------------------
 
-(defun ivy-xref-show-xrefs (xrefs alist)
-  (let ((xrefs (cl-loop for (file-name . xrefs) in (xref--analyze xrefs)
+(defun xref-show-definitions (fetcher alist)
+  (let ((xrefs (cl-loop for (file-name . xrefs) in (xref--analyze (funcall fetcher))
                         nconc (mapcar (lambda (xref)
                                         (list (format "%s: %s"
-                                                      (propertize (file-name-nondirectory file-name) 'face 'compilation-info)
-                                                      (xref-item-summary xref))
-                                              (xref-item-location xref)))
-                                      xrefs)))
-        (windows (count-windows)))
-    (setq xref--original-window (assoc-default 'window alist)
-          xref--original-window-intent (assoc-default 'display-action alist))
-    (ivy-read "xref: "
-              xrefs
-              :action (lambda (candidate)
-                        (xref--show-location (cadr candidate) t)
-                        (when (= windows 1)
-                          (delete-window xref--original-window)))
-              :require-match t)))
+						                              (propertize (file-name-nondirectory file-name) 'face 'xref-file-header)
+						                              (xref-item-summary xref))
+					                          xref))
+				                      xrefs))))
+    (if (not (cdr xrefs))
+	    (xref-pop-to-location (cadar xrefs))
+      (ivy-read "xref: "
+		        xrefs
+		        :action (lambda (candidate)
+			              (xref-pop-to-location (cadr candidate)))
+		        :require-match t))))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
@@ -31,7 +28,7 @@
 (projectile-mode t)
 
 ;; references
-(setq xref-show-xrefs-function #'ivy-xref-show-xrefs
+(setq xref-show-definitions-function #'xref-show-definitions
       xref-after-jump-hook '(recenter)
       xref-after-return-hook nil)
 
@@ -68,7 +65,6 @@
 ;; indentation
 (setq-default indent-tabs-mode nil
               tab-width 4)
-(electric-indent-mode t)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
