@@ -62,16 +62,6 @@
       eldoc-echo-area-use-multiline-p t)
 (global-eldoc-mode t)
 
-;; syntax checking
-(setq flycheck-checkers '()
-      flycheck-check-syntax-automatically '(mode-enabled save)
-      flycheck-indication-mode nil
-      flycheck-highlighting-mode 'symbols
-      flycheck-display-errors-delay +documentation-delay+
-      flycheck-pos-tip-timeout -1)
-(global-flycheck-mode t)
-(flycheck-pos-tip-mode t)
-
 ;; comments
 (setq comment-empty-lines t)
 
@@ -79,14 +69,6 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 (electric-indent-mode t)
-
-;; delimiters
-(setq sp-show-pair-delay 0
-      sp-highlight-pair-overlay nil
-      sp-highlight-wrap-overlay nil
-      sp-highlight-wrap-tag-overlay nil)
-(smartparens-global-mode t)
-(show-smartparens-global-mode t)
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

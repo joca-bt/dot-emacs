@@ -149,30 +149,6 @@
       "The buffer is read-only"
     "The buffer has been modified"))
 
-(defun ml-syntax-checking ()
-  (when (and flycheck-mode
-             (flycheck-get-checker-for-buffer))
-    (let-alist (flycheck-count-errors flycheck-current-errors)
-      (let ((indicator (pcase flycheck-last-status-change
-                         ('running "*")
-                         ((or 'errored 'interrupted 'suspicious) "!")
-                         (_ "-")))
-            (errors (or .error 0))
-            (warnings (or .warning 0))
-            (infos (or .info 0)))
-        (ml-propertize (if (and (eq flycheck-last-status-change 'finished)
-                                (> (+ errors warnings infos) 0))
-                           (format "%s|%s|%s" errors warnings infos)
-                         indicator)
-                       'help-echo (ml-syntax-checking-help)
-                       'local-map ml-syntax-checking-keymap)))))
-
-(defun ml-syntax-checking-help ()
-  "Flycheck\nmouse-1: Show Flycheck menu")
-
-(defvar ml-syntax-checking-keymap
-  (ml-make-keymap [mode-line mouse-1] flycheck-mode-menu-map))
-
 (setq-default mode-line-format '(:eval (let ((left `("    "
                                                      ,(ml-status)
                                                      "    "
@@ -181,9 +157,6 @@
                                                      ,(ml-major-mode)
                                                      ,@(when (ml-active-window-p)
                                                          `("    "
-                                                           ,@(when-let ((syntax-checking (ml-syntax-checking)))
-                                                               `(,syntax-checking
-                                                                 "  "))
                                                            ,(ml-minor-modes)))))
                                              (right `(,@(when (ml-active-window-p)
                                                           (when-let ((project (ml-project)))
@@ -203,11 +176,9 @@
 (setq slime-autodoc-mode-string nil)
 (diminish 'company-mode)
 (diminish 'eldoc-mode)
-(diminish 'flycheck-mode)
 (diminish 'ivy-mode)
 (diminish 'projectile-mode)
 (diminish 'slime-mode)
-(diminish 'smartparens-mode)
 (diminish 'undo-tree-mode)
 (diminish 'ws-butler-mode)
 

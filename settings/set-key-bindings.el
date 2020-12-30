@@ -1,11 +1,6 @@
 ﻿;; -----------------------------------------------------------------------------
 ;; key bindings ----------------------------------------------------------------
 
-(defmacro ifn (&rest body)
-  `(lambda ()
-     (interactive)
-     ,@body))
-
 ;; set hyper key
 (when +windows-p+
   (setq w32-apps-modifier 'hyper))
@@ -32,34 +27,6 @@
 (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
 (define-key ivy-minibuffer-map (kbd "C-s") #'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-r") #'ivy-previous-line)
-
-;; -----------------------------------------------------------------------------
-;; s-expressions ---------------------------------------------------------------
-
-(global-set-key (kbd "M-Q") #'beginning-of-defun) ; move to start of function
-(global-set-key (kbd "M-E") #'end-of-defun) ; move to end of function
-(define-key smartparens-mode-map (kbd "M-q") #'sp-beginning-of-sexp) ; move to start of sexp
-(define-key smartparens-mode-map (kbd "M-e") #'sp-end-of-sexp) ; move to end of sexp
-
-(define-key smartparens-mode-map (kbd "M-d") #'forward-sexp) ; move sexp →
-(define-key smartparens-mode-map (kbd "M-a") #'backward-sexp) ; move sexp ←
-(define-key smartparens-mode-map (kbd "M-s") #'sp-down-sexp) ; move sexp ↓ →
-(define-key smartparens-mode-map (kbd "M-w") #'sp-backward-up-sexp) ; move sexp ↑ ←
-(define-key smartparens-mode-map (kbd "M-S") #'sp-backward-down-sexp) ; move sexp ↓ ←
-(define-key smartparens-mode-map (kbd "M-W") #'sp-up-sexp) ; move sexp ↑ →
-
-(define-key smartparens-mode-map (kbd "H-d") #'sp-forward-slurp-sexp) ; forward slurp sexp
-(define-key smartparens-mode-map (kbd "H-D") #'sp-forward-barf-sexp) ; forward barf sexp
-(define-key smartparens-mode-map (kbd "H-a") #'sp-backward-slurp-sexp) ; backward slurp sexp
-(define-key smartparens-mode-map (kbd "H-A") #'sp-backward-barf-sexp) ; backward barf sexp
-(define-key smartparens-mode-map (kbd "H-w") #'sp-raise-sexp) ; raise sexp
-(define-key smartparens-mode-map (kbd "H-W") #'sp-splice-sexp-killing-backward) ; backward splice sexp
-
-(define-key smartparens-mode-map (kbd "M-\"") (ifn (sp-wrap-with-pair "\""))) ; wrap sexp with ""
-(define-key smartparens-mode-map (kbd "M-(") (ifn (sp-wrap-with-pair "("))) ; wrap sexp with ()
-(define-key smartparens-mode-map (kbd "M-[") (ifn (sp-wrap-with-pair "["))) ; wrap sexp with []
-(define-key smartparens-mode-map (kbd "M-{") (ifn (sp-wrap-with-pair "{"))) ; wrap sexp with {}
-(define-key smartparens-mode-map (kbd "H-u") #'sp-unwrap-sexp) ; unwrap sexp
 
 ;; -----------------------------------------------------------------------------
 ;; windows ---------------------------------------------------------------------

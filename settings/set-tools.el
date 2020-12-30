@@ -1,11 +1,6 @@
 ;; -----------------------------------------------------------------------------
 ;; tools -----------------------------------------------------------------------
 
-;; ag
-(setq ag-highlight-search t
-      ag-group-matches nil
-      ag-reuse-buffers t)
-
 ;; ediff
 (setq ediff-split-window-function #'split-window-horizontally
       ediff-merge-split-window-function #'split-window-horizontally
