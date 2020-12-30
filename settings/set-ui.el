@@ -6,8 +6,8 @@
                           '(:font "Source Code Pro" :height 143)))
 
 (defconst +ui-font+ (if +windows-p+
-                        '(:font "Segoe UI" :height 90)
-                      '(:font "Noto Sans" :height 120)))
+                        '(:font "Segoe UI")
+                      '(:font "Noto Sans")))
 
 (defun make-space (size &optional face)
   (propertize " " 'display `(space :width ,size) 'face face))
@@ -28,6 +28,7 @@
 
 ;; font
 (apply #'set-face-attribute 'default nil +editor-font+)
+(apply #'set-face-attribute 'variable-pitch nil +ui-font+)
 
 ;; theme
 (require 'set-theme)
@@ -61,8 +62,7 @@
 ;; horizontal scrolling
 (setq hscroll-margin 0
       hscroll-step 1
-      mouse-wheel-tilt-scroll t
-      mouse-wheel-flip-direction (not +windows-p+))
+      mouse-wheel-tilt-scroll t)
 
 ;; vertical scrolling
 (setq scroll-margin 0
