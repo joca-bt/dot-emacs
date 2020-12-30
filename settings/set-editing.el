@@ -16,8 +16,7 @@
 (cua-mode t)
 
 ;; undo/redo
-(setq undo-tree-enable-undo-in-region nil
-      undo-tree-auto-save-history t
+(setq undo-tree-auto-save-history t
       undo-tree-history-directory-alist `(("." . ,+backups-dir+)))
 (global-undo-tree-mode t)
 
