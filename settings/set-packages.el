@@ -47,6 +47,7 @@
 
 ;; package manager
 (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
+                         ("elpa-nongnu" . "https://elpa.nongnu.org/nongnu/")
                          ("melpa" . "https://melpa.org/packages/")
                          ("melpa-stable" . "https://stable.melpa.org/packages/"))
       package-archive-priorities '(("melpa" . 10))
@@ -57,7 +58,6 @@
       package-user-dir +packages-dir+)
 
 ;; load packages
-(setq load-prefer-newer t)
 (package-initialize)
 (mapc #'load-package +packages+)
 
