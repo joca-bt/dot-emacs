@@ -33,11 +33,7 @@
       xref-after-return-hook nil)
 
 ;; completion
-(setq company-backends '(;; lisp
-                         company-slime
-                         company-elisp
-                         ;; rest
-                         company-capf
+(setq company-backends '(company-capf
                          (company-dabbrev-code company-dabbrev company-keywords))
       company-idle-delay nil
       company-quickhelp-delay +documentation-delay+

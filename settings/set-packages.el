@@ -27,10 +27,8 @@
                        protobuf-mode
                        puppet-mode
                        slime
-                       slime-company
                        yaml-mode
                        ;; built-in
-                       mode-local
                        server))
 
 (let ((refreshed-p nil))
