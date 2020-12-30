@@ -8,8 +8,7 @@
 (setq expand-region-fast-keys-enabled nil)
 
 ;; multiple cursors
-(setq mc/cmds-to-run-for-all '()
-      mc/cmds-to-run-once '(ivy-alt-done)
+(setq mc/match-cursor-style nil
       mc/list-file (concat +session-dir+ ".mc"))
 
 ;; cua
