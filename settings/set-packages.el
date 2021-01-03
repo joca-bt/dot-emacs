@@ -18,6 +18,7 @@
                        company
                        company-quickhelp
                        projectile
+                       smartparens
                        ;; tools
                        regex-tool
                        restclient

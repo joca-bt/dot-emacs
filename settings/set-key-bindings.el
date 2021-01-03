@@ -1,6 +1,11 @@
 ﻿;; -----------------------------------------------------------------------------
 ;; key bindings ----------------------------------------------------------------
 
+(defmacro ifn (&rest body)
+  `(lambda ()
+     (interactive)
+     ,@body))
+
 ;; set hyper key
 (when +windows-p+
   (setq w32-apps-modifier 'hyper))
@@ -29,6 +34,27 @@
 (define-key ivy-minibuffer-map (kbd "C-j") #'ivy-immediate-done)
 (define-key ivy-minibuffer-map (kbd "C-s") #'ivy-next-line)
 (define-key ivy-minibuffer-map (kbd "C-r") #'ivy-previous-line)
+
+;; -----------------------------------------------------------------------------
+;; smartparens -----------------------------------------------------------------
+
+(define-key smartparens-mode-map (kbd "M-Q") #'beginning-of-defun) ; move to start of function
+(define-key smartparens-mode-map (kbd "M-E") #'end-of-defun) ; move to end of function
+(define-key smartparens-mode-map (kbd "M-q") #'sp-beginning-of-sexp) ; move to start of sexp
+(define-key smartparens-mode-map (kbd "M-e") #'sp-end-of-sexp) ; move to end of sexp
+
+(define-key smartparens-mode-map (kbd "M-d") #'sp-forward-sexp) ; move sexp →
+(define-key smartparens-mode-map (kbd "M-a") #'sp-backward-sexp) ; move sexp ←
+(define-key smartparens-mode-map (kbd "M-s") #'sp-down-sexp) ; move sexp ↓ →
+(define-key smartparens-mode-map (kbd "M-w") #'sp-backward-up-sexp) ; move sexp ↑ ←
+
+(define-key smartparens-mode-map (kbd "H-w") #'sp-raise-sexp) ; raise sexp
+
+(define-key smartparens-mode-map (kbd "M-\"") (ifn (sp-wrap-with-pair "\""))) ; wrap sexp with ""
+(define-key smartparens-mode-map (kbd "M-(") (ifn (sp-wrap-with-pair "("))) ; wrap sexp with ()
+(define-key smartparens-mode-map (kbd "M-[") (ifn (sp-wrap-with-pair "["))) ; wrap sexp with []
+(define-key smartparens-mode-map (kbd "M-{") (ifn (sp-wrap-with-pair "{"))) ; wrap sexp with {}
+(define-key smartparens-mode-map (kbd "H-u") #'sp-unwrap-sexp) ; unwrap sexp
 
 ;; -----------------------------------------------------------------------------
 ;; other -----------------------------------------------------------------------

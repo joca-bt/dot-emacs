@@ -62,6 +62,14 @@
 (setq-default indent-tabs-mode nil
               tab-width 4)
 
+;; delimiters
+(setq sp-highlight-pair-overlay nil
+      sp-highlight-wrap-overlay nil
+      sp-highlight-wrap-tag-overlay nil)
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+(require 'smartparens-config)
+
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
 
