@@ -22,6 +22,7 @@
                        regex-tool
                        restclient
                        ;; modes
+                       bazel-mode
                        json-mode
                        macrostep
                        protobuf-mode
