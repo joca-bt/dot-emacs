@@ -17,9 +17,9 @@
       savehist-file (concat +session-dir+ ".history"))
 (savehist-mode t)
 
-;; save point between file visits
+;; save place between file visits
 (setq save-place-limit +file-history-size+
-      save-place-file (concat +session-dir+ ".point"))
+      save-place-file (concat +session-dir+ ".place"))
 (save-place-mode t)
 
 ;; -----------------------------------------------------------------------------

@@ -13,15 +13,15 @@
 (defvar ml-active-window nil)
 
 (defun ml-active-window-p ()
-  (eq (selected-window) ml-active-window))
+  (eq (selected-window)
+      ml-active-window))
 
-(defun ml-set-active-window (&rest _)
-  (let ((active-window (selected-window)))
-    (unless (minibuffer-window-active-p active-window)
-      (setq ml-active-window active-window))))
+(defun ml-set-active-window ()
+  (let ((window (selected-window)))
+    (unless (minibuffer-window-active-p window)
+      (setq ml-active-window window))))
 
-(advice-add 'select-window :after #'ml-set-active-window)
-(advice-add 'select-frame :after #'ml-set-active-window)
+(add-hook 'window-selection-change-functions (lambda (_) (ml-set-active-window)))
 
 (defun ml-fill (size)
   (propertize " " 'display `(space :align-to (- right ,size))))
@@ -64,8 +64,7 @@
 (defun ml-coding-system ()
   (let ((terminator (pcase (coding-system-eol-type buffer-file-coding-system)
                       (0 "unix")
-                      (1 "dos")
-                      (2 "mac")
+                      (1 "win")
                       (_ "!?"))))
     (ml-propertize terminator
                    'help-echo (ml-coding-system-help)
@@ -90,8 +89,7 @@
   (format "%s\nmouse-1: Show mode menu\nmouse-2: Describe mode" mode-name))
 
 (defvar ml-major-mode-keymap
-  (ml-make-keymap [mode-line mouse-1] '(menu-item "Major Mode" nil :filter (lambda (_)
-                                                                             (mouse-menu-major-mode-map)))
+  (ml-make-keymap [mode-line mouse-1] '(menu-item "Major Mode" nil :filter (lambda (_) (mouse-menu-major-mode-map)))
                   [mode-line mouse-2] #'describe-mode))
 
 (defun ml-minor-modes ()
@@ -116,8 +114,8 @@
                                         (interactive "@e")
                                         (describe-minor-mode-from-indicator lighter))))
 
-(defun ml-position ()
-  (let ((space (make-space 0.33)))
+(let ((space (make-space 0.33)))
+  (defun ml-position ()
     (format "%%l%s:%s%%C" space space)))
 
 (defun ml-project ()
@@ -149,49 +147,24 @@
       "The buffer is read-only"
     "The buffer has been modified"))
 
-(defun ml-syntax-checking ()
-  (when (and flycheck-mode
-             (flycheck-get-checker-for-buffer))
-    (let-alist (flycheck-count-errors flycheck-current-errors)
-      (let ((indicator (pcase flycheck-last-status-change
-                         ('running "*")
-                         ((or 'errored 'interrupted 'suspicious) "!")
-                         (_ "-")))
-            (errors (or .error 0))
-            (warnings (or .warning 0))
-            (infos (or .info 0)))
-        (ml-propertize (if (and (eq flycheck-last-status-change 'finished)
-                                (> (+ errors warnings infos) 0))
-                           (format "%s|%s|%s" errors warnings infos)
-                         indicator)
-                       'help-echo (ml-syntax-checking-help)
-                       'local-map ml-syntax-checking-keymap)))))
-
-(defun ml-syntax-checking-help ()
-  "Flycheck\nmouse-1: Show Flycheck menu")
-
-(defvar ml-syntax-checking-keymap
-  (ml-make-keymap [mode-line mouse-1] flycheck-mode-menu-map))
-
 (setq-default mode-line-format '(:eval (let ((left `("    "
-                                                     ,(ml-status)
+                                                     ,(if (ml-active-window-p)
+                                                          (ml-status)
+                                                        "    ")
                                                      "    "
                                                      ,(ml-buffer-name)
                                                      "    "
                                                      ,(ml-major-mode)
                                                      ,@(when (ml-active-window-p)
                                                          `("    "
-                                                           ,@(when-let ((syntax-checking (ml-syntax-checking)))
-                                                               `(,syntax-checking
-                                                                 "  "))
                                                            ,(ml-minor-modes)))))
-                                             (right `(,@(when (ml-active-window-p)
-                                                          (when-let ((project (ml-project)))
+                                             (right (when (ml-active-window-p)
+                                                      `(,@(when-let ((project (ml-project)))
                                                             `(,project
-                                                              "    ")))
-                                                      ,(ml-coding-system)
-                                                      " | "
-                                                      ,(ml-position))))
+                                                              "    "))
+                                                        ,(ml-coding-system)
+                                                        " | "
+                                                        ,(ml-position)))))
                                          `(,(ml-set-height 25)
                                            ,left
                                            ,(ml-fill (- (string-width (format-mode-line right))
@@ -200,15 +173,22 @@
 
 (setq mode-line-default-help-echo nil)
 
-(setq slime-autodoc-mode-string nil)
-(diminish 'company-mode)
-(diminish 'eldoc-mode)
-(diminish 'flycheck-mode)
+;; company-mode
+(setq company-lighter nil)
+;; eldoc-mode
+(setq eldoc-minor-mode-string nil)
+;; ivy-mode
 (diminish 'ivy-mode)
-(diminish 'projectile-mode)
-(diminish 'slime-mode)
+;; projectile-mode
+(setq-default projectile--mode-line nil)
+(setq         projectile-dynamic-mode-line nil)
+;; slime-autodoc-mode
+(setq slime-autodoc-mode-string nil)
+;; smartparens-mode
 (diminish 'smartparens-mode)
-(diminish 'undo-tree-mode)
+;; undo-tree-mode
+(setq undo-tree-mode-lighter nil)
+;; ws-butler-mode
 (diminish 'ws-butler-mode)
 
 ;; -----------------------------------------------------------------------------

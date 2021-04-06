@@ -8,8 +8,7 @@
 (setq expand-region-fast-keys-enabled nil)
 
 ;; multiple cursors
-(setq mc/cmds-to-run-for-all '()
-      mc/cmds-to-run-once '(ivy-alt-done)
+(setq mc/match-cursor-style nil
       mc/list-file (concat +session-dir+ ".mc"))
 
 ;; cua
@@ -17,8 +16,7 @@
 (cua-mode t)
 
 ;; undo/redo
-(setq undo-tree-enable-undo-in-region nil
-      undo-tree-auto-save-history t
+(setq undo-tree-auto-save-history t
       undo-tree-history-directory-alist `(("." . ,+backups-dir+)))
 (global-undo-tree-mode t)
 

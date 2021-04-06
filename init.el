@@ -1,10 +1,8 @@
 ;; -----------------------------------------------------------------------------
-;; dot emacs -------------------------------------------------------------------
+;; emacs -----------------------------------------------------------------------
 
 ;; constants
-(defconst +emacs-dir+ (expand-file-name (if load-file-name
-                                            (file-name-directory load-file-name)
-                                          user-emacs-directory)))
+(defconst +emacs-dir+ (expand-file-name user-emacs-directory))
 
 (defconst +settings-dir+ (concat +emacs-dir+ "settings/"))
 (defconst +packages-dir+ (concat +emacs-dir+ "packages/"))

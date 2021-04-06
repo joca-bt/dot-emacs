@@ -5,7 +5,8 @@
   (interactive)
   (ivy-read "[recentf] Find file: "
             recentf-list
-            :action #'find-file))
+            :action #'find-file
+            :require-match t))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
@@ -28,7 +29,7 @@
       recentf-max-saved-items +file-history-size+
       recentf-save-file (concat +session-dir+ ".recentf"))
 (recentf-mode t)
-(add-hook 'window-configuration-change-hook #'recentf-track-opened-file t)
+(add-hook 'window-buffer-change-functions (lambda (_) (recentf-track-opened-file)))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
