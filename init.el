@@ -4,12 +4,11 @@
 ;; constants
 (defconst +emacs-dir+ (expand-file-name user-emacs-directory))
 
-(defconst +settings-dir+ (concat +emacs-dir+ "settings/"))
-(defconst +packages-dir+ (concat +emacs-dir+ "packages/"))
-(defconst +themes-dir+ (concat +emacs-dir+ "packages/themes/"))
-
 (defconst +backups-dir+ (concat +emacs-dir+ "backups/"))
+(defconst +packages-dir+ (concat +emacs-dir+ "packages/"))
 (defconst +session-dir+ (concat +emacs-dir+ "session/"))
+(defconst +settings-dir+ (concat +emacs-dir+ "settings/"))
+(defconst +themes-dir+ (concat +emacs-dir+ "packages/themes/"))
 
 (defconst +auto-save-interval+ 60) ; 1 min
 (defconst +documentation-delay+ 0.5) ; 0.5 sec
