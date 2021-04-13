@@ -1,3 +1,4 @@
 backups/
 packages/
 session/
+*.elc
