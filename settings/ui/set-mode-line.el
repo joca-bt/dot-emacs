@@ -182,8 +182,6 @@
 ;; projectile-mode
 (setq-default projectile--mode-line nil)
 (setq         projectile-dynamic-mode-line nil)
-;; slime-autodoc-mode
-(setq slime-autodoc-mode-string nil)
 ;; smartparens-mode
 (diminish 'smartparens-mode)
 ;; undo-tree-mode

@@ -35,7 +35,6 @@
 (require 'set-navigation)
 (require 'set-programming)
 (require 'set-tools)
-(require 'set-lisp)
 (require 'set-perl)
 (require 'set-xml)
 (require 'set-key-bindings)

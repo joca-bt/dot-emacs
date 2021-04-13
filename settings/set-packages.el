@@ -28,7 +28,6 @@
                        macrostep
                        protobuf-mode
                        puppet-mode
-                       slime
                        yaml-mode
                        ;; built-in
                        server))
@@ -53,8 +52,7 @@
       package-archive-priorities '(("melpa" . 10))
       package-pinned-packages '((company . "melpa-stable")
                                 (ivy . "melpa-stable")
-                                (projectile . "melpa-stable")
-                                (slime . "melpa-stable"))
+                                (projectile . "melpa-stable"))
       package-user-dir +packages-dir+)
 
 ;; load packages
