@@ -20,7 +20,6 @@
                        projectile
                        smartparens
                        ;; tools
-                       regex-tool
                        restclient
                        ;; modes
                        bazel-mode
