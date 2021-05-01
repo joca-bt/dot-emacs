@@ -17,7 +17,7 @@
 
 ;; undo/redo
 (setq undo-tree-auto-save-history t
-      undo-tree-history-directory-alist `(("." . ,+backups-dir+)))
+      undo-tree-history-directory-alist `(("." . ,(concat +backups-dir+ "undo-tree/"))))
 (global-undo-tree-mode t)
 
 ;; trim whitespaces
