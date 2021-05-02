@@ -173,20 +173,12 @@
 
 (setq mode-line-default-help-echo nil)
 
-;; company-mode
-(setq company-lighter nil)
-;; eldoc-mode
-(setq eldoc-minor-mode-string nil)
-;; ivy-mode
+(diminish 'company-mode)
+(diminish 'eldoc-mode)
 (diminish 'ivy-mode)
-;; projectile-mode
-(setq-default projectile--mode-line nil)
-(setq         projectile-dynamic-mode-line nil)
-;; smartparens-mode
+(diminish 'projectile-mode)
 (diminish 'smartparens-mode)
-;; undo-tree-mode
-(setq undo-tree-mode-lighter nil)
-;; ws-butler-mode
+(diminish 'undo-tree-mode)
 (diminish 'ws-butler-mode)
 
 ;; -----------------------------------------------------------------------------
