@@ -1,13 +1,13 @@
 ;; -------------------------------------------------- -*- lexical-binding: t -*-
 ;; mode line -------------------------------------------------------------------
 
-(defface ml-buffer-name '((t))
+(defface ml-buffer-name '((t :weight bold))
   "")
 
-(defface ml-active-window-highlight '((t))
+(defface ml-active-window-highlight '((t :inherit mode-line-inactive))
   "")
 
-(defface ml-inactive-window-highlight '((t))
+(defface ml-inactive-window-highlight '((t :inherit mode-line))
   "")
 
 (defvar ml-active-window nil)

@@ -19,10 +19,6 @@
                         '(tabbar-unselected ((t :inherit tabbar-default :background "grey75")))
                         '(tabbar-unselected-highlight ((t :inherit tabbar-selected-highlight)))
                         '(tabbar-separator ((t :inherit tabbar-default :background "grey55")))
-                        ;; mode line
-                        '(ml-buffer-name ((t :weight bold)))
-                        '(ml-active-window-highlight ((t :inherit mode-line-inactive)))
-                        '(ml-inactive-window-highlight ((t :inherit mode-line)))
                         ;; ivy
                         '(ivy-current-match ((t :background "gray17" :extend t)))
                         '(ivy-minibuffer-match-face-1 ((t)))
