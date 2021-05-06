@@ -26,7 +26,7 @@
 (require 'set-packages)
 (require 'set-startup)
 (require 'set-ui)
-(require 'set-ivy)
+(require 'set-minibuffer)
 (require 'set-files)
 (require 'set-backups)
 (require 'set-session)
