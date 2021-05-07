@@ -3,10 +3,8 @@
 
 (defun recentf-find-file ()
   (interactive)
-  (ivy-read "[recentf] Find file: "
-            recentf-list
-            :action #'find-file
-            :require-match t))
+  (let ((file-name (completing-read "[recentf] Find file: " recentf-list nil t)))
+    (find-file file-name)))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------

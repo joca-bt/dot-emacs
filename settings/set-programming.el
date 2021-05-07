@@ -4,18 +4,15 @@
 (defun xref-show-definitions (fetcher alist)
   (let ((xrefs (cl-loop for (file-name . xrefs) in (xref--analyze (funcall fetcher))
                         nconc (mapcar (lambda (xref)
-                                        (list (format "%s: %s"
+                                        (cons (format "%s: %s"
                                                       (propertize (file-name-nondirectory file-name) 'face 'xref-file-header)
                                                       (xref-item-summary xref))
                                               xref))
                                       xrefs))))
     (if (not (cdr xrefs))
-        (xref-pop-to-location (cadar xrefs))
-      (ivy-read "xref: "
-                xrefs
-                :action (lambda (candidate)
-                          (xref-pop-to-location (cadr candidate)))
-                :require-match t))))
+        (xref-pop-to-location (cdar xrefs))
+      (let ((xref (completing-read "xref: " xrefs nil t)))
+        (xref-pop-to-location (alist-get xref xrefs nil nil #'string=))))))
 
 ;; -----------------------------------------------------------------------------
 ;; -----------------------------------------------------------------------------
