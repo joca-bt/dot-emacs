@@ -14,12 +14,12 @@
 ;; save minibuffer history between sessions
 (setq savehist-autosave-interval +auto-save-interval+
       history-length +command-history-size+
-      savehist-file (concat +session-dir+ ".history"))
+      savehist-file (concat +session-dir+ ".savehist"))
 (savehist-mode t)
 
 ;; save place between file visits
 (setq save-place-limit +file-history-size+
-      save-place-file (concat +session-dir+ ".place"))
+      save-place-file (concat +session-dir+ ".saveplace"))
 (save-place-mode t)
 
 ;; -----------------------------------------------------------------------------
